@@ -42,8 +42,8 @@ export default function Home({ trips, camps, language, onLinkClick }) {
 
 export const getServerSideProps = async () => {
   try {
-    const res = await axios.get(`/api/trips`);
-    const res2 = await axios.get(`/api/camps`);
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips`);
+    const res2 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
     return {
       props: {
         trips: res.data,

@@ -42,13 +42,13 @@ export const getServerSideProps = async (req) => {
 
     try {
 
-        const res1 = await axios.get(`/api/camps`);
-        const res2 = await axios.get(`/api/admin/campsOrders`, {
+        const res1 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
+        const res2 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/campsOrders`, {
             headers: {
                 'Cookie': `token=${token}`
             }
         });
-        const res3 = await axios.get(`/api/admin/tripsOrders`, {
+        const res3 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/tripsOrders`, {
             headers: {
                 'Cookie': `token=${token}`
             }
@@ -151,7 +151,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
 
     const logout = async () => {
         try {
-            const res = await axios.get(`/api/auth/logout`);
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/auth/logout`);
             localStorage.removeItem("user");
             setUser(null);
             router.push("/admin/login");

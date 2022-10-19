@@ -484,7 +484,7 @@ const PopularAttractions = ({ language }) => {
     useEffect(() => {
         const fetchActivities = async () => {
             try {
-                const res = await axios.get(`/api/activities`);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/activities`);
                 setActivities(res.data)
             }
             catch (error) {
@@ -517,7 +517,7 @@ const PopularAttractions = ({ language }) => {
             const { url } = uploadImage.data;
 
 
-            await axios.post(`/api/admin/activities`, {
+            await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/activities`, {
                 image: url,
                 name: [
                     activityName,

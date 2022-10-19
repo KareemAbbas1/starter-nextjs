@@ -666,7 +666,7 @@ const Camps = ({ language, newCampsordersList}) => {
   useEffect(() => {
     const fetchCamps = async () => {
       try {
-        const allCamps = await axios.get(`/api/camps`);
+        const allCamps = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
         setCamps(allCamps.data);
       }
       catch (error) {
@@ -787,7 +787,7 @@ const Camps = ({ language, newCampsordersList}) => {
         })
       );
 
-      const newCamp = await axios.post(`/api/admin/camps`, {
+      const newCamp = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/camps`, {
         name: [
           campName,
           campAraName
@@ -845,7 +845,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
   const deleteCamp = async (campId) => {
     try {
-      await axios.delete(`/api/admin/camps/${campId}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/camps/${campId}`);
       Array.from(document.getElementsByClassName("delete-modal")).map(el => (
         el.style.display = "none"
       ))
@@ -888,7 +888,7 @@ const Camps = ({ language, newCampsordersList}) => {
   // const fetchCampOrders = async (campId, btnId, notificaitonsSpan) => {
   //   try {
   //     document.getElementById(btnId).disabled = true;
-  //     const res = await axios.get(`/api/admin/campsOrders/${campId}`);
+  //     const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/campsOrders/${campId}`);
   //     setCampOrders(res.data);
 
   //     setTimeout(() => {
@@ -938,7 +938,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const fetchCampRooms = async (campId, btnId) => {
     try {
       document.getElementById(btnId).disabled = true
-      const res = await axios.get(`/api/rooms?campId=${campId}`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms?campId=${campId}`);
       setCampRooms(res.data);
       setReFetchRoomsCampId(campId)
 
@@ -974,7 +974,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
     try {
       setLoading(!loading);
-      await axios.patch(`/api/admin/rooms/${roomId}`, {
+      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms/${roomId}`, {
         roomType: [
           roomType,
           roomAraType
@@ -1065,7 +1065,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
   const reFetchRooms = async (campId) => {
     try {
-      const res = await axios.get(`/api/rooms?campId=${campId}`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms?campId=${campId}`);
       setCampRooms(res.data);
     }
     catch (error) {
@@ -1081,7 +1081,7 @@ const Camps = ({ language, newCampsordersList}) => {
     try {
       const date = document.getElementById(inputId).value;
       const newDate = `${date.split("-")[2]}/${date.split("-")[1]}/${date.split("-")[0]}`
-      await axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
+      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
         dates: newDate
       });
       reFetchRooms(reFetchRoomsCampId);
@@ -1096,7 +1096,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const removeOldDate = async (e, roomId) => {
     e.preventDefault();
     try {
-      await axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
         dates: unavailableDates
       })
       reFetchRooms(reFetchRoomsCampId);
@@ -1123,7 +1123,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const fetchCamp = async (campId) => {
     try {
       document.getElementById(campId).disabled = true;
-      const res = await axios.get(`/api/camps/${campId}`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps/${campId}`);
       setCamp(res.data);
 
       // Handle add new facilities & houseRules on the frontEnd
@@ -1282,7 +1282,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
     try {
       setLoading(!loading)
-      await axios.patch(`/api/admin/camps/${campId}`, {
+      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/camps/${campId}`, {
         description: [
           description,
           araDescription

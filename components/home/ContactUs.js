@@ -177,7 +177,7 @@ const ContactUs = ({ language }) => {
 
     async function onFormSubmit(values) {
         try {
-            await axios.post(`/api/submit-contact-form`, {
+            await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/submit-contact-form`, {
                 language: language,
                 name: values.senderName,
                 email: values.senderEmail,

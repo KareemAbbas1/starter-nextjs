@@ -97,7 +97,7 @@ const Index = ({ language }) => {
                         )
                         : adultsTicketsCount * ticketPrice;
 
-            await axios.post(`/api/trip-order?tripId=${tripId}`, {
+            await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trip-order?tripId=${tripId}`, {
                 orderDetails: {
                     title: [
                         tirpTitle,
@@ -151,7 +151,7 @@ const Index = ({ language }) => {
         e.preventDefault();
         localStorage.removeItem("Trip Order Data");
         document.querySelector("body").style.overflowY = "auto";
-        router.push(`/trip/${tripId}`);
+        router.push(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/trip/${tripId}`);
     };
 
     /* End Cancel Order */
