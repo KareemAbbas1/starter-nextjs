@@ -23,7 +23,7 @@ async function handler(req, res) {
         // Set token 
         const token = jwt.sign(
             { id: user._id, role: user.role },
-            process.env.JWT_SECRET,
+            process.env.NEXT_PUBLIC_JWT_SECRET,
             { expiresIn: '8h' }
         );
 
