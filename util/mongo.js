@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 // Set up dotenv to be able to access the local enviornment variables 
 // dotenv.config();
 
-const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI
+// const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI
 
-if (!MONGODB_URI) {
+if (!process.env.NEXT_PUBLIC_MONGODB_URI) {
   throw new Error(
     'Please define the MONGODB_URI environment variable inside .env.local'
   )
@@ -32,7 +32,7 @@ async function dbConnect() {
       bufferCommands: false,
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI, opts).then((mongoose) => {
       return mongoose
     })
   }
