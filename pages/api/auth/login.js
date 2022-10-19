@@ -11,7 +11,7 @@ async function handler(req, res) {
 
     await dbConnect()
 
-    // Login user
+    // User login
     if (method === "POST") {
 
         const user = await User.findOne({ email: req.body.email })
