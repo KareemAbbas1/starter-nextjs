@@ -1,11 +1,13 @@
 {
   "name": "break-trips-next",
   "version": "0.1.0",
+  "main": "server.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "NODE_ENV=production server.js",
+    "lint": "next lint",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "axios": "^0.27.2",
