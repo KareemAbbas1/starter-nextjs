@@ -29,7 +29,7 @@ const Login = () => {
 
     const handleLogin = async (req) => {
         try {
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/auth/login`, {
+            const res = await axios.post(`/api/auth/login`, {
                 email,
                 password
             });

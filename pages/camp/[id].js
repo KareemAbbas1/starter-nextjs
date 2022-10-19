@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 
 export const getServerSideProps = async ({ params }) => {
     try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps/${params.id}?${params.dateRange}`);
+        const res = await axios.get(`/api/camps/${params.id}?${params.dateRange}`);
         return {
             props: {
                 camp: res.data

@@ -345,7 +345,7 @@ const Users = ({ role, loggedInUser }) => {
     const fetchUsers = async () => {
       if (role === "admin1") {
         try {
-          let res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users`);
+          let res = await axios.get(`/api/users`);
           setUsers(res.data);
         }
         catch (error) {
@@ -391,7 +391,7 @@ const Users = ({ role, loggedInUser }) => {
         document.getElementById("create-user").disabled = true;
         setLoading(!loading);
 
-        await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/auth/register`, {
+        await axios.post(`/api/auth/register`, {
           username: values.userName,
           email: values.confirmEmail,
           password: values.confirmPassword,
@@ -426,7 +426,7 @@ const Users = ({ role, loggedInUser }) => {
   // Delete user 
   const deleteUser = async (userId) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users/${userId}`);
+      await axios.delete(`/api/users/${userId}`);
       setIsCreated(!isCreated);
     }
     catch (error) {
@@ -464,7 +464,7 @@ const Users = ({ role, loggedInUser }) => {
   const fetchSingleUser = async (userId, btnId) => {
     try {
       document.getElementById(btnId).disabled = true;
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users/${userId}`)
+      const res = await axios.get(`/api/users/${userId}`)
       setSingleUser(res.data);
 
       setTimeout(() => {
@@ -514,7 +514,7 @@ const Users = ({ role, loggedInUser }) => {
     } else {
       setNewPasswordMatch(newPasswordMatch);
       try {
-        await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users/${userId}`, {
+        await axios.patch(`/api/users/${userId}`, {
           password: confirmNewPassword
         });
         alert("تم تغيير كلمة المرور بنجاح");

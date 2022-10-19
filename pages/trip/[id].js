@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 export const getServerSideProps = async ({ params }) => {
     try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips/${params.id}`);
+        const res = await axios.get(`/api/trips/${params.id}`);
         const data = await res.data
         return {
             props: {

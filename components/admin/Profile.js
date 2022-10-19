@@ -97,7 +97,7 @@ const Profile = ({ user }) => {
     } else {
       setNewPasswordMatch(newPasswordMatch);
       try {
-        await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users/${userId}`, {
+        await axios.patch(`/api/users/${userId}`, {
           password: confirmNewPassword
         });
         alert("تم تغيير كلمة المرور بنجاح");
