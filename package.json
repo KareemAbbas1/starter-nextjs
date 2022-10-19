@@ -1,6 +1,7 @@
 {
   "name": "break-trips-next",
   "version": "0.1.0",
+  "main": "server.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
