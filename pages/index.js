@@ -21,7 +21,7 @@ export default function Home({ trips, camps, language, onLinkClick }) {
     <>
       <Head>
         <title>Break Trips for travel</title>
-        <meta name="description" content="travel and tourism company" />        
+        <meta name="description" content="travel and tourism company" />
       </Head>
 
       <Hero onLinkClick={onLinkClick} language={language} />
@@ -41,6 +41,7 @@ export default function Home({ trips, camps, language, onLinkClick }) {
 
 
 export const getServerSideProps = async () => {
+  const port = process.env.PORT || 3000;
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips`);
     const res2 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
