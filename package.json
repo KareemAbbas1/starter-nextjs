@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "npm run build",
-    "start": "next start",
+    "start": "NODE_ENV=production server.js",
     "lint": "next lint"
   },
   "dependencies": {
