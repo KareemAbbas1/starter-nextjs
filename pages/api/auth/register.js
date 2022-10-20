@@ -1,7 +1,6 @@
 import dbConnect from "../../../util/mongo";
 import User from "../../../models/User";
 import authenticate from "../../../middlewares/authentication";
-import authorize from "../../../middlewares/authorization"
 import errorHandler, { createError } from "../../../middlewares/errorsMiddleware";
 import bcrypt from "bcryptjs";
 
@@ -49,4 +48,4 @@ async function handler(req, res) {
 
 
 
-export default errorHandler(authenticate(authorize(handler)));
+export default errorHandler(authenticate(handler));

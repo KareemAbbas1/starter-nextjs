@@ -3,7 +3,6 @@ import Room from "../../../../models/Room";
 import Camp from "../../../../models/Camp"
 import errorHandler, { createError } from "../../../../middlewares/errorsMiddleware";
 import authenticate from "../../../../middlewares/authentication";
-import authorize from "../../../../middlewares/authorization";
 
 
 
@@ -47,4 +46,4 @@ async function handler(req, res) {
 }
 
 
-export default errorHandler(authenticate(authorize(handler)));
+export default errorHandler(authenticate(handler));
