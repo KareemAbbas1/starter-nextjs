@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postbuild": "NODE_ENV=production next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "NODE_ENV=production next start"
   },
   "dependencies": {
     "axios": "^0.27.2",
