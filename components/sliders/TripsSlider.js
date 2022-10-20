@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { CaretLeft, CaretRight, Whatsapp, TelephoneFill } from "react-bootstrap-icons";
 import Card from '../Card';
 import debounce from 'lodash/debounce';
-import Image from "next/image";
 
 
 

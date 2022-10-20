@@ -8,7 +8,6 @@ import Gallery from '../components/home/Gallery';
 import Hero from '../components/home/Hero';
 import PopularAttractions from '../components/home/PopularAttractions';
 import Trips from '../components/home/Trips';
-import styles from '../styles/Home.module.css';
 import axios from "axios";
 
 
