@@ -2,7 +2,7 @@ import dbConnect from "../../../util/mongo";
 import User from "../../../models/User";
 import errorHandler, { createError } from "../../../middlewares/errorsMiddleware";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import sign from "jsonwebtoken/sign";
 import cookie from "cookie";
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
@@ -21,7 +21,7 @@ async function handler(req, res) {
         if (!correctPassword) throw createError(400, "Wrong Credentials")
 
         // Set token 
-        const token = jwt.sign(
+        const token = sign(
             { id: user._id, role: user.role },
             process.env.NEXT_PUBLIC_JWT_SECRET,
             { expiresIn: '8h' }

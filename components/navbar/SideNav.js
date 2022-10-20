@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 import { useEffect, useState } from "react";
 import Link from 'next/link'
 import { useRouter } from "next/router";

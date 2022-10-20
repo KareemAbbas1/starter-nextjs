@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 import SideNav from "./SideNav";
 import { useRouter } from "next/router";
 
