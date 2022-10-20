@@ -21,9 +21,6 @@ const nextConfig = {
       'i0.wp.com',
       'res.cloudinary.com'
     ],
-  },
-  env: {
-    NEXT_PUBLIC_DOMAIN_NAME: "https://powerful-sunglasses-newt.cyclic.app"
   }
 }
 
