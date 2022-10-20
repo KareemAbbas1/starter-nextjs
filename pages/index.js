@@ -50,10 +50,8 @@ export const getServerSideProps = async () => {
       }
     };
   }
-  catch {
-    return {
-      notFound: true,
-    }
+  catch(error) {
+    console.error(error);
   }
 };
 
