@@ -1,11 +1,10 @@
 {
   "name": "break-trips-next",
   "version": "0.1.0",
-  "main": "server.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production -p 9001 server.js",
+    "start": "NODE_ENV=production next start",
     "lint": "next lint"
   },
   "dependencies": {
