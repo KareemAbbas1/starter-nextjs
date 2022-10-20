@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next build & NODE_ENV=production node_modules/next/dist/bin/next -p $PORT next/server/pages/index.js",
-    "lint": "next lint",
-    "postinstall": "NODE_ENV=production npm run build"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
