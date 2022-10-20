@@ -23,9 +23,9 @@ const nextConfig = {
       'res.cloudinary.com'
     ],
   },
-  env: {
-    NEXT_PUBLIC_DOMAIN_NAME: "https://powerful-sunglasses-newt.cyclic.app"
-  }
+  // env: {
+  //   NEXT_PUBLIC_DOMAIN_NAME: "https://powerful-sunglasses-newt.cyclic.app"
+  // }
 }
 
 module.exports =  nextConfig
