@@ -2,7 +2,7 @@ import { useState, useEffect, useTransition } from "react";
 import styled from 'styled-components';
 import { ActivityCard } from "../home/PopularAttractions";
 import { CaretLeft, CaretRight, TelephoneFill, Whatsapp } from "react-bootstrap-icons";
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import Image from "next/image";
 import axios from "axios";
 

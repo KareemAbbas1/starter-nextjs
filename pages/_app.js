@@ -4,7 +4,6 @@ import { WhatsApp, ScrollToTop } from '../components/navbar/styles';
 import { CaretUp, Whatsapp } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { debounce } from 'lodash';
 
 
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CaretLeft, CaretRight } from "react-bootstrap-icons";
 import Card from '../Card';
 import CampCard from "../CampCard";
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 
 
 
