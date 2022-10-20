@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production server.js",
+    "start": "npm run build & next start",
     "lint": "next lint",
     "postinstall": "NODE_ENV=production npm run build"
   },
