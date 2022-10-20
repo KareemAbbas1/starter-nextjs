@@ -104,12 +104,12 @@ const Container = styled.div`
         }
 
         div {
-            width: 70%;
+            width: 100%;
             height: 100%;
             position: absolute;
             bottom: -0.5%;
-            right: ${({ language }) => language === "English" && "0%"};
-            left: ${({ language }) => language === "العربية" && "0%"};
+            right: ${({ language }) => language === "English" && "-25%"};
+            left: ${({ language }) => language === "العربية" && "-25%"};
             background-color: #F26630;
         }
     }
