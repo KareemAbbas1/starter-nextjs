@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import Map from "../../public/Map.png";
 
 
 
@@ -11,7 +10,6 @@ const Container = styled.div`
     padding-inline-start: ${({ language }) => language === "English" && "4rem"};
     padding-inline-end: ${({ language }) => language === "العربية" && "4rem"};
     background-color: #16171F;
-    background-image: ${`url(${Map})`};
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
