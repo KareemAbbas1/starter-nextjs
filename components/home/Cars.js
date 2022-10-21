@@ -341,7 +341,7 @@ const Cars = ({ language }) => {
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/cars`);
+                const res = await axios.get(`https://powerful-sunglasses-newt.cyclic.app/api/cars`);
                 setCars(res.data)
             }
             catch (error) {
@@ -374,7 +374,7 @@ const Cars = ({ language }) => {
             const { url } = uploadImage.data;
 
 
-            await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/cars`, {
+            await axios.post(`https://powerful-sunglasses-newt.cyclic.app/api/admin/cars`, {
                 image: url,
                 name: [
                     carName,
