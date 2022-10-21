@@ -21,12 +21,12 @@ export const getServerSideProps = async (req) => {
         let decode;
         try {
             decode = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
+            role = decode.role;
         }
         catch (error) {
             console.error(error)
         }
 
-        role = decode && decode.role;
     }
     userRole()
 

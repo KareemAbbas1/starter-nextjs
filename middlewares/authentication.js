@@ -10,7 +10,7 @@ const authenticate = (handler) => {
         if (!token) throw createError(401, "You are not authenticated");
 
         jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET, (error, user) => {
-            if(error) console.log(error);
+            if(error) console.log("auth middle war error", error);
             req.user = user;
         })
 
