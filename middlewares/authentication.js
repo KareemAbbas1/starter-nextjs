@@ -16,7 +16,6 @@ const authenticate = (handler) => {
         verify(token, process.env.NEXT_PUBLIC_JWT_SECRET, (error, user) => {
             if (error) throw createError(403, "Token is not valid");
             req.user = user;
-            console.log(token)
         })
 
         return handler(req, res);

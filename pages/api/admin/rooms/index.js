@@ -14,15 +14,17 @@ async function handler(req, res) {
         user
     } = req;
 
-    
+
     await dbConnect()
-    
+
     // Get all rooms
-    if(method === "GET") {
+    if (method === "GET") {
+        if (user.role !== "admin1" && user.role !== "admin2")
+            throw createError(403, "You are not authorized")
         await Room.find()
-        .then(rooms => res.status(200).json(rooms))
+            .then(rooms => res.status(200).json(rooms))
     }
-    
+
     // Create new room
     if (method === "POST") {
         const newRoom = new Room(req.body);
