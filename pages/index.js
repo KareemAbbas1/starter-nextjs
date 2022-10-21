@@ -30,7 +30,7 @@ export const getServerSideProps = async () => {
 };
 
 
-export default function Home({ language, onLinkClick }) {
+export default function Home({ trips, camps, language, onLinkClick }) {
 
   return (
     <>
