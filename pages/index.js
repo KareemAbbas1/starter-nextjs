@@ -13,8 +13,8 @@ import axios from "axios";
 
 export const getServerSideProps = async () => {
   try {
-    const res = await axios.get(`https://powerful-sunglasses-newt.cyclic.app/api/trips`);
-    const res2 = await axios.get(`https://powerful-sunglasses-newt.cyclic.app/api/camps`);
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips`);
+    const res2 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
     return {
       props: {
         trips: res.data,

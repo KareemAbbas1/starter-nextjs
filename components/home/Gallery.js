@@ -396,7 +396,7 @@ const Gallery = ({ language }) => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const res = await axios.get(`https://powerful-sunglasses-newt.cyclic.app/api/images`)
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/images`)
                 setAllImages(res.data)
             }
             catch (error) {
@@ -450,7 +450,7 @@ const Gallery = ({ language }) => {
             });
 
             // console.log(newImages)
-            await axios.post(`https://powerful-sunglasses-newt.cyclic.app/api/admin/images`, newImages);
+            await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/images`, newImages);
             setLoading(loading);
             document.getElementById("upload-success").style.display = "block";
             setTimeout(() => {
@@ -482,7 +482,7 @@ const Gallery = ({ language }) => {
 
 
 
-            await axios.patch(`https://powerful-sunglasses-newt.cyclic.app/api/admin/images/${imageId}`, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/images/${imageId}`, {
                 url: url
             });
             setNewImgLoading(newImgLoading);
