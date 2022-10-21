@@ -53,6 +53,16 @@ export const getServerSideProps = async (req) => {
                 'Cookie': `token=${token}`
             }
         });
+        const res4 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms`, {
+            headers: {
+                'Cookie': `token=${token}`
+            }
+        });
+        const res5 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users`, {
+            headers: {
+                'Cookie': `token=${token}`
+            }
+        });
 
         return {
             props: {
