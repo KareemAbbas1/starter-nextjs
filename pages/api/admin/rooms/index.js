@@ -19,8 +19,6 @@ async function handler(req, res) {
 
     // Get all rooms
     if (method === "GET") {
-        if (user.role !== "admin1" && user.role !== "admin2")
-            throw createError(403, "You are not authorized")
         await Room.find()
             .then(rooms => res.status(200).json(rooms))
     }
