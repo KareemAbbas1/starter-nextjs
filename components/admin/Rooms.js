@@ -458,7 +458,7 @@ const Rooms = ({ camps }) => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms`);
+        const res = await axios.get(`/api/admin/rooms`);
         setRooms(res.data)
       }
       catch (error) {
@@ -514,7 +514,7 @@ const Rooms = ({ camps }) => {
 
     try {
       setLoading(!loading)
-      await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms?campId=${campId}`, {
+      await axios.post(`/api/admin/rooms?campId=${campId}`, {
         roomType: [
           roomType,
           roomAraType
@@ -555,7 +555,7 @@ const Rooms = ({ camps }) => {
   const fetchSingleRoom = async (roomId, btnId) => {
     try {
       document.getElementById(btnId).disabled = true;
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms/${roomId}`);
+      const res = await axios.get(`/api/admin/rooms/${roomId}`);
       setSingleRoom(res.data);
 
       setRoomAraType(res.data.roomType[1]);
@@ -604,7 +604,7 @@ const Rooms = ({ camps }) => {
 
     try {
       setLoading(!loading);
-      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms/${roomId}`, {
+      await axios.patch(`/api/admin/rooms/${roomId}`, {
         roomType: [
           roomType,
           roomAraType
@@ -666,7 +666,7 @@ const Rooms = ({ camps }) => {
 
   // const reFetchSingleRoom = async (campId) => {
   //   try {
-  //     const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms?campId=${campId}`);
+  //     const res = await axios.get(`/api/rooms?campId=${campId}`);
   //     setSingleRoom(res.data);
   //   }
   //   catch (error) {
@@ -682,7 +682,7 @@ const Rooms = ({ camps }) => {
   //   try {
   //     const date = document.getElementById(inputId).value;
   //     const newDate = `${date.split("-")[2]}/${date.split("-")[1]}/${date.split("-")[0]}`
-  //     await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
+  //     await axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
   //       dates: newDate
   //     });
   //     reFetchSingleRoom(reFetchSingleRoomCampId);
@@ -697,7 +697,7 @@ const Rooms = ({ camps }) => {
   // const removeOldDate = async (e, roomId) => {
   //   e.preventDefault();
   //   try {
-  //     await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+  //     await axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
   //       dates: unavailableDates
   //     })
   //     reFetchSingleRoom(reFetchSingleRoomCampId);
@@ -728,7 +728,7 @@ const Rooms = ({ camps }) => {
 
   const deleteRoom = async (roomId, roomScampId) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms/${roomId}?campId=${roomScampId}`);
+      await axios.delete(`/api/admin/rooms/${roomId}?campId=${roomScampId}`);
       Array.from(document.getElementsByClassName("delete-modal")).map(el => (
         el.style.display = "none"
       ));

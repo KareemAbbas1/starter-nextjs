@@ -436,7 +436,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const allTrips = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips`);
+        const allTrips = await axios.get(`/api/trips`);
         setTrips(allTrips.data);
       }
       catch (error) {
@@ -530,7 +530,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       );
 
 
-      const newTrip = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/trips`, {
+      const newTrip = await axios.post(`/api/admin/trips`, {
         title: [
           tripTitle,
           araTripTitle
@@ -631,7 +631,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
 
   const deleteTrip = async (tripId) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/trips/${tripId}`);
+      await axios.delete(`/api/admin/trips/${tripId}`);
       Array.from(document.getElementsByClassName("delete-modal")).map(el => (
         el.style.display = "none"
       ))
@@ -660,7 +660,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   const fetchTrip = async (tripId) => {
     try {
       document.getElementById(tripId).disabled = true;
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips/${tripId}`);
+      const res = await axios.get(`/api/trips/${tripId}`);
       setTrip(res.data);
 
       // Set inputs to update
@@ -808,7 +808,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       setLoading(!loading);
 
 
-      const updatedTrip = await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/trips/${tripId}`, {
+      const updatedTrip = await axios.patch(`/api/admin/trips/${tripId}`, {
         title: [
           tripTitle,
           araTripTitle
@@ -912,7 +912,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       }
 
       try {
-        await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/trips/${tripId}`, {
+        await axios.patch(`/api/admin/trips/${tripId}`, {
           state: data
         });
         setTripAraState("");
@@ -932,7 +932,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       data = startDate;
 
       try {
-        await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/trips/${tripId}`, {
+        await axios.patch(`/api/admin/trips/${tripId}`, {
           startDate: data
         });
         setTripAraState("");
@@ -951,7 +951,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       data = endDate;
 
       try {
-        await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/trips/${tripId}`, {
+        await axios.patch(`/api/admin/trips/${tripId}`, {
           endDate: data
         });
         setTripAraState("");

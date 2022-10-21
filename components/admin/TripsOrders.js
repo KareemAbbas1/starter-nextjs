@@ -235,7 +235,7 @@ const TripsOrders = ({ currentTripId, language }) => {
   useEffect(() => {
     const fetchTripOrders = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/tripsOrders/${currentTripId}`)
+        const res = await axios.get(`/api/admin/tripsOrders/${currentTripId}`)
         setTripOrders(res.data.reverse());
       }
       catch (error) {
@@ -252,7 +252,7 @@ const TripsOrders = ({ currentTripId, language }) => {
   // Fetch single order data
   const fetchOrder = async (orderId, notificaitonsSpan) => {
     try {
-      const res = await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trip-order/${orderId}`, {
+      const res = await axios.patch(`/api/trip-order/${orderId}`, {
         new: false
       });
       setSingleOrder(res.data);
@@ -281,7 +281,7 @@ const TripsOrders = ({ currentTripId, language }) => {
 
   const updatPayment = async (orderId, successSpanId) => {
     try {
-      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trip-order/${orderId}`, {
+      await axios.patch(`/api/trip-order/${orderId}`, {
         state: paymentState
       });
       setIsUpdated(!isUpdated);
@@ -301,7 +301,7 @@ const TripsOrders = ({ currentTripId, language }) => {
 
   const deleteOrder = async (orderId, tripId) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trip-order/${orderId}?tripId=${tripId}`)
+      await axios.delete(`/api/trip-order/${orderId}?tripId=${tripId}`)
       closeDeleteModal();
       setIsUpdated(!isUpdated);
     }

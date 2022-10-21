@@ -151,7 +151,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
 
     const logout = async () => {
         try {
-            const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/auth/logout`);
+            const res = await axios.get(`/api/auth/logout`);
             localStorage.removeItem("user");
             setUser(null);
             router.push("/admin/login");
@@ -243,13 +243,6 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                     }
 
 
-                    <div className={toggleActiveTab === 6 ? 'tab active-tab' : 'tab'}>
-                        <button onClick={() => setToggleActiveTab(6)}>
-                            <h5>
-                                الخدمات
-                            </h5>
-                        </button>
-                    </div>
 
                     <h4>قائمة المستخدم</h4>
                     <div className={toggleActiveTab === 7 ? 'tab active-tab' : 'tab'}>
@@ -285,10 +278,6 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                     </div>
                     <div className={toggleActiveTab === 5 ? 'tab-content active-tab-content' : 'tab-content'}>
                         <Users role={role} loggedInUser={user} />
-                    </div>
-
-                    <div className={toggleActiveTab === 6 ? 'tab-content active-tab-content' : 'tab-content'}>
-                        <Services />
                     </div>
 
                     <div className={toggleActiveTab === 7 ? 'tab-content active-tab-content' : 'tab-content'}>

@@ -132,7 +132,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
     // fetch single car
     const fetchCar = async (carId, modalId) => {
         try {
-            const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/cars/${carId}`);
+            const res = await axios.get(`/api/admin/cars/${carId}`);
             setSingleCar(res.data);
             openModal(modalId);
 
@@ -169,7 +169,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
                 image = url;
             }
 
-            await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/cars/${carId}`, {
+            await axios.patch(`/api/admin/cars/${carId}`, {
                 image: changeImage ? image : carImage,
                 name: [
                     carName,
@@ -197,7 +197,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
         e.preventDefault();
 
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/cars/${carId}`);
+            await axios.delete(`/api/admin/cars/${carId}`);
             setIsCreated(!isCreated);
             /*null because after deleteing the car its form don't exist any more*/
             closeModal(null);

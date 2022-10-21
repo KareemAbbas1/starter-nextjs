@@ -256,7 +256,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
   useEffect(() => {
     const fetchCampOrders = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/campsOrders/${currentCampId}`);
+        const res = await axios.get(`/api/admin/campsOrders/${currentCampId}`);
         setAllOrders(res.data.reverse());
       }
       catch (error) {
@@ -276,7 +276,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
   // Fetch single camp order
   const fetchCampOrder = async (orderId, notificaitonsSpan) => {
     try {
-      const res = await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/campOrders/${orderId}`, {
+      const res = await axios.patch(`/api/campOrders/${orderId}`, {
         new: false
       });
       setSingleCampOrder(res.data);
@@ -312,7 +312,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
   // Update order payment state
   const updateOrderState = async (orderId, successSpanId) => {
     try {
-      await axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/campOrders/${orderId}`, {
+      await axios.patch(`/api/campOrders/${orderId}`, {
         state: orderState
       });
       setOrderState("");
@@ -348,13 +348,13 @@ const Orders = ({ campOrders, currentCampId, language }) => {
       // Update room availability upon deleting order
       await Promise.all(
         roomsIds.map(roomId => {
-          axios.patch(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+          axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
             dates: dateRange
           })
         })
       );
       // Delete order and remove order Id from camp
-      await axios.delete(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/campOrders/${orderId}?campId=${campId}`);
+      await axios.delete(`/api/campOrders/${orderId}?campId=${campId}`);
       closeDeleteModal();
       setIsUpdated(!isUpdated)
 
