@@ -12,7 +12,6 @@ const authenticate = (handler) => {
         jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET, (error, user) => {
             if(error) console.log("auth middle ware error", error);
             req.user = user;
-            console.log(req.user)
         })
 
         return handler(req, res);
