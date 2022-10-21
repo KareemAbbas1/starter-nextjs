@@ -5,13 +5,14 @@ const authenticate = (handler) => {
     return async (req, res) => {
 
         // console.log("Authenticaton Middleware invoked", req.headers)
-        const token = req.headers.cookie.split("=")[1];
+        const token = await req.headers.cookie.split("=")[1];
         // console.log("MyToken", token)
         if (!token) throw createError(401, "You are not authenticated");
 
         jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET, (error, user) => {
-            if(error) console.log("auth middle war error", error);
+            if(error) console.log("auth middle ware error", error);
             req.user = user;
+            console.log(req.user)
         })
 
         return handler(req, res);
