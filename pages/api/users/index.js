@@ -11,13 +11,8 @@ async function handler(req, res) {
         user
     } = req;
 
-    await dbConnect();
-
-
-    if (user.role !== "admin") {
-        // throw createError(403, "You are not authorized");
-        console.log("User", user)
-    }
+    await dbConnect()
+    if (user.role !== "admin1") throw createError(403, "You are not authorized")
 
     if (method === "GET") {
         await User.find()
