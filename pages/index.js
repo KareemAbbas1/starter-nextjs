@@ -28,9 +28,10 @@ import axios from "axios";
 //     }
 //   }
 // };
+const trips = [];
+const camps = [];
 
-
-export default function Home({ trips, camps, language, onLinkClick }) {
+export default function Home({ language, onLinkClick }) {
 
   return (
     <>
