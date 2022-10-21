@@ -10,6 +10,8 @@ async function handler(req, res) {
     const { method } = req;
 
 
+    await dbConnect();
+
     // Get all images
     if (method === "GET") {
         await Image.find()
