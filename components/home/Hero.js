@@ -136,7 +136,7 @@ const Container = styled.span`
 const Hero = ({ language, onLinkClick }) => {
     return (
         <Section language={language}>
-            <video autoPlay={false} muted loop src="https://res.cloudinary.com/dqmqc0uaa/video/upload/v1666049102/video_mqp2vl.mp4" />
+            <video autoPlay={true} muted loop src="https://res.cloudinary.com/dqmqc0uaa/video/upload/v1666049102/video_mqp2vl.mp4" />
                 {/* <source src="/video.mp4" type="video/mp4" /> */}
             {/* </Video> */}
             <Container language={language}>

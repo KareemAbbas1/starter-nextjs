@@ -8,7 +8,7 @@ import Rooms from "../../components/admin/Rooms";
 import Users from "../../components/admin/Users";
 import Profile from "../../components/admin/Profile";
 import { useRouter } from "next/router";
-import jwt from "jsonwebtoken";
+import verify from "jsonwebtoken/verify";
 import Services from "../../components/admin/Services";
 
 
@@ -20,13 +20,13 @@ export const getServerSideProps = async (req) => {
     const userRole = () => {
         let decode;
         try {
-            decode = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
-            role = decode.role;
+            decode = verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
         }
         catch (error) {
             console.error(error)
         }
 
+        role = decode && decode.role;
     }
     userRole()
 
@@ -53,26 +53,13 @@ export const getServerSideProps = async (req) => {
                 'Cookie': `token=${token}`
             }
         });
-        const res4 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/rooms`, {
-            headers: {
-                'Cookie': `token=${token}`
-            }
-        });
-        const res5 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/users`, {
-            headers: {
-                'Cookie': `token=${token}`
-            }
-        });
 
         return {
             props: {
                 camps: res1.data,
                 campsOrders: res2.data,
                 tripsOrders: res3.data,
-                role: role,
-                token: token,
-                rooms: res4.data,
-                users: res5.data
+                role: role
             }
         };
     }
@@ -85,7 +72,7 @@ export const getServerSideProps = async (req) => {
 };
 
 
-const Dashboard = ({ language, camps, campsOrders, tripsOrders, role, token, rooms, users }) => {
+const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
 
     const router = useRouter();
 
@@ -287,7 +274,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role, token, roo
                         <Camps camps={camps} language={language} newCampsordersList={newCampsordersList} />
                     </div>
                     <div className={toggleActiveTab === 4 ? 'tab-content active-tab-content' : 'tab-content'}>
-                        <Rooms camps={camps} token={token} />
+                        <Rooms camps={camps} />
                     </div>
                     <div className={toggleActiveTab === 5 ? 'tab-content active-tab-content' : 'tab-content'}>
                         <Users role={role} loggedInUser={user} />
