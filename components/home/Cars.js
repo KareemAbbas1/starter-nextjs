@@ -374,7 +374,7 @@ const Cars = ({ language }) => {
             const { url } = uploadImage.data;
 
 
-            await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/admin/cars`, {
+            await axios.post(`/api/admin/cars`, {
                 image: url,
                 name: [
                     carName,
