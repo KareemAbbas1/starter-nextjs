@@ -458,11 +458,7 @@ const Rooms = ({ camps, token }) => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const res = await axios.get(`/api/admin/rooms`, {
-          headers: {
-            'Cookie': `token=${token}`
-          }
-        });
+        const res = await axios.get(`/api/admin/rooms`);
         setRooms(res.data)
       }
       catch (error) {
