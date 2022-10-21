@@ -59,7 +59,8 @@ export const getServerSideProps = async (req) => {
                 camps: res1.data,
                 campsOrders: res2.data,
                 tripsOrders: res3.data,
-                role: role
+                role: role,
+                token: token
             }
         };
     }
@@ -72,7 +73,7 @@ export const getServerSideProps = async (req) => {
 };
 
 
-const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
+const Dashboard = ({ language, camps, campsOrders, tripsOrders, role, token }) => {
 
     const router = useRouter();
 
@@ -274,7 +275,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                         <Camps camps={camps} language={language} newCampsordersList={newCampsordersList} />
                     </div>
                     <div className={toggleActiveTab === 4 ? 'tab-content active-tab-content' : 'tab-content'}>
-                        <Rooms camps={camps} />
+                        <Rooms camps={camps} token={token} />
                     </div>
                     <div className={toggleActiveTab === 5 ? 'tab-content active-tab-content' : 'tab-content'}>
                         <Users role={role} loggedInUser={user} />

@@ -432,7 +432,7 @@ const Container = styled.div`
   }
 `
 
-const Rooms = ({ camps }) => {
+const Rooms = ({ camps, token }) => {
 
   const [roomType, setRoomType] = useState("");
   const [roomAraType, setRoomAraType] = useState("");
@@ -458,7 +458,11 @@ const Rooms = ({ camps }) => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const res = await axios.get(`/api/admin/rooms`);
+        const res = await axios.get(`/api/admin/rooms`, {
+          headers: {
+            'Cookie': `token=${token}`
+          }
+        });
         setRooms(res.data)
       }
       catch (error) {
