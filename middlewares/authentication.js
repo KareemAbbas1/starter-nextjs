@@ -6,6 +6,7 @@ const authenticate = (handler) => {
 
         // console.log("Authenticaton Middleware invoked", req.headers)
         const token = await req.headers.cookie.split("=")[1];
+        console.log(token)
         // console.log("MyToken", token)
         if (!token) throw createError(401, "You are not authenticated");
 
