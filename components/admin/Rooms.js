@@ -432,7 +432,7 @@ const Container = styled.div`
   }
 `
 
-const Rooms = ({ camps, token }) => {
+const Rooms = ({ camps }) => {
 
   const [roomType, setRoomType] = useState("");
   const [roomAraType, setRoomAraType] = useState("");

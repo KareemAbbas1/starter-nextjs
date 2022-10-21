@@ -88,8 +88,6 @@ export const getServerSideProps = async (req) => {
 const Dashboard = ({ language, camps, campsOrders, tripsOrders, role, token, rooms, users }) => {
 
     const router = useRouter();
-    console.log(rooms)
-    console.log(users)
 
     const [toggleActiveTab, setToggleActiveTab] = useState(1);
     const [user, setUser] = useState(null);
