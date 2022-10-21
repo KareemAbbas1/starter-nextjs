@@ -8,7 +8,7 @@ import Rooms from "../../components/admin/Rooms";
 import Users from "../../components/admin/Users";
 import Profile from "../../components/admin/Profile";
 import { useRouter } from "next/router";
-import verify from "jsonwebtoken/verify";
+import jwt from "jsonwebtoken";
 import Services from "../../components/admin/Services";
 
 
@@ -20,7 +20,7 @@ export const getServerSideProps = async (req) => {
     const userRole = () => {
         let decode;
         try {
-            decode = verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
+            decode = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
         }
         catch (error) {
             console.error(error)
