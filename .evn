@@ -1,0 +1,5 @@
+NEXT_PUBLIC_JWT_SECRET=V1dxFZpCmm9yaagRAxAIREPRw1Mqacag0rUIp1v3cTs=
+NEXT_PUBLIC_MONGODB_URI=mongodb+srv://break-trips:breaktrips123@break-trips.jpszzpj.mongodb.net/break-trips?retryWrites=true&w=majority
+user=breaktrips2022@gmail.com
+NEXT_PUBLIC_DOMAIN_NAME=http://localhost:3000
+pass=pfdpmsmunjyqlshn
