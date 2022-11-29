@@ -22,6 +22,7 @@ export const Nav = styled.div`
         cursor: pointer;
     }
 
+
     button.language-icon {
         min-width: 3.5rem;
         padding: 0%;
@@ -59,27 +60,75 @@ export const Nav = styled.div`
         }
     }
 
-    @media(min-width: 1450px) {
-        padding-inline: 6rem;
+
+    // 10 inch 
+    @media(min-width: 1024px) {
+        button {
+            padding: 0.4rem 0.5rem;
+            font-size: 0.7rem;
+        }
+
+        button.language-icon {
+            margin-right: 0.3rem;
+            min-width: 3rem;
+
+            img {
+                width: 1.3rem;
+                height: 1.3rem;
+            }
+        }
+
+        a {
+            width: 7rem;
+        }
+    }
+
+
+    @media(min-width: 1440px) {
+        /* padding-inline: 6rem; */
         height: 5rem;
 
         button {
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 1rem;
             font-size: ${({ language }) => language === "العربية" && "1.1rem"};
         }
 
         button.language-icon {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            min-width: 3.5rem;
+        }
+
+    }
+
+    @media(min-width: 1680px) {
+        padding-inline: 2rem;
+        height: 6rem;
+
+        button {
+            padding: 0.5rem 1rem;
+            font-size: ${({ language }) => language === "English" ? "0.9rem" : "1.1rem"};
+        }
+
+        button.language-icon {
+            min-width: ${({ language }) => language === "English" ? "3.7rem" : "2.9rem"};
+
+            img {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        a {
+            width: 9rem;
         }
     }
 
-    @media(max-width: 990px) {        
+    // 23 inch
+    @media(min-width: 1920px) {
+        padding-inline: 5rem;
+    }
 
-        button {
-            padding: 0.3rem 1rem;
-            position: relative;
-            right: 35px;
-        }
+    @media(max-width: 990px) {
 
         button.language-icon {
             right: 0px;

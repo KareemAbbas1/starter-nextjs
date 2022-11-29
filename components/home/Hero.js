@@ -13,6 +13,13 @@ const Section = styled.section`
     text-align: ${({ language }) => language === "العربية" ? "right" : "left"};
     overflow: hidden;
 
+
+    // 10 inch 
+    @media(min-width: 1024px) {
+        justify-content: center;
+    }
+
+
     @media(max-width: 990px) {
         min-height: 80vh;
         justify-content: center;
@@ -82,20 +89,56 @@ const Container = styled.span`
         }
     }
 
-    @media(min-width: 1450px) {
-        padding-inline: 6rem;
 
+    // 10 inch
+    @media(min-width: 1024px) {
+        text-align: center;
         h1 {
-            font-size: 3.5rem;
-            line-height: 4.5rem;
+            font-size: ${({ language }) => language === "English" ? "2rem" : "2.2rem"};
         }
 
         h3 {
-            font-size: 1.5rem;
+            font-size: ${({ language }) => language === "English" ? "0.9rem" : "1.3rem"};
         }
 
         button {
-            font-size: 1.7rem;
+            font-size: ${({ language }) => language === "English" ? "0.9rem" : "1.2rem"};
+            padding: ${({ language }) => language === "English" ? "0.4rem" : "0.3rem 0.8rem"};
+        }
+    }
+
+    // 19 inch
+    @media(min-width: 1440px) {
+        padding-inline: 6rem;
+
+        h1 {
+            font-size: 2.6rem;
+            line-height: 3.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+        }
+
+        button {
+            font-size: 1rem;
+        }
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+
+        h1 {
+            font-size: 3.2rem;
+            line-height: 4.8rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+        }
+
+        button {
+            font-size: 1.3rem;
         }
     }
 

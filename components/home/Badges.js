@@ -76,15 +76,22 @@ const BadgesSection = styled.div`
         }
     }
 
-    @media(max-width: 1632px) {
-        /* height: 32vh; */
-        /* padding-inline: 5rem; */
+    // 19 inch
+    @media(min-width: 1440px) {
+        height: 40vh;
+        padding-inline: 5rem;
     }
 
-    @media(min-width: 1400px) {
-        height: 40vh;
-        padding-inline: 15rem;
+    // 22 inch
+    @media(max-width: 1680px) {
+        margin-inline: 10%;
     }
+
+    // 23 inch
+    @media(max-width: 1920px) {
+        margin-inline: 8%;
+    }
+
 `
 
 
