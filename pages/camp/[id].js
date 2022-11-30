@@ -6,7 +6,7 @@ import BreakfastIcon from "../../public/breakfast.png";
 import ParkingIcon from "../../public/parking-sign.png";
 import Image from 'next/image';
 import axios from "axios";
-import moment from "moment";
+import moment from 'moment/src/moment'
 import twix from "twix";
 import { useRouter } from 'next/router';
 
