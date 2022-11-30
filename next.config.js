@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      })
+    }
+    return config
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -24,4 +34,4 @@ const nextConfig = {
   }
 }
 
-module.exports =  nextConfig
+module.exports = nextConfig
