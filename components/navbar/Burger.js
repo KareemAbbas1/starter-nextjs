@@ -22,11 +22,25 @@ const BurgerMenu = styled.div`
     &:hover {
         transform: translateX(-8%);
     }
-    @media(min-width: 1400px) {
-        margin-top: ${({ open }) => !open ? "1.4%" : "0px"};
-        margin-right: -5px;
-        margin-top: ${({ open }) => !open ? "1.9%" : "0px"};
+
+    // 19 inch
+    @media(min-width: 1440px) {
+        margin-top: ${({ open }) => !open ? "2.7%" : "0px"};
     }
+    
+    
+    // 22 inch
+    @media(min-width: 1680px) {
+        margin-top: ${({ open }) => !open ? "1.85%" : "0px"};
+        margin-right: ${({ open }) => !open ? "-5px" : ""}
+    }
+    
+    // 23 inch
+    @media(min-width: 1920px) {
+        margin-top: ${({ open }) => !open ? "1.1%" : "0px"};
+    }
+
+
     @media(max-width: 990px) {
         display: flex;
         margin-top: 0.5%;

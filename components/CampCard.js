@@ -27,7 +27,7 @@ const Container = styled.div`
     }
 
 
-    @media(min-width: 1400px) {
+    @media(min-width: 1440px) {
         min-width: 100%;
         max-height: 89vh;
     }
@@ -54,6 +54,36 @@ const Card = styled.div`
     div.camp-image {
         width: 50%;
         max-height: 100%;
+
+        // 10 inch 
+        @media(min-width: 1024px) {
+            img {
+                height: 95vh;
+                width: 50vw;
+                object-fit: cover;
+            }
+        }
+
+        // 19 inch 
+        @media(min-width: 1440px) {
+            width: 55%;
+
+            img {
+                height: 87.3vh;
+            }
+        }
+
+        // 23 inch 
+        @media(min-width: 1920px) {
+            width: 50%;
+
+            img {
+                height: 87.3vh;
+            }
+        }
+
+
+
         @media(max-width: 990px) {
             width: 100%;
             min-height: 40vh;
@@ -71,9 +101,17 @@ const Card = styled.div`
         img {
             height: 100%;
         }
-        @media(min-width: 1400px) {
-            padding-top: 1rem;
+
+        // 19 inch
+        @media(min-width: 1440px) {
+            width: 45%;
         }
+
+        // 23 inch
+        @media(min-width: 1920px) {
+            width: 48%;
+        }
+
         @media(max-width: 990px) {
             width: 100%;
             min-height: 50%;
@@ -84,9 +122,9 @@ const Card = styled.div`
             font-size: 1.9rem;
             line-height: 2.5rem;
             height: 22%;
-            @media(min-width: 1400px) {
+            @media(min-width: 1440px) {
                 height: 25%;
-                font-size: 2.8rem;
+                font-size: 2.5rem;
                 line-height: 3.5rem;
             }
 
@@ -107,11 +145,18 @@ const Card = styled.div`
             @media(min-width: 990px) {
                 height: 66% 
             }
-            @media(min-width: 1400px) {
-                height: 55.5%;
-            }
             @media(max-width: 990px) {
                 padding-top: 2rem;
+            }
+
+            // 19 inch
+            @media(min-width: 1440px) {
+                height: 55.5%;
+            }
+
+            // 23 inch
+            @media(min-width: 1680px) {
+                height: 54.8%;
             }
 
             div.h-line {
@@ -133,7 +178,7 @@ const Card = styled.div`
                     line-height: 1.5rem;
                     color: #797979;
                     text-align: ${({ language }) => language === "English" ? "left" : "right"};
-                    @media(min-width: 1400px) {
+                    @media(min-width: 1440px) {
                         font-size: 1.5rem;
                         margin-bottom: 3rem;
                     }
@@ -148,7 +193,7 @@ const Card = styled.div`
                         display: flex;
                         flex-direction: ${({ language }) => language === "English" ? "row" : "row-reverse"};
                         align-items: center;
-                        @media(min-width: 1400px) {
+                        @media(min-width: 1440px) {
                             margin-bottom: 1.45rem;
                         }
                         
@@ -167,7 +212,7 @@ const Card = styled.div`
                         p.option-text {
                             margin: auto 1rem;
                             color: #000;
-                            @media(min-width: 1400px) {
+                            @media(min-width: 1440px) {
                                 font-size: 1.6rem;
                             }
                         }
@@ -177,7 +222,78 @@ const Card = styled.div`
                                 transform: scale(1.2);
                             }
                         }
+                        
+                        // 10 inch
+                        @media(min-width: 1024px) {
+                            div.circle {
+                                width: 2rem;
+                                height: 2rem;
+                            }
+
+                            p.option-text {
+                                font-size: 0.9rem;
+                                line-height: 1rem;
+                            }
+                        }
+                        
+                        // 12 inch
+                        @media(min-width: 1280px) {
+                            div.circle {
+                                transform: scale(1.5);
+                            }
+                            
+                            p.option-text {
+                                font-size: 1rem;
+                                line-height: 1.2rem;
+                                margin-block: 1.1rem;
+                            }
+                        }
+
+
+                        // 19 inch
+                        @media(min-width: 1440px) {
+                            div.circle {
+                                transform: scale(1);
+                                padding: 0.5rem;
+                            }
+                            
+                            p.option-text {
+                                font-size: 1.2rem;
+                                line-height: 1.4rem;
+                                margin-block: 1.1rem;
+                            }
+                        }
+
+                        // 22 inch
+                        @media(min-width: 1440px) {
+                            div.circle {
+                                transform: scale(1.2);
+                                padding: 0.5rem;
+                            }
+                            
+                            p.option-text {
+                                font-size: 1.3rem;
+                                line-height: 1.8rem;
+                                margin-block: 1rem;
+                            }
+                        }
                     }
+                }
+                
+
+                // 10 inch
+                @media(min-width: 1024px) {
+                    height: 97.5%;
+                }
+
+                // 12 inch
+                @media(min-width: 1280px) {
+                    height: 100%;
+                }
+
+                // 22 inch
+                @media(min-width: 1680px) {
+                    height: 102.3%;
                 }
 
             }
@@ -210,6 +326,16 @@ const Card = styled.div`
                     color: #fff;
                     border-color: #F26630;
                 }
+
+                // 10 inch
+                @media(min-width: 1024px) {
+                    font-size: 0.9rem;
+                }
+
+                // 22 inch
+                @media(min-width: 1024px) {
+                    font-size: 1.2rem;
+                }
             }
         }
     }
@@ -223,13 +349,49 @@ const Card = styled.div`
         language === "English" && width > 990 ? "27%"
             : language === "العربية" && width > 990 ? "43%"
                 : ''
-    };
+        };
         background-color: #F26630;
         color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        // 10 inch 
+        @media(min-width: 1024px) {
+            height: 30%;
+            bottom: 12px;
+        }
+
+        // 12 inch
+        @media(min-width: 1280px) {
+            height: 30%;
+            bottom: 16px;
+        }
+
+        // 15 inch 
+        @media(min-width: 1366px) {
+            bottom: 15px;
+        }
+
+        // 19 inch
+        @media(min-width: 1440px) {
+            left: 31%;
+        }
+
+        // 22 inch
+        @media(min-width: 1680px) {
+            bottom: 17px;
+        }
+
+        // 23 inch
+        @media(min-width: 1920px) {
+            width: 26%;
+            bottom: 16px;
+            left: 30.5%;
+        }
+
+
         @media(max-width: 990px) {
             top: -50%;
             width: 45%;
@@ -257,6 +419,39 @@ const Card = styled.div`
     
             p {
                 font-size: large;
+            }
+
+            // 10 inch 
+            @media(min-width: 1024px) {
+                h1 {
+                    font-size: 1.5rem;
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
+
+            // 12 inch
+            @media(min-width: 1280px) {
+                h1 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 1.1rem;
+                }
+            }
+
+            // 22 inch
+            @media(min-width: 1680px) {
+                h1 {
+                    font-size: 2.6rem;
+                }
+
+                p {
+                    font-size: 1.4rem;
+                }
             }
         }
     }

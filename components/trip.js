@@ -13,9 +13,21 @@ export const Container = styled.div`
     justify-content: space-between;
     gap: 1.5rem;
 
+    // 19 inch
     @media(min-width: 1400px) {
-        padding-inline: 15rem;
+        padding-inline: 5rem;
     }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        padding-inline: 10%;
+    }
+
+    // 23 inch
+    @media(min-width: 1920px) {
+        padding-inline: 15%;
+    }
+
     @media(max-width: 600px) {
         flex-direction: column;
         padding-inline: 1rem;

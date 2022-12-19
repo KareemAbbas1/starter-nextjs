@@ -23,9 +23,20 @@ const Container = styled.div`
         }
     }
 
-    @media(min-width: 1400px) {
-        margin-inline: 15rem;
+    // 19 inch
+    @media(min-width: 1440px) {
+        margin-inline: 3rem;
         max-height: 70vh;
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        margin-inline: 8%;
+    }
+
+    // 23 inch
+    @media(max-width: 1920px) {
+        margin-inline: 12%;
     }
 
     @media(max-width: 990px) {

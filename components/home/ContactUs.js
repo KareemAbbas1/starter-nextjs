@@ -16,9 +16,17 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    @media(min-width:1400px) {
-        padding-inline: 15rem;
+    
+    // 19 inch
+    @media(min-width:1440px) {
+        padding-inline: 5rem;
     }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        padding-inline: 10%;
+    }
+
     @media(max-width: 990px) {
         height: 40vh;
     }

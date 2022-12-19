@@ -19,8 +19,20 @@ const Container = styled.div`
         margin-bottom: 2rem;
     }
 
-    @media(min-width: 1400px) {
-        padding-inline: 15rem;
+
+    // 19 inch
+    @media(min-width: 1440px) {
+        padding-inline: 5rem;
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        padding-inline-start: 10%;
+    }
+
+    // 23 inch
+    @media(min-width: 1920px) {
+        padding-inline-start: 14%;
     }
 
     @media(max-width: 990px) {

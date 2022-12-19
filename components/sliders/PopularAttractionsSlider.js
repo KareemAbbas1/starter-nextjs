@@ -74,6 +74,11 @@ const Slide = styled.div`
         gap: 0.5rem;
     }
 
+    // 22 INCH
+    @media(min-width: 1680px) {
+        gap: 0.3rem;
+    }
+
     
 `
 

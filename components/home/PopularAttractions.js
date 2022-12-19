@@ -34,15 +34,25 @@ const Container = styled.div`
         border-radius: 5px;
     }
 
-    @media(min-width: 1400px) {
-        margin-inline: 14.5rem;
-        padding-inline: 3.4rem;
+    // 19 inch
+    @media(min-width: 1440px) {
+        margin-inline: 5rem;
         max-height: 52vh;
         margin-bottom: 7rem;
 
         div img {
             width: 20rem;
         }
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        margin-inline: 8%;
+    }
+
+    // 23 inch
+    @media(min-width: 1920px) {
+        margin-inline: 12%;
     }
 
     @media(max-width: 990px) {
@@ -314,10 +324,34 @@ export const ActivityCard = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-between;
-    @media(min-width: 1400px) {
-        /* min-width: 22%; */
-        height: 98%;
+    
+    
+    // 12 inch
+    @media(min-width: 1280px) {
+        height: 50%;
     }
+    
+    // 15 INCH
+    @media(min-width: 1366px) {
+        height: 55%;
+    }
+    
+    // 19 inch
+    @media(min-width: 1440px) {
+        height: 100%;
+    }
+    
+    // 22 inch
+    @media(min-width: 1680px) {
+        min-width: 25%;
+        height: 90%;
+    }
+    
+    // 23 inch
+    @media(min-width: 1920px) {
+        height: 100%;
+    }
+
     @media(max-width: 990px) {
         width: 33%;
         height: 78%;
@@ -334,9 +368,38 @@ export const ActivityCard = styled.div`
     div.activity-image {
         width: 18.7rem;
         height: 15rem;
+
+
+        
+        
+        // 10 inch 
+        @media(min-width: 1024px) {
+            width: 13.7rem;
+        }
+        
+        // 12 inch
+        @media(min-width: 1280px) {
+            width: 17.7rem;
+        }
+
+
+        // 15 inch
+        @media(min-width: 1366px) {
+            width: 19rem;
+        }
+
+        // 19 inch
         @media(min-width: 1400px) {
+            width: 17.7rem;
+        }
+
+        // 22 inch
+        @media(min-width: 1680px) {
             width: 20rem;
         }
+
+    
+
         @media(max-width: 990px) {
             width: 15rem;
             height: 12rem;

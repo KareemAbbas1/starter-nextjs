@@ -17,10 +17,13 @@ const Container = styled.div`
     flex-direction: ${({ language }) => language === "English" ? "row" : "row-reverse"};
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+
     @media(max-width: 990px) {
         height: 50vh;
         padding-block: 2rem;
     }
+
     @media(max-width: 600px) {
         height: 100vh;
         padding-block: 1.5rem;
@@ -69,6 +72,22 @@ const Container = styled.div`
                 border-left: ${({ language }) => language === "English" && "2px solid #F26630"};
                 border-right: ${({ language }) => language === "العربية" && "2px solid #F26630"};
             }
+
+            // 10 inch
+            @media(min-width: 1024px) {
+                font-size: 0.8rem;
+            }
+
+            // 12 inch
+            @media(min-width: 1280px) {
+                font-size: 1.2rem;
+            }
+            
+            // 22 inch
+            @media(min-width: 1680px) {
+                font-size: 1.3rem;
+                line-height: 2.2rem;
+            }
         }
 
         @media(max-width: 600px) {
@@ -89,6 +108,13 @@ const Container = styled.div`
         width: 42%;
         height: 90%;
         position: relative;
+
+
+        // 10 inch
+        @media(min-width: 1024px) {
+            width: 45%;
+        }
+
         @media(max-width: 990px) {
             display: none;
         }
@@ -99,6 +125,7 @@ const Container = styled.div`
             position: absolute;
             display: block;
             z-index: 10;
+            object-fit: cover;
         }
 
         div {
@@ -112,9 +139,10 @@ const Container = styled.div`
         }
     }
 
-    @media(min-width: 1400px) {
-        padding-inline-start: ${({ language }) => language === "English" && "15rem"};
-        padding-inline-end: ${({ language }) => language === "العربية" && "15rem"};
+    // 19 inch
+    @media(min-width: 1440px) {
+        padding-inline-start: ${({ language }) => language === "English" && "5rem"};
+        padding-inline-end: ${({ language }) => language === "العربية" && "5rem"};
 
         div.text {
             width: 40%;
@@ -122,6 +150,35 @@ const Container = styled.div`
 
         div.image {
             width: 50%;
+        }
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        padding-inline-start: ${({ language }) => language === "English" && "10%"};
+        padding-inline-end: ${({ language }) => language === "العربية" && "10%"};
+
+        div.text {
+            width: 43%;
+        }
+
+        div.image {
+            width: 50%;
+        }
+    }
+
+    // 23 inch
+    @media(min-width: 1920px) {
+        
+        padding-inline-start: ${({ language }) => language === "English" && "12%"};
+        padding-inline-end: ${({ language }) => language === "العربية" && "12%"};
+
+        div.text {
+            width: 40%
+        }
+
+        div.image {
+            width: 48%;
         }
     }
 `

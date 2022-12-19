@@ -45,6 +45,12 @@ const Arrow = styled.div`
     &:hover {
         opacity: 0.8;
     }
+
+    // 22 inch 
+    @media(min-width: 1680px) {
+        left: ${props => props.direction === 'left' && '8%'};
+        right: ${props => props.direction === 'right' && '8%'};
+    }
 `
 
 const Wrapper = styled.div`

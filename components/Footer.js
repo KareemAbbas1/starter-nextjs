@@ -9,21 +9,24 @@ import Link from 'next/link';
 const Container = styled.div`
   max-width: 100vw;
   height: 40vh;
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* left:0; */
-  /* box-sizing: border-box; */
   margin: 0px;
-  /* margin-top: 5rem; */
   padding-inline-end: 3rem;
   padding-inline-start: 5rem;
   background-color: #16171F;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media(min-width: 1400px) {
-      padding-inline: 15rem;
+
+  // 19 inch
+  @media(min-width: 1440px) {
+      padding-inline: 5rem;
   }
+
+  // 22 inch
+  @media(min-width: 1680px) {
+      padding-inline: 10%;
+  }
+  
   @media(max-width: 990px) {
       height: 30vh;
   }
@@ -178,6 +181,24 @@ const Container = styled.div`
                 &:hover {
                     transform: translateY(-7px);
                     opacity: 0.8;
+                }
+
+
+                // 10 inch 
+                @media(min-width: 1024px) {
+                  width: 2.5rem;
+                  height: 2.5rem;
+                }
+                
+                // 12 inch
+                @media(min-width: 1280px) {
+                  transform: scale(1.25);
+                }
+
+                // 15 inch
+                @media(min-width: 1366px) {
+                  transform: scale(1.3);
+                  margin-right: 2.5rem;
                 }
 
                 @media(max-width: 990px) {

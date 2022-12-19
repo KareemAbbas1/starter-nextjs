@@ -1,6 +1,6 @@
 import { Nav } from './styles.js';
 import { useState, useEffect } from 'react';
-import { debounce, set } from 'lodash';
+import debounce from 'lodash/debounce';
 import EarthIcon from '../../public/earthIcon.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

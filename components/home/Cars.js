@@ -22,14 +22,20 @@ const Container = styled.div`
         margin-bottom: 3rem;
     }
 
-    @media(min-width: 1400px) {
-        margin-inline: 14.5rem;
-        padding-inline: 3.4rem;
+    // 19 inch
+    @media(min-width: 1440px) {
+        margin-inline: 4rem;
         max-height: 52vh;
 
         div img {
             width: 20rem;
         }
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        margin-inline: 8%;
+        max-height: 52vh;
     }
 
     @media(max-width: 990px) {
@@ -279,6 +285,22 @@ export const CarCard = styled.div`
         height: auto;
         object-fit: cover;
         transition: transform 400ms ease;
+
+        // 10 inch 
+        @media(min-width: 1024px) {
+            width: 14rem;
+        }
+
+        // 15 inch
+        @media(min-width: 1366px) {
+            width: 18rem;
+        }
+
+        // 22 inch
+        @media(min-width: 1680px) {
+            width: 20rem;
+        }
+
         @media(max-width: 990px) {
             width: 15rem;
         }

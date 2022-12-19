@@ -33,7 +33,7 @@ const NavLinks = styled.ul`
         padding: 0px;
         padding-right: ${({ open }) => open && "2rem"};
         transform: ${({ language, open }) => language === "العربية" && open ? 'translateY(-42%)' : ''};
-        @media(min-width: 1400px) {
+        @media(min-width: 1440px) {
             transform: ${({ language, open }) => language === "العربية" && open ? 'translateY(-59%)' : ''};
         }
         @media(max-width: 990px) {
@@ -75,17 +75,35 @@ const NavLinks = styled.ul`
         @media(max-width: 990px) {
             display: ${({ open }) => !open && "none"};
         }
+
+        // 10 inch
+        @media(min-width: 1024px) {
+            font-size: ${({ language }) => language === "English" ? "0.6rem" : "0.9rem"};
+            margin-inline: ${({ open }) => open === false && "1rem"};
+        }
+
+        // 12 inch
+        @media(min-width: 1280px) {
+            font-size: ${({ language }) => language === "English" ? "0.67rem" : "0.9rem"};
+            margin-inline: ${({ open }) => open === false && "1.3rem"};
+        }
+
+
+        // 19 inch
+        @media(min-width: 1440px) {
+            font-size: ${({ language }) => language === "English" ? "0.7rem" : "0.9rem"};
+            margin-inline: ${({ open }) => open === false && "1.6rem"};
+        }
+
+        // 22 inch
+        @media(min-width: 1680px) {
+            font-size: ${({ language }) => language === "English" ? "0.82rem" : "1rem"};
+            margin-inline: ${({ open }) => open === false && "2.3rem"};
+        }
     }
 
     h3 {
         display: ${({ open }) => open ? "block" : "none"};
-    }
-
-    @media(min-width: 1450px) {
-        li {
-            font-size: ${({ language }) => language === "English" ? "0.9rem" : "1rem"};
-        }
-
     }
 
     @media(max-width: 600px) {

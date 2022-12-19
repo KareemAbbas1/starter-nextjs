@@ -15,6 +15,22 @@ const Container = styled.div`
     border-radius: 5px;
     user-select: none;
 
+
+    // 10 INCH 
+    @media(min-width: 1024px) {
+        height: 330px;
+    }
+
+    // 12 inch
+    @media(min-width: 1280px) {
+        height: 395px;
+    }
+
+    // 22 inch
+    @media(min-width: 1680px) {
+        height: 410px;
+    }
+    
     @media(max-width: 990px) {
         min-width: calc(33% - 0.2rem);
         height: 350px;
