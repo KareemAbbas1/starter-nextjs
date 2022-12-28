@@ -395,6 +395,44 @@ const Container = styled.div`
         margin-bottom: 0.5rem;
       }
 
+      div.new-day {
+        max-width: 79vw;
+        display: flex;
+        align-items: center;
+      }
+
+      button.add-day {
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: #00D100;
+        color: #fff;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+        &:hover {
+          background-color: transparent;
+          color: #000
+        }
+      }
+
+      pre.delete-day {
+        height: 1.7rem;
+        padding-inline: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid red;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        color: #fff;
+        background-color: red;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+
+        &:hover {
+          background-color: transparent;
+          color: red;
+        }
+      }
       textarea {
         resize: none;
         margin-left: 1rem;
@@ -422,7 +460,7 @@ const Container = styled.div`
 
 const Trips = ({ language, newTRipsOrdersList }) => {
 
-  
+
   const [trips, setTrips] = useState();
   const [trip, setTrip] = useState();
   const [isCreated, setIsCreated] = useState(false);
@@ -471,17 +509,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   const [rate, setRate] = useState(0);
   // trip overview
   const [overview, setOverview] = useState("");
-  const [araOverview, setAraOverview] = useState("");
-  // trip plan
-  //--day one
-  const [dayOne, setDayOne] = useState("");
-  const [araDayOne, setAraDayOne] = useState("");
-  //--day two
-  const [dayTwo, setDayTwo] = useState("");
-  const [araDayTwo, setAraDayTwo] = useState("");
-  //--day three
-  const [dayThree, setDayThree] = useState("");
-  const [araDayThree, setAraDayThree] = useState("");
+  const [araOverview, setAraOverview] = useState("");  
   // Images 
   const [files, setFiles] = useState();
   // Extra Options
@@ -498,6 +526,36 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   const [optionThreePrice, setOptionThreePrice] = useState(0);
 
 
+  //--- Handle add days ---//
+  // Create new input for new days
+  const [daysArray, setDaysArray] = useState([1, 2, 3]);
+  const addDay = (e) => {
+    e.preventDefault();
+
+    const newEl = daysArray[daysArray.length - 1] + 1;
+    const newArr = [...daysArray, newEl];
+    setDaysArray(newArr);
+  };
+
+  const deleteDay = () => {
+    daysArray.pop();
+    const newArr = [...daysArray];
+    setDaysArray(newArr);
+  };
+  //--- End handle add days ---//
+
+  //--- Handle add days content
+  // add new items to array
+  const addItemsToArray = (arr, id) => {
+    let newArr = [],
+      newEl;
+    for (let i = 1; i <= arr.length; i++) {
+      newEl = document.getElementById(`${i}${id}`).value
+      newArr = [...newArr, newEl]
+    }
+    return newArr;
+  }
+
 
   // Add new trip modal
   const openModal = () => {
@@ -511,7 +569,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   };
 
 
-  // Create new
+  // Create new trip
   const createNewTrip = async (e) => {
     e.preventDefault();
 
@@ -553,20 +611,10 @@ const Trips = ({ language, newTRipsOrdersList }) => {
           overview,
           araOverview
         ],
-        tripPlan: [
-          [
-            dayOne,
-            araDayOne
-          ],
-          [
-            dayTwo,
-            araDayTwo
-          ],
-          [
-            dayThree,
-            araDayThree
-          ]
-        ],
+        tripPlan: {
+          english: addItemsToArray(daysArray, "english"),
+          arabic: addItemsToArray(daysArray, "arabic")
+        },
         rate: Number(rate),
         extraOptions: [
           {
@@ -714,14 +762,10 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         setOverview(res.data.overview[0]);
         setAraOverview(res.data.overview[1]);
 
-        setDayOne(res.data.tripPlan[0][0]);
-        setAraDayOne(res.data.tripPlan[0][1]);
+        // handle add new days on the frontend
+        setAraDaysArray(res.data.tripPlan.arabic);
+        setEngDaysArray(res.data.tripPlan.english);
 
-        setDayTwo(res.data.tripPlan[1][0]);
-        setAraDayTwo(res.data.tripPlan[1][1]);
-
-        setDayThree(res.data.tripPlan[2][0]);
-        setAraDayThree(res.data.tripPlan[2][1]);
 
         setImg1(res.data.images[0] ? res.data.images[0] : "");
         setImg2(res.data.images[1] ? res.data.images[1] : "");
@@ -746,6 +790,44 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   };
   // console.log(trip)
 
+  // handle add new days to exsiting trip
+  const [araDaysArray, setAraDaysArray] = useState([]);
+  const [engDaysArray, setEngDaysArray] = useState([]);
+
+  const addNewDay = (e) => {
+    e.preventDefault();
+
+    let newElNum = araDaysArray.indexOf(araDaysArray[araDaysArray.length - 1]) + 2;
+    const newEl = `${newElNum}`;
+    const newArr1 = [...araDaysArray, newEl];
+    setAraDaysArray(newArr1);
+    const newArr2 = [...engDaysArray, newEl];
+    setEngDaysArray(newArr2);
+  };
+
+  const deleteOldDay = (day) => {
+    let elIndex = engDaysArray.indexOf(day);
+
+    if (elIndex > -1) {
+      araDaysArray.splice(elIndex, 1);
+      const newArr1 = [...araDaysArray];
+      setAraDaysArray(newArr1);
+
+      engDaysArray.splice(elIndex, 1);
+      const newArr2 = [...engDaysArray];
+      setEngDaysArray(newArr2);
+    }
+  }
+
+  const addItemsToExistingArray = (arr, id) => {
+    let newArr = [],
+      newEl;
+    for (let i = 0; i < arr.length; i++) {
+      newEl = document.getElementById(`${arr[i]}${id}`).value
+      newArr = [...newArr, newEl]
+    }
+    return newArr;
+  }
 
   const openDetailsModal = () => {
     document.getElementById('trip-details-modal').style.display = "block";
@@ -837,20 +919,10 @@ const Trips = ({ language, newTRipsOrdersList }) => {
           overview,
           araOverview
         ],
-        tripPlan: [
-          [
-            dayOne,
-            araDayOne
-          ],
-          [
-            dayTwo,
-            araDayTwo
-          ],
-          [
-            dayThree,
-            araDayThree
-          ]
-        ],
+        tripPlan: {
+          english: addItemsToExistingArray(engDaysArray, "ddEnglish"),
+          arabic: addItemsToExistingArray(araDaysArray, "ddArabic")
+        },
         rate: Number(rate),
         extraOptions: [
           {
@@ -1006,7 +1078,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         let orders = [];
         for (let i = 0; i < tripsNames.length; i++) {
           orders = [...orders,
-            newTRipsOrdersList !== false && newTRipsOrdersList.filter(order => {
+          newTRipsOrdersList !== false && newTRipsOrdersList.filter(order => {
             return order.orderDetails.title[0] === tripsNames[i]
           })
           ]
@@ -1150,7 +1222,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
             <TripsOrders
               currentTripId={tripIdFetchOrders}
               language={language}
-              />
+            />
           </div>
         </div>
       </div>
@@ -1405,36 +1477,49 @@ const Trips = ({ language, newTRipsOrdersList }) => {
 
               <div dir="rtl">
                 <h3>برنامج الرحلة</h3>
-                {
-                  trip && trip.tripPlan.map(day => (
-                    <div key={day}>
-                      <h4>اليوم{trip.tripPlan.indexOf(day) + 1}</h4>
-                      <textarea
-                        rows="6"
-                        cols="50"
-                        defaultValue={day[1]}
-                        onChange={(e) =>
-                          trip.tripPlan.indexOf(day) === 0 ? setAraDayOne(e.target.value)
-                            : trip.tripPlan.indexOf(day) === 1 ? setAraDayTwo(e.target.value)
-                              : trip.tripPlan.indexOf(day) === 2 ? setAraDayThree(e.target.value)
-                                : console.log("Otion's Arabic text is", null)
-                        }
-                      />
-                      <textarea
-                        rows="6"
-                        cols="50"
-                        defaultValue={day[0]}
-                        dir="ltr"
-                        onChange={(e) =>
-                          trip.tripPlan.indexOf(day) === 0 ? setDayOne(e.target.value)
-                            : trip.tripPlan.indexOf(day) === 1 ? setDayTwo(e.target.value)
-                              : trip.tripPlan.indexOf(day) === 2 ? setDayThree(e.target.value)
-                                : console.log("Otion's English text is", null)
-                        }
-                      />
-                    </div>
-                  ))
-                }
+
+                <div style={{ display: "flex" }}>
+                  <div>
+                    {
+                      trip && araDaysArray.map(day => (
+                        <>
+                          <div key={day} className="new-day">
+                            <pre>{araDaysArray.indexOf(day) + 1}- </pre>
+                            <textarea
+                              id={`${day}ddArabic`}
+                              dir="rtl"
+                              cols="50"
+                              rows="6"
+                              defaultValue={day}
+                            />
+                          </div><br />
+                        </>
+                      ))
+                    }
+                  </div>
+
+                  <div>
+                    {
+                      trip && engDaysArray.map(day => (
+                        <>
+                          <div key={day} className="new-day">
+                            <textarea
+                              id={`${day}ddEnglish`}
+                              dir="ltr"
+                              cols="50"
+                              rows="6"
+                              defaultValue={day}
+                            />
+
+                            <pre className="delete-day" onClick={() => deleteOldDay(day)}>x</pre>
+                          </div><br />
+                        </>
+                      ))
+                    }
+                  </div>
+                </div>
+                <button className="add-day" onClick={(e) => addNewDay(e)}>اضف يوم</button>
+
               </div>
 
               <h3>صور الرحلة</h3>
@@ -1643,23 +1728,39 @@ const Trips = ({ language, newTRipsOrdersList }) => {
                   <textarea rows="6" cols="50" onChange={(e) => setOverview(e.target.value)} required placeholder="English" />
                   <textarea rows="6" cols="50" dir="rtl" onChange={(e) => setAraOverview(e.target.value)} required placeholder="عربي" />
                 </div>
+
                 <div dir="rtl">
                   <h3>برنامج الرحلة</h3>
-                  <div>
-                    <h4>اليوم الأول</h4>
-                    <textarea rows="6" cols="50" onChange={(e) => setAraDayOne(e.target.value)} required placeholder="عربي" />
-                    <textarea rows="6" cols="50" dir="ltr" onChange={(e) => setDayOne(e.target.value)} required placeholder="English" />
-                  </div>
-                  <div>
-                    <h4>اليوم الثاني</h4>
-                    <textarea rows="6" cols="50" onChange={(e) => setAraDayTwo(e.target.value)} required placeholder="عربي" />
-                    <textarea rows="6" cols="50" dir="ltr" onChange={(e) => setDayTwo(e.target.value)} required placeholder="English" />
-                  </div>
-                  <div>
-                    <h4>اليوم الثالث</h4>
-                    <textarea rows="6" cols="50" onChange={(e) => setAraDayThree(e.target.value)} required placeholder="عربي" />
-                    <textarea rows="6" cols="50" dir="ltr" onChange={(e) => setDayThree(e.target.value)} required placeholder="English" />
-                  </div>
+
+                  {
+                    daysArray.map(day => (
+                      <div key={`${day}dd`}>
+                        <div className="new-day">
+                          <pre>{day}- </pre>
+                          <textarea
+                            id={`${day}arabic`}
+                            cols="50"
+                            rows="6"
+                            dir="rtl"
+                            placeholder="عربي"
+                            required
+                          />
+
+                          <textarea
+                            id={`${day}english`}
+                            cols="50"
+                            rows="6"
+                            dir="ltr"
+                            placeholder="English"
+                            required
+                          />
+
+                          <pre className="delete-day" onClick={deleteDay}>x</pre>
+                        </div><br />
+                      </div>
+                    ))
+                  }
+                  <button className="add-day" onClick={(e) => addDay(e)}>اضف يوم</button>
                 </div>
                 <div>
                   <h3>صور الرحلة</h3>

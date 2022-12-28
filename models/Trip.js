@@ -50,9 +50,19 @@ const TripsSchema = new mongoose.Schema({
         required: true
     },
     tripPlan: {
-        type: [{ type: [String], required: true }],
-        required: true
+        english: {
+            type: Array,
+            required: true
+        },
+        arabic: {
+            type: Array,
+            required: true
+        }
     },
+    // tripPlan: {
+    //     type: [{ type: [String], required: true }],
+    //     required: true
+    // },
     rate: {
         type: Number
     },

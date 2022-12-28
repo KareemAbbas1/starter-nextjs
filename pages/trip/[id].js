@@ -43,18 +43,6 @@ const Trip = ({ language, trip, loading, setLoading }) => {
     const startDate = trip && trip.startDate;
     const endDate = trip && trip.endDate;
 
-    const facility1 = trip && trip.extraOptions.length !== 0 && trip.extraOptions[0].text[0];
-    const araFacility1 = trip && trip.extraOptions.length !== 0 && trip.extraOptions[0].text[1];
-    const facilityOnePrice = trip && trip.extraOptions.length !== 0 && trip.extraOptions[0].price;
-
-    const facility2 = trip && trip.extraOptions.length > 1 && trip.extraOptions[1].text[0];
-    const araFacility2 = trip && trip.extraOptions.length > 1 && trip.extraOptions[1].text[1];
-    const facilityTwoPrice = trip && trip.extraOptions.length > 1 && trip.extraOptions[1].price;
-
-    const facility3 = trip && trip.extraOptions.length > 2 && trip.extraOptions[2].text[0];
-    const araFacility3 = trip && trip.extraOptions.length > 2 && trip.extraOptions[2].text[1];
-    const facilityThreePrice = trip && trip.extraOptions.length > 2 && trip.extraOptions[2].price;
-
     const overview = trip && trip.overview[0];
     const araOverview = trip && trip.overview[1];
 
@@ -207,7 +195,7 @@ const Trip = ({ language, trip, loading, setLoading }) => {
 
                                 <div className="price">
                                     <h5>تبدا من</h5>
-                                    <p>${price}</p>
+                                    <p>EGP {price}</p>
                                 </div>
                             </div>
                     }
@@ -250,31 +238,38 @@ const Trip = ({ language, trip, loading, setLoading }) => {
 
                     <div className={toggleActiveTab === 2 ? 'tab-content active-tab-content' : 'tab-content'}>
                         {
-                            trip && trip.tripPlan.length !== 0 && trip.tripPlan.map(day => (
-                                <div key={`${trip.tripPlan.indexOf(day)}tirp-plan`}>
+                            trip && trip.tripPlan.english.length !== 0 && trip.tripPlan.english.map(day => (
+                                <div key={`${trip.tripPlan.english.indexOf(day)}tirp-plan`}>
                                     <AccordionButton
                                         language={language}
-                                        id={`button-${trip.tripPlan.indexOf(day) + 1}`}
+                                        id={`button-${trip.tripPlan.english.indexOf(day) + 1}`}
                                         onClick={() => toggleAccordion(
-                                            `day${trip.tripPlan.indexOf(day) + 1}`,
-                                            `button-${trip.tripPlan.indexOf(day) + 1}`,
-                                            `day${trip.tripPlan.indexOf(day) + 1}-arrow`
+                                            `day${trip.tripPlan.english.indexOf(day) + 1}`,
+                                            `button-${trip.tripPlan.english.indexOf(day) + 1}`,
+                                            `day${trip.tripPlan.english.indexOf(day) + 1}-arrow`
                                         )}
                                     >
                                         <h2>
                                             {
                                                 language === "English"
-                                                    ? `Day ${trip.tripPlan.indexOf(day) + 1}`
-                                                    : `اليوم ${trip.tripPlan.indexOf(day) + 1}`
+                                                    ? `Day ${trip.tripPlan.english.indexOf(day) + 1}`
+                                                    : `اليوم ${trip.tripPlan.english.indexOf(day) + 1}`
                                             }
                                         </h2>
-                                        <div id={`day${trip.tripPlan.indexOf(day) + 1}-arrow`} className='arrow'>
+                                        <div id={`day${trip.tripPlan.english.indexOf(day) + 1}-arrow`} className='arrow'>
                                             <CaretUp size={20} />
                                         </div>
                                     </AccordionButton>
 
-                                    <AccordionPanel id={`day${trip.tripPlan.indexOf(day) + 1}`}>
-                                        <p>{language === "English" ? day[0] : day[1]}</p>
+                                    <AccordionPanel id={`day${trip.tripPlan.english.indexOf(day) + 1}`}>
+                                        <p>
+                                            {
+                                                language === "English"
+                                                    ? day
+                                                    : trip.tripPlan.arabic[trip.tripPlan.english.indexOf(day)]
+                                            }
+
+                                        </p>
                                     </AccordionPanel>
                                 </div>
                             ))

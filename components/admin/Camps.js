@@ -708,6 +708,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const [servicesArray, setServicesArray] = useState([1, 2, 3]);
   const addservice = (e) => {
     e.preventDefault();
+    
     const newEl = servicesArray[servicesArray.length - 1] + 1;
     const newArr = [...servicesArray, newEl]
     setServicesArray(newArr);
