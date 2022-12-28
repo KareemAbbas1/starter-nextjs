@@ -291,10 +291,10 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
                                         {language === "العربية" && "$"}
                                         {
                                             language === "English"
-                                                ? "Starts from "
+                                                ? "Starts from, "
                                                 : "يبدأ من "
                                         }
-                                        {language === "English" && "$"}{car.price}
+                                        {language === "English" && "EGP "}{car.price}
                                     </p>
                                     <p><TelephoneFill /> +20-100-009-0335</p>
                                     {

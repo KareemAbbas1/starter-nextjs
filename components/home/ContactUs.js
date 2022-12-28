@@ -3,6 +3,7 @@ import { GeoAltFill, TelephoneFill, Envelope } from 'react-bootstrap-icons';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import LoadingBar from '../LoadingBar';
 
 
 
@@ -179,12 +180,14 @@ const Container = styled.div`
 
 const ContactUs = ({ language }) => {
 
+    const [loading, setLoading] = useState(false);
 
     // Handle contact form
     const { register, handleSubmit, formState: { errors }, getValues, reset } = useForm();
 
     async function onFormSubmit(values) {
         try {
+            setLoading(true);
             await axios.post(`/api/submit-contact-form`, {
                 language: language,
                 name: values.senderName,
@@ -193,6 +196,7 @@ const ContactUs = ({ language }) => {
             });
             reset();
             setMessageSent(true);
+            setLoading(false);
         }
         catch (error) {
             console.error(error);
@@ -212,6 +216,7 @@ const ContactUs = ({ language }) => {
 
     return (
         <Container id='contact-us-section' language={language}>
+
             {
                 messageSent === true
                     ?
@@ -412,6 +417,10 @@ const ContactUs = ({ language }) => {
                                             errors.message.message
                                         }
                                     </span>
+                                }
+                                {
+                                    loading &&
+                                    <LoadingBar position="relative" align="top" />
                                 }
 
                                 <button type="submit">

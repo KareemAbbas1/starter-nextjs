@@ -39,7 +39,6 @@ async function handler(req, res) {
     if (method === "DELETE") {
         const order = await TripOrder.findById(id);
         const ticketsCount = order.orderDetails.tickets.adults + order.orderDetails.tickets.children;
-        console.log(ticketsCount)
         await Trip.findByIdAndUpdate(tripId, {
             $pull: { orders: id },
             $inc: { tickets: -ticketsCount }

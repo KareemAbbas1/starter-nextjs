@@ -27,12 +27,12 @@ const Container = styled.div`
 
     // 22 inch
     @media(min-width: 1680px) {
-        padding-inline-start: 10%;
+        padding-inline: 10%;
     }
 
     // 23 inch
     @media(min-width: 1920px) {
-        padding-inline-start: 14%;
+        padding-inline: 10%;
     }
 
     @media(max-width: 990px) {
@@ -64,7 +64,7 @@ const Line = styled.div`
         margin-bottom: 0rem;
     }
 `
-const Camps = ({ language, camps }) => {
+const Camps = ({ language, camps, setLoading }) => {
     return (
         <Container id='camps-section'>
             {
@@ -74,7 +74,10 @@ const Camps = ({ language, camps }) => {
             }
             <Line />
 
-            <CampsSlider camps={camps} language={language} />
+            {
+                typeof window !== "undefined" && window.scrollY > 70 &&
+                <CampsSlider camps={camps} language={language} setLoading={setLoading}/>
+            }
         </Container>
     )
 }

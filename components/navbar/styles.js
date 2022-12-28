@@ -85,7 +85,6 @@ export const Nav = styled.div`
 
 
     @media(min-width: 1440px) {
-        /* padding-inline: 6rem; */
         height: 5rem;
 
         button {
@@ -102,7 +101,6 @@ export const Nav = styled.div`
 
     @media(min-width: 1680px) {
         padding-inline: 2rem;
-        height: 6rem;
 
         button {
             padding: 0.5rem 1rem;

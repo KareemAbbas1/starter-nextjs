@@ -32,6 +32,7 @@ async function handler(req, res) {
 
         await Camp.findByIdAndDelete(id)
         res.status(200).json("Camp has been deleted")
+        // delete camp orders upon deleting
     }
 
 }

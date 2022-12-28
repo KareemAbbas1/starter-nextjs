@@ -6,7 +6,12 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 
-const TripCheckout = ({ language }) => {
+const TripCheckout = ({ language, setLoading }) => {
+
+    // Handle change route loading
+    useEffect(() => {
+        setLoading(false);
+    }, []);
 
     const [submitionData, setSubmitionData] = useState();
     const [orderIsSent, setOrderIsSent] = useState(false);
@@ -130,6 +135,7 @@ const TripCheckout = ({ language }) => {
         if (phoneMatch !== true || emailsMatch !== true) {
             setValidData(false);
         } else {
+            setLoading(true);
             setValidData(true);
             document.getElementById("submit-trip-order").disabled = true;
 
@@ -183,6 +189,7 @@ const TripCheckout = ({ language }) => {
                     document.body.scrollTop = 0;
                     document.documentElement.scrollTop = 0;
                     setOrderIsSent(true);
+                    setLoading(false)
                 }
             }
             catch (error) {
@@ -461,7 +468,7 @@ const TripCheckout = ({ language }) => {
                                     type='text'
                                     id="trip-full-name"
                                     name="trip-full-name"
-                                    placeholder={language === "English" ? "Full Name *" : "الاسم الكامل*"}
+                                    placeholder={language === "English" ? "Full Name (as in Passport/National ID) *" : "الاسم الكامل(الموجود في جواز السفر او بطاقة الهوية)*"}
                                     {...register("tripFullName", {
                                         required: {
                                             value: true,

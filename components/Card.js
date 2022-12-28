@@ -149,7 +149,7 @@ const Badge = styled.div`
     border-radius: 5px;
 `
 
-const Card = ({ trip, camp, language }) => {
+const Card = ({ trip, camp, language, setLoading }) => {
 
     // Trips Data
     const tripImage = trip && trip.images[0];
@@ -178,7 +178,7 @@ const Card = ({ trip, camp, language }) => {
 
     return (
         <Container
-            bg={trip ? tripImage : campImage}
+            bg={(trip && typeof window !== "undefined" && window.scrollY > 70) ? tripImage : campImage}
             language={language}
         >
             <Overlay language={language}>
@@ -194,7 +194,7 @@ const Card = ({ trip, camp, language }) => {
                             }
                         </Badge>
                         {
-                            trip && <strong>${trip && trip.price}</strong>
+                            trip && <strong>EGP {trip && trip.price}</strong>
                         }
                     </div>
 
@@ -254,7 +254,7 @@ const Card = ({ trip, camp, language }) => {
                                     ? `/trip/${trip._id}`
                                     : `/camp/${camp._id}`
                             }>
-                                <button>
+                                <button onClick={() => setLoading(true)}>
                                     {
                                         language === "English"
                                             ? "More Information & Booking"

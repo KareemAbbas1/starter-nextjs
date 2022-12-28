@@ -336,6 +336,11 @@ const Card = styled.div`
                 @media(min-width: 1024px) {
                     font-size: 1.2rem;
                 }
+
+                // 19 inch
+                @media(min-width: 1440px) and (max-width: 1600px) {
+                    font-size: 1rem;
+                }
             }
         }
     }
@@ -345,11 +350,11 @@ const Card = styled.div`
         height: 33%;
         position: absolute;
         bottom: 0;
-        left: ${({ language, width }) =>
+        /* left: ${({ language, width }) =>
         language === "English" && width > 990 ? "27%"
             : language === "العربية" && width > 990 ? "43%"
                 : ''
-        };
+    }; */
         background-color: #F26630;
         color: #fff;
         display: flex;
@@ -372,23 +377,41 @@ const Card = styled.div`
         // 15 inch 
         @media(min-width: 1366px) {
             bottom: 15px;
+            left: ${({ language, width }) =>
+                language === "English" && width > 990 ? "27%"
+                    : language === "العربية" && width > 990 ? "44%"
+                        : ''
+            };
         }
 
         // 19 inch
         @media(min-width: 1440px) {
-            left: 31%;
+            left: ${({ language, width }) =>
+                language === "English" && width > 990 ? "30.5%"
+                    : language === "العربية" && width > 990 ? "40%"
+                        : ''
+            };
         }
 
         // 22 inch
         @media(min-width: 1680px) {
             bottom: 17px;
+            left: ${({ language, width }) =>
+                language === "English" && width > 990 ? "30.5%"
+                    : language === "العربية" && width > 990 ? "40%"
+                        : ''
+            };
         }
 
         // 23 inch
         @media(min-width: 1920px) {
             width: 26%;
             bottom: 16px;
-            left: 30.5%;
+            left: ${({ language, width }) =>
+                language === "English" && width > 990 ? "30.5%"
+                    : language === "العربية" && width > 990 ? "43%"
+                        : ''
+            };
         }
 
 
@@ -457,7 +480,7 @@ const Card = styled.div`
     }
 `
 
-const CampCard = ({ camp, language }) => {
+const CampCard = ({ camp, language, setLoading }) => {
 
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
@@ -478,17 +501,17 @@ const CampCard = ({ camp, language }) => {
             <Card language={language} width={width}>
 
                 <div className='camp-image'>
-                    <Image 
-                    width={
-                        width < 1400
-                        ? 1000
-                        : 1080
-                    } 
-                    height={
-                        width < 1400
-                        ? 957
-                        : 1295
-                    }
+                    <Image
+                        width={
+                            width < 1400
+                                ? 1000
+                                : 1080
+                        }
+                        height={
+                            width < 1400
+                                ? 957
+                                : 1295
+                        }
                         src={camp.images[0]} alt=""
                     />
                 </div>
@@ -583,7 +606,7 @@ const CampCard = ({ camp, language }) => {
                             </div>
 
 
-                            <button>
+                            <button onClick={() => setLoading(true)}>
                                 <Link href={`/camp/${camp._id}`}>
                                     {
                                         language === "English"

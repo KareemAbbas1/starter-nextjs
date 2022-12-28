@@ -1,13 +1,31 @@
 import Head from 'next/head';
-import AboutUs from '../components/home/AboutUs';
-import Badges from '../components/home/Badges';
-import Camps from '../components/home/Camps';
-import Cars from '../components/home/Cars';
-import ContactUs from '../components/home/ContactUs';
-import Gallery from '../components/home/Gallery';
+import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
+const AboutUs = dynamic(() => import('../components/home/AboutUs'), {
+  loading: () => 'Loading...'
+});
+const Badges = dynamic(() => import('../components/home/Badges'), {
+  loading: () => 'Loading...'
+});
+const Camps = dynamic(() => import('../components/home/Camps'), {
+  loading: () => 'Loading...'
+});
+const Cars = dynamic(() => import('../components/home/Cars'), {
+  loading: () => 'Loading...'
+});
+const ContactUs = dynamic(() => import('../components/home/ContactUs'), {
+  loading: () => 'Loading...'
+});
+const Gallery = dynamic(() => import('../components/home/Gallery'), {
+  loading: () => 'Loading...'
+});
 import Hero from '../components/home/Hero';
-import PopularAttractions from '../components/home/PopularAttractions';
-import Trips from '../components/home/Trips';
+const PopularAttractions = dynamic(() => import('../components/home/PopularAttractions'), {
+  loading: () => 'Loading...'
+});
+const Trips = dynamic(() => import('../components/home/Trips'), {
+  loading: () => 'Loading...'
+});
 import axios from "axios";
 
 
@@ -30,7 +48,20 @@ export const getServerSideProps = async () => {
 };
 
 
-export default function Home({ trips, camps, language, onLinkClick }) {
+export default function Home({
+  trips,
+  camps,
+  language,
+  onLinkClick,
+  showSideButtons, /* This is used to dynamically render each section based on the Y axis scroll */
+  loading,
+  setLoading
+}) {
+
+  // Handle route change loading
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <>
@@ -40,9 +71,20 @@ export default function Home({ trips, camps, language, onLinkClick }) {
       </Head>
 
       <Hero onLinkClick={onLinkClick} language={language} />
-      <Trips trips={trips} language={language} />
+
+      <Trips
+        trips={trips}
+        language={language}
+        setLoading={setLoading}
+      />
+
       <Badges language={language} />
-      <Camps camps={camps} language={language} />
+
+      <Camps
+        camps={camps}
+        language={language}
+        setLoading={setLoading}
+      />
       <Cars language={language} />
       <PopularAttractions language={language} />
       <Gallery language={language} />

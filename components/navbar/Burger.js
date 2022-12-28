@@ -96,7 +96,7 @@ const BurgerMenu = styled.div`
     }
 `
 
-const Burger = ({ language, onLinkClick, open, setOpen }) => {
+const Burger = ({ language, onLinkClick, open, setOpen, setLoading }) => {
 
     const router = useRouter();
 
@@ -153,7 +153,7 @@ const Burger = ({ language, onLinkClick, open, setOpen }) => {
                 <div />
             </BurgerMenu>
 
-            <SideNav onLinkClick={onLinkClick} open={open} setOpen={setOpen} language={language} />
+            <SideNav onLinkClick={onLinkClick} open={open} setOpen={setOpen} language={language} setLoading={setLoading}/>
         </>
     )
 }

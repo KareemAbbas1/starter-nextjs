@@ -24,8 +24,12 @@ export const getServerSideProps = async ({ params }) => {
     }
 };
 
-const Trip = ({ language, trip }) => {
+const Trip = ({ language, trip, loading, setLoading }) => {
 
+    // Handle loading
+    useEffect(() => {
+        setLoading(false);
+    }, [])
     // Extract Data
     const tripId = trip && trip._id;
 
@@ -130,24 +134,29 @@ const Trip = ({ language, trip }) => {
         if (adultsTickets === 0 || adultsTickets === '') {
             return setNoTicketsSelected(true);
         } else {
-            const tripSubmitionData = JSON.stringify({
-                price: price,
-                duration: duration,
-                startDate: startDate,
-                tickets: {
-                    adults: Number(adultsTickets),
-                    children: Number(childrenTickets)
-                },
-                extraOptions: tripExtraOptions,
-                tirpTitle: [
-                    title,
-                    araTitle
-                ],
-                tripId: tripId
-            });
+            setLoading(true);
 
-            localStorage.setItem("Trip submition data", tripSubmitionData);
-            router.push('/tripCheckout');
+            setTimeout(() => {
+
+                const tripSubmitionData = JSON.stringify({
+                    price: price,
+                    duration: duration,
+                    startDate: startDate,
+                    tickets: {
+                        adults: Number(adultsTickets),
+                        children: Number(childrenTickets)
+                    },
+                    extraOptions: tripExtraOptions,
+                    tirpTitle: [
+                        title,
+                        araTitle
+                    ],
+                    tripId: tripId
+                });
+
+                localStorage.setItem("Trip submition data", tripSubmitionData);
+                router.push('/tripCheckout');
+            }, 1500)
         }
     };
 
@@ -171,7 +180,7 @@ const Trip = ({ language, trip }) => {
                             <div className="title-info">
                                 <div className="price">
                                     <h5>From</h5>
-                                    <p>${price}</p>
+                                    <p>EGP {price}</p>
                                 </div>
 
                                 <div className="duration">
@@ -359,7 +368,7 @@ const Trip = ({ language, trip }) => {
                             </span>
                         }
 
-                        <div className="children-count">
+                        {/* <div className="children-count">
                             <label htmlFor="children">
                                 {
                                     language === "English"
@@ -380,7 +389,7 @@ const Trip = ({ language, trip }) => {
                                 <option value="9">9</option>
                                 <option value="10">10</option>
                             </select>
-                        </div>
+                        </div> */}
                     </div>
                     {
                         trip && trip.extraOptions.length !== 0 && trip.extraOptions[0].text[0] !== "" &&

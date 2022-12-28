@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 
-const OrderComplete = ({ language }) => {
+const OrderComplete = ({ language, setLoading }) => {
     const [submitionData, setSubmitionData] = useState();
     const [roomsIds, setRoomsIds] = useState([]);
     const [campId, setCampId] = useState('')
@@ -163,6 +163,7 @@ const OrderComplete = ({ language }) => {
     const submitOrder = async (e) => {
         e.target.disabled = true;
         try {
+            setLoading(true);
             await axios.post(`/api/campOrders?campId=${campId}`, {
                 orderDetails: submitionData.orderDetails,
                 guestInfo: submitionData.guestInfo,
@@ -176,6 +177,7 @@ const OrderComplete = ({ language }) => {
             localStorage.removeItem("campId");
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
+            setLoading(false);
         }
         catch (error) {
             console.error(error);
@@ -268,15 +270,15 @@ const OrderComplete = ({ language }) => {
                                     <ul>
                                         {
                                             (submitionData && roomsCount > 0)
-                                            && <li>{room}: ${roomPrice} per night x {roomsCount} {roomsCount > 1 ? "rooms" : "room"} = ${roomPrice * roomsCount}</li>
+                                            && <li>{room}: EGP {roomPrice} per night x {roomsCount} {roomsCount > 1 ? "rooms" : "room"} = EGP {roomPrice * roomsCount}</li>
                                         }
                                         {
                                             (submitionData && bungalowCount > 0)
-                                            && <li>{bungalow}: ${bungalowPrice} per night x {bungalowCount} {bungalowCount > 1 ? "bungalows" : "bungalow"} = ${bungalowPrice * bungalowCount}</li>
+                                            && <li>{bungalow}: EGP {bungalowPrice} per night x {bungalowCount} {bungalowCount > 1 ? "bungalows" : "bungalow"} = EGP {bungalowPrice * bungalowCount}</li>
                                         }
                                         {
                                             (submitionData && hutCount > 0)
-                                            && <li>{hut}: ${hutPrice} per night x {hutCount} {hutCount > 1 ? "huts" : "hut"} = ${hutPrice * hutCount}</li>
+                                            && <li>{hut}: EGP {hutPrice} per night x {hutCount} {hutCount > 1 ? "huts" : "hut"} = EGP {hutPrice * hutCount}</li>
                                         }
                                     </ul>
 
@@ -286,12 +288,12 @@ const OrderComplete = ({ language }) => {
                                         <>
                                             <h3>Dinner:</h3>
                                             <ul>
-                                                <li>Dinner price per person: ${dinnerPrice}</li>
+                                                <li>Dinner price per person: EGP {dinnerPrice}</li>
                                                 <li>
-                                                    Sub Total: {adultsCount} adults x ${dinnerPrice} = ${adultsCount * dinnerPrice} per night
+                                                    Sub Total: {adultsCount} adults x EGP {dinnerPrice} = EGP {adultsCount * dinnerPrice} per night
                                                 </li>
                                                 <li>
-                                                    Total: ${adultsCount * dinnerPrice} x {duration} night{duration > 1 ? "s" : ''} = ${adultsCount * dinnerPrice * duration}
+                                                    Total: EGP {adultsCount * dinnerPrice} x {duration} night{duration > 1 ? "s" : ''} = EGP {adultsCount * dinnerPrice * duration}
                                                 </li>
                                             </ul>
                                         </>
@@ -318,25 +320,25 @@ const OrderComplete = ({ language }) => {
                                     roomsCount > 0 &&
                                     <p dir={language === "العربية" && "rtl"}>
                                         {roomsCount}
-                                        {`${language === "English" ? `${room} x` : "غرفة مزدوجة *"} ${duration} ${language === "English" ? 'nights' : 'ليالي'} = $${roomPrice * duration}`}
+                                        {`${language === "English" ? `${room} x` : "غرفة مزدوجة *"} ${duration} ${language === "English" ? 'nights' : 'ليالي'} = EGP ${roomPrice * duration}`}
                                     </p>
                                 }
                                 {
                                     bungalowCount > 0 &&
-                                    <p>{bungalowCount} {bungalow} x {duration} nights = ${bungalowPrice * duration}</p>
+                                    <p>{bungalowCount} {bungalow} x {duration} nights = EGP {bungalowPrice * duration}</p>
                                 }
                                 {
                                     hutCount > 0 &&
-                                    <p>{hutCount} {hut} x {duration} nights = ${hutPrice * duration}</p>
+                                    <p>{hutCount} {hut} x {duration} nights = EGP {hutPrice * duration}</p>
                                 }
                                 {
                                     dinner === "on" &&
-                                    <p>{language === "English" ? "Dinner" : "الغذاء"} = ${adultsCount * dinnerPrice * duration}</p>
+                                    <p>{language === "English" ? "Dinner" : "الغذاء"} = EGP {adultsCount * dinnerPrice * duration}</p>
                                 }
                             </div>
                             <div className="total-cost">
                                 <h2 className="total-price" id='total-price'>
-                                    ${
+                                    EGP {
                                         (roomsCount > 0 && roomPrice * roomsCount * duration)
                                         + (bungalowCount > 0 && bungalowPrice * bungalowCount * duration)
                                         + (hutCount > 0 && hutPrice * hutCount * duration)
@@ -390,7 +392,7 @@ const OrderComplete = ({ language }) => {
                                 }
                             </h2><br />
                             <h3>
-                                - ${
+                                - EGP {
                                     (roomsCount > 0 && roomPrice * roomsCount * duration)
                                     + (bungalowCount > 0 && bungalowPrice * bungalowCount * duration)
                                     + (hutCount > 0 && hutPrice * hutCount * duration)

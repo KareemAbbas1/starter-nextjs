@@ -57,7 +57,7 @@ const Line = styled.div`
 
 
 
-const Trips = ({ language, trips }) => {
+const Trips = ({ language, trips, setLoading }) => {
     return (
         <Container id='trips-section' language={language}>
             {
@@ -67,7 +67,7 @@ const Trips = ({ language, trips }) => {
             }
             <Line />
             
-            <TripsSlider trips={trips} language={language} />
+            <TripsSlider trips={trips} language={language} setLoading={setLoading}/>
         </Container>
     )
 }

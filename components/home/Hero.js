@@ -1,28 +1,27 @@
 import styled from "styled-components";
-// import BackGround from "../../public/video.mp4";
-
+import Image from "next/image";
 
 const Section = styled.section`
     position: relative;
     max-width: 100%;
     min-height: 100vh;
     display: flex;
-    justify-content: ${({ language }) => language === "العربية" ? "right" : "left"};
+    justify-content: center;
+    /* justify-content: ${({ language }) => language === "العربية" ? "right" : "left"}; */
     align-items: center;
     text-align: center;
-    text-align: ${({ language }) => language === "العربية" ? "right" : "left"};
+    /* text-align: ${({ language }) => language === "العربية" ? "right" : "left"}; */
     overflow: hidden;
 
-
     // 10 inch 
-    @media(min-width: 1024px) {
+    /* @media(min-width: 1024px) {
         justify-content: center;
-    }
+    } */
 
 
     @media(max-width: 990px) {
         min-height: 80vh;
-        justify-content: center;
+        /* justify-content: center; */
         text-align: center;
     }
 
@@ -178,10 +177,9 @@ const Container = styled.span`
 
 const Hero = ({ language, onLinkClick }) => {
     return (
-        <Section language={language}>
-            <video autoPlay={true} muted loop src="https://res.cloudinary.com/dqmqc0uaa/video/upload/v1666049102/video_mqp2vl.mp4" />
-                {/* <source src="/video.mp4" type="video/mp4" /> */}
-            {/* </Video> */}
+        <Section language={language} id="hero-section">
+            <Image layout="fill" src="https://res.cloudinary.com/dqmqc0uaa/image/upload/c_scale,h_1057,w_1280/v1672178208/uploads/bg-masthead_1_1_yvvplw.png" alt="Image for mount Sinai" />
+            {/* <video autoPlay={true} muted loop src="https://res.cloudinary.com/dqmqc0uaa/video/upload/v1666049102/video_mqp2vl.mp4" /> */}
             <Container language={language}>
                 <h1> {language === "English" ? "Your Favorite Agency for" : "الاختيار الافضل للسياحة داخل مصر"}
                     <br></br>
@@ -201,7 +199,10 @@ const Hero = ({ language, onLinkClick }) => {
                         : "نهاية الاسبوع ، فانت في المكان الصحيح"}
 
                 </h3>
-                <button goto='trips-section' onClick={(e) => onLinkClick(e)}>
+                {/* <button goto='trips-section' onClick={(e) => onLinkClick(e)}> */}
+                <button onClick={() => {
+                    window.scrollTo({ top: document.getElementById('hero-section').offsetHeight - 10 });
+                }}>
                     {language === "English" ? "Find Out More" : "اعرف اكثر"}
                 </button>
             </Container>

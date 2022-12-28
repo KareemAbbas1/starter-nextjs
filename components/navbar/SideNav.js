@@ -112,7 +112,7 @@ const NavLinks = styled.ul`
     }
 `
 
-const SideNav = ({ open, setOpen, language, onLinkClick }) => {
+const SideNav = ({ open, setOpen, language, onLinkClick, setLoading }) => {
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
     const [width, setWidth] = useState(0);
@@ -138,36 +138,60 @@ const SideNav = ({ open, setOpen, language, onLinkClick }) => {
                 ?
                 <div>
                     <h3>Menu</h3>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#trips-section' : ''}>
-                            <a goto='trips-section' onClick={(e) => onLinkClick(e)}>Trips</a>
+                            <a href="" goto='trips-section' onClick={(e) => onLinkClick(e)}>Trips</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#camps-section' : ''}>
-                            <a goto='camps-section' onClick={(e) => onLinkClick(e)}>Camps</a>
+                            <a href="" goto='camps-section' onClick={(e) => onLinkClick(e)}>Camps</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#services-section' : ''}>
-                            <a goto='services-section' onClick={(e) => onLinkClick(e)}>Services</a>
+                            <a href="" goto='services-section' onClick={(e) => onLinkClick(e)}>Services</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#gallery-section' : ''}>
-                            <a goto='gallery-section' onClick={(e) => onLinkClick(e)}>Gallery</a>
+                            <a href="" goto='gallery-section' onClick={(e) => onLinkClick(e)}>Gallery</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#aboutus-section' : ''}>
-                            <a goto='aboutus-section' onClick={(e) => onLinkClick(e)}>About Us</a>
+                            <a href="" goto='aboutus-section' onClick={(e) => onLinkClick(e)}>About Us</a>
                         </Link>
                     </li>
                     {
                         open &&
-                        <li onClick={() => setOpen(false)}>
+                        <li onClick={() => {
+                            currentRoute !=="/" && setLoading(true);
+                            setOpen(false);
+                            }}
+                            >
                             <Link href={currentRoute !== "/" ? '/#contact-us-section' : ''}>
-                                <a goto='contact-us-section' onClick={(e) => onLinkClick(e)}>Contact Us</a>
+                                <a href="" goto='contact-us-section' onClick={(e) => onLinkClick(e)}>Contact Us</a>
                             </Link>
                         </li>
                     }
@@ -176,35 +200,59 @@ const SideNav = ({ open, setOpen, language, onLinkClick }) => {
                 <div>
                     {
                         open &&
-                        <li onClick={() => setOpen(false)}>
+                        <li onClick={() => {
+                            currentRoute !=="/" && setLoading(true);
+                            setOpen(false);
+                            }}
+                            >
                             <Link href={currentRoute !== "/" ? '/#contact-us-section' : ''}>
-                                <a goto='contact-us-section' onClick={(e) => onLinkClick(e)}>اتصل بنا</a>
+                                <a href="" goto='contact-us-section' onClick={(e) => onLinkClick(e)}>اتصل بنا</a>
                             </Link>
                         </li>
                     }
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#aboutus-section' : ''}>
-                            <a goto='aboutus-section' onClick={(e) => onLinkClick(e)}>عن الشركة</a>
+                            <a href="" goto='aboutus-section' onClick={(e) => onLinkClick(e)}>عن الشركة</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#gallery-section' : ''}>
-                            <a goto='gallery-section' onClick={(e) => onLinkClick(e)}>معرض الصور</a>
+                            <a href="" goto='gallery-section' onClick={(e) => onLinkClick(e)}>معرض الصور</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#services-section' : ''}>
-                            <a goto='services-section' onClick={(e) => onLinkClick(e)}>الخدمات</a>
+                            <a href="" goto='services-section' onClick={(e) => onLinkClick(e)}>الخدمات</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#camps-section' : ''}>
-                            <a goto='camps-section' onClick={(e) => onLinkClick(e)}>حجز مخيم</a>
+                            <a href="" goto='camps-section' onClick={(e) => onLinkClick(e)}>حجز مخيم</a>
                         </Link>
                     </li>
-                    <li onClick={() => setOpen(false)}>
+                    <li onClick={() => {
+                        currentRoute !=="/" && setLoading(true);
+                        setOpen(false);
+                        }}
+                        >
                         <Link href={currentRoute !== "/" ? '/#trips-section' : ''}>
-                            <a goto='trips-section' onClick={(e) => onLinkClick(e)}>الرحلات</a>
+                            <a href="" goto='trips-section' onClick={(e) => onLinkClick(e)}>الرحلات</a>
                         </Link>
                     </li>
                     <h3>القائمة</h3>

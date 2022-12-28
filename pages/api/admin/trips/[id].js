@@ -34,6 +34,7 @@ async function handler(req, res) {
 
         await Trip.findByIdAndDelete(id)
         res.status(200).json("Trip has been deleted")
+        // Delete trip orders upon deleting
     }
 }
 

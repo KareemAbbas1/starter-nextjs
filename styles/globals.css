@@ -18,3 +18,32 @@ body {
 body button {
   border-radius: 3px;
 }
+/* 
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: 100;
+    src: local("Helvetica Neue Thin"),
+    local("HelveticaNeue-Thin");
+}
+
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: 300;
+    src: local("Helvetica Neue Light"),
+    local("HelveticaNeue-Light");
+}
+
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: normal;
+    src: local("Helvetica Neue"),
+    local("HelveticaNeue");
+}
+
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: bold;
+    src: local("Helvetica Neue Bold"),
+    local("HelveticaNeue-Bold");
+}
+*/

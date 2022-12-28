@@ -9,7 +9,7 @@ import Logo from '../../public/logo2.png';
 import Burger from './Burger.js';
 
 
-const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen }) => {
+const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading }) => {
 
     const [reRender, setReRender] = useState(false)
     const [admin, setAdmin] = useState(null);
@@ -61,7 +61,7 @@ const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen }) => {
                 <a><Image src={Logo} alt='logo' width={140} height={50} /></a>
             </Link>
 
-            <Burger open={open} setOpen={setOpen} onLinkClick={onLinkClick} language={language} />
+            <Burger open={open} setOpen={setOpen} onLinkClick={onLinkClick} language={language} setLoading={setLoading} />
 
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <button className="language-icon" onClick={toggleLanguage}>

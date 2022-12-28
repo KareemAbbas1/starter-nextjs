@@ -6,7 +6,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 
-const CampCheckout = ({ language }) => {
+const CampCheckout = ({ language, setLoading }) => {
+
+  // Handle route change loading
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   const router = useRouter();
   const [submitionData, setSubmitionData] = useState();
@@ -288,6 +293,7 @@ const CampCheckout = ({ language }) => {
       document.getElementById("submit-order").disabled = true;
 
       try {
+        setLoading(true);
         const response = await axios.post('/api/submitCampOrder', {
           orderDetails,
           guestInfo: {
@@ -313,6 +319,7 @@ const CampCheckout = ({ language }) => {
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
           setOrderIsSent(true);
+          setLoading(false);
         }
       }
       catch (error) {
@@ -461,15 +468,15 @@ const CampCheckout = ({ language }) => {
                   <ul>
                     {
                       (submitionData && roomTypes.includes(room.split('           ')[1]))
-                      && <li>{room}: ${roomPrice} per night x {doubleRoomCount} {doubleRoomCount > 1 ? "rooms" : "room"} = ${roomPrice * doubleRoomCount}</li>
+                      && <li>{room}: EGP{roomPrice} per night x {doubleRoomCount} {doubleRoomCount > 1 ? "rooms" : "room"} = EGP {roomPrice * doubleRoomCount}</li>
                     }
                     {
                       (submitionData && roomTypes.includes(bungalow.split('           ')[1]))
-                      && <li>{bungalow}: ${bungalowPrice} per night x {bungalowCount} {bungalowCount > 1 ? "bungalows" : "bungalow"} = ${bungalowPrice * bungalowCount}</li>
+                      && <li>{bungalow}: EGP {bungalowPrice} per night x {bungalowCount} {bungalowCount > 1 ? "bungalows" : "bungalow"} = EGP {bungalowPrice * bungalowCount}</li>
                     }
                     {
                       (submitionData && roomTypes.includes(hut.split('           ')[1]))
-                      && <li>{hut}: ${hutPrice} per night x {hutCount} {hutCount > 1 ? "huts" : "hut"} = ${hutPrice * hutCount}</li>
+                      && <li>{hut}: EGP {hutPrice} per night x {hutCount} {hutCount > 1 ? "huts" : "hut"} = EGP {hutPrice * hutCount}</li>
                     }
                   </ul>
 
@@ -479,12 +486,12 @@ const CampCheckout = ({ language }) => {
                     <>
                       <h3>Dinner:</h3>
                       <ul>
-                        <li>Dinner price per person: ${dinnerPrice}</li>
+                        <li>Dinner price per person: EGP {dinnerPrice}</li>
                         <li>
-                          Sub Total: {adultsCount} adults x ${dinnerPrice} = ${adultsCount * dinnerPrice} per night
+                          Sub Total: {adultsCount} adults x EGP {dinnerPrice} = EGP {adultsCount * dinnerPrice} per night
                         </li>
                         <li>
-                          Total: ${adultsCount * dinnerPrice} x {duration} night{duration > 1 ? "s" : ''} = ${adultsCount * dinnerPrice * duration}
+                          Total: EGP {adultsCount * dinnerPrice} x {duration} night{duration > 1 ? "s" : ''} = EGP {adultsCount * dinnerPrice * duration}
                         </li>
                       </ul>
                     </>
@@ -515,7 +522,7 @@ const CampCheckout = ({ language }) => {
                     <p dir={language === "العربية" ? "rtl" : "ltr"}>
                       {doubleRoomCount}
                       {language === "English" ? `${room}${doubleRoomCount > 1 ? "s" : ''} x ${duration} night${duration > 1 && 's'} :` : ` غرفة مزدوجة`}
-                      {language === "English" && `$${roomPrice * doubleRoomCount * duration}`}
+                      {language === "English" && ` EGP ${roomPrice * doubleRoomCount * duration}`}
                     </p>
                   }
                   {
@@ -524,7 +531,7 @@ const CampCheckout = ({ language }) => {
                     <p dir={language === "العربية" ? "rtl" : "ltr"}>
                       {bungalowCount}
                       {language === "English" ? `${bungalow}${bungalowCount > 1 ? "s" : ''} x ${duration} night${duration > 1 && 's'} :` : " كوخ مزدوج"}
-                      {language === "English" && `$${bungalowPrice * bungalowCount * duration}`}
+                      {language === "English" && ` EGP ${bungalowPrice * bungalowCount * duration}`}
                     </p>
                   }
                   {
@@ -533,17 +540,17 @@ const CampCheckout = ({ language }) => {
                     <p dir={language === "العربية" ? "rtl" : "ltr"}>
                       {hutCount}
                       {language === "English" ? `${hut}${hutCount > 1 ? "s" : ''} x ${duration} night${duration > 1 && 's'} :` : " خوشة"}
-                      {language === "English" && `$${hutPrice * hutCount * duration}`}
+                      {language === "English" && ` EGP ${hutPrice * hutCount * duration}`}
                     </p>
                   }
                   {
                     (language === "English" && dinner === "on") &&
-                    <p>Dinner: ${adultsCount * dinnerPrice * duration}</p>
+                    <p>Dinner: EGP {adultsCount * dinnerPrice * duration}</p>
                   }
                 </div>
                 <div id="total-cost">
                   <h2 className="total-price" id='total-price'>
-                    ${
+                    EGP {
                       (doubleRoomCount > 0 && roomPrice * doubleRoomCount * duration)
                       + (bungalowCount > 0 && bungalowPrice * bungalowCount * duration)
                       + (hutCount > 0 && hutPrice * hutCount * duration)
@@ -567,7 +574,7 @@ const CampCheckout = ({ language }) => {
                   type='text'
                   id="full-name"
                   name="full-name"
-                  placeholder={language === "English" ? "Full Name *" : "الاسم الكامل*"}
+                  placeholder={language === "English" ? "Full Name (as in Passport/National ID) *" : "الاسم الكامل(الموجود في جواز السفر او بطاقة الهوية)*"}
                   {...register("fullName", {
                     required: {
                       value: true,
@@ -718,7 +725,7 @@ const CampCheckout = ({ language }) => {
 
                 <h4>
                   {language === "English" ? "Amount to pay " : "الإجمالي "}
-                  ${
+                  EGP {
                     (doubleRoomCount > 0 && roomPrice * doubleRoomCount * duration)
                     + (bungalowCount > 0 && bungalowPrice * bungalowCount * duration)
                     + (hutCount > 0 && hutPrice * hutCount * duration)
@@ -775,7 +782,7 @@ const CampCheckout = ({ language }) => {
                 </button>
 
 
-                <button id="cancel-order"
+                <button id="cancel-order" className="cancel-order"
                   onClick={(e) => openModal(e)}>
                   {
                     language === "English"

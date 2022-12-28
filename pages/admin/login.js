@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-const Login = () => {
+const Login = ({ setLoading }) => {
     const router = useRouter();
 
 
@@ -29,6 +29,7 @@ const Login = () => {
 
     const handleLogin = async (req) => {
         try {
+            setLoading(true);
             const res = await axios.post(`/api/auth/login`, {
                 email,
                 password

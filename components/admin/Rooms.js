@@ -765,7 +765,7 @@ const Rooms = ({ camps }) => {
                 <td>{room.campName[1]}</td>
                 <td>{room.description[1]}</td>
                 <td>{room.maxPeople}</td>
-                <td>${room.price}</td>
+                <td>EGP {room.price}</td>
                 <td>
                   <button
                     id={`${room._id}btn`}

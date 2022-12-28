@@ -76,7 +76,7 @@ const Slide = styled.div`
     gap: 1rem;
 `
 
-const Slider = ({ camps, language }) => {
+const Slider = ({ camps, language, setLoading }) => {
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
     const [width, setWidth] = useState(0);
@@ -135,12 +135,12 @@ const Slider = ({ camps, language }) => {
                         {
                             width > 600 
                             ? camps.map(camp => (
-                                <CampCard key={camp._id} camp={camp} language={language} />
+                                <CampCard key={camp._id} camp={camp} language={language} setLoading={setLoading}/>
                             ))
 
                                 : width <= 600 
                                 ? camps.map(camp => (
-                                    <Card key={camp._id} camp={camp} language={language} />
+                                    <Card key={camp._id} camp={camp} language={language} setLoading={setLoading}/>
                                 ))
 
                                     : null

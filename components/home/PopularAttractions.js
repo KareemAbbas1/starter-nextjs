@@ -107,9 +107,13 @@ const Container = styled.div`
         background-color: rgba(255, 255, 255, 0.6);
         z-index: 1000;
 
+        @media(max-width: 1680px) {
+            /* width: 100vw; */
+        }
+
 
         div.modal-body {
-            width: 100%;
+            width: 93%;
             height: 100%;
             background-color: #fff;
             display: flex;
@@ -121,6 +125,10 @@ const Container = styled.div`
 
             @media(min-width: 1400px) {
                 overflow-y: scroll;
+            }
+
+            @media(max-width: 1680px) {
+                width: 98%;
             }
 
             h2.title {
@@ -144,6 +152,7 @@ const Container = styled.div`
                 justify-content: center;
                 transition: all 300ms ease-in-out;
                 cursor: pointer;
+                z-index: 10;
 
                 &:hover {
                     background-color: transparent;
@@ -163,7 +172,7 @@ const Container = styled.div`
             }
 
             form.modal-content {
-                width: 90%;
+                max-width: 100%;
                 height: 80%;
                 padding-inline-start: 1rem;
                 direction: rtl;
@@ -171,8 +180,8 @@ const Container = styled.div`
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 @media(min-width: 1400px) {
-                    height: 120%;
-                    padding-top: 10rem;
+                    height: 130%;
+                    padding-top: 13rem;
                 }
 
                 div {
@@ -181,13 +190,15 @@ const Container = styled.div`
                         width: 15rem;
                         margin-left: 1rem;
                         padding-inline: 0.5rem;
+                        margin-block: 2rem;
                     }
-
+                    
                     textarea {
                         margin-left: 1rem;
                         resize: none;
                         font-family: inherit;
                         padding: 0.3rem;
+                        margin-block: 2rem;
                     }
                 }
 
@@ -287,8 +298,8 @@ const Container = styled.div`
     }
 
     div#hide-top {
-        width: 300vw;
-        height: 17vh;
+        width: 100vw;
+        height: 9vh;
         position: absolute;
         background-color: #fff;
         display: none;

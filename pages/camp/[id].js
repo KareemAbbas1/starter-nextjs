@@ -1,7 +1,7 @@
 import ImagesSlider from "../../components/sliders/images slider/ImagesSlider";
 import { Container } from "../../components/camp";
 import { GeoAltFill } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BreakfastIcon from "../../public/breakfast.png";
 import ParkingIcon from "../../public/parking-sign.png";
 import Image from 'next/image';
@@ -9,6 +9,7 @@ import axios from "axios";
 import moment from "moment";
 import twix from "twix";
 import { useRouter } from 'next/router';
+import LoadingBar from "../../components/LoadingBar";
 
 
 
@@ -29,12 +30,17 @@ export const getServerSideProps = async ({ params }) => {
     }
 };
 
-const Camp = ({ language, camp }) => {
+const Camp = ({ language, camp, loading, setLoading }) => {
+
+    // Handel change route loading
+    useEffect(() => {
+        setLoading(false);
+    }, []);
 
     const router = useRouter()
 
     // Handle Errors & loading
-    const [loading, setLoading] = useState(false);
+    const [searchLoading, setSearchLoading] = useState(false);
     const [error, setError] = useState(null);
 
     // Handle toggle tabs
@@ -108,7 +114,7 @@ const Camp = ({ language, camp }) => {
 
     const checkOutDateHnadler = async () => {
         // Set loadign
-        setLoading(true);
+        setSearchLoading(true);
 
         if (typeof window !== "undefined") {
             const checkInDate = document.getElementById("check-in").value;
@@ -137,7 +143,7 @@ const Camp = ({ language, camp }) => {
                     try {
                         const campRooms = await axios.get(`/api/rooms?campId=${camp._id}`);
                         setCampRooms(campRooms.data);
-                        setLoading(false)
+                        setSearchLoading(false)
                         rooms.style.display = "block"
                     }
                     catch (err) {
@@ -205,7 +211,8 @@ const Camp = ({ language, camp }) => {
                 setChooseRoom(true)
             } else {
                 try {
-                    setChooseRoom(false)
+                    setLoading(true);
+                    setChooseRoom(false);
                     const roomsIds = selectedRooms.map(room => (room.split(',')[0]));
 
                     // Update the DB with the new booked dates
@@ -482,7 +489,12 @@ const Camp = ({ language, camp }) => {
                     </div>
 
                     <div className="rooms">
+                        {
+                            searchLoading === true &&
+                            <LoadingBar position="relative" align="top" />
+                        }
                         <div>
+
                             {
                                 language === "English"
                                     ?
@@ -517,17 +529,7 @@ const Camp = ({ language, camp }) => {
                                         : "ادخل تاريخ وصول وتاريخ مغادرة للبحث عن الغرف المتاحة"
                                 }
                             </p>
-                            {
-                                loading === true ?
-                                    <p>
-                                        {
-                                            language === "English"
-                                                ? "Checking for available room..."
-                                                : "...جاري البحث"
-                                        }
-                                    </p>
-                                    : ""
-                            }
+
                         </div>
                         <div id="available-rooms">
                             {chooseRoom === true ?
@@ -547,7 +549,7 @@ const Camp = ({ language, camp }) => {
                                             <p><strong>{language === "English" ? room.roomType[0] : room.roomType[1]}</strong></p>
                                             <p>{language === "English" ? room.description[0] : room.description[1]}</p>
                                             <p>{language === "English" && "Max people:"} {room.maxPeople} {language === "العربية" && ":عدد الاشخاص"}</p>
-                                            <p>${room.price} {language === "English" ? "per night" : "في الليلة"}</p>
+                                            <p>EGP{room.price} {language === "English" ? "per night" : "في الليلة"}</p>
                                         </div>
                                         <div className="currently-available">
                                             {
@@ -653,7 +655,7 @@ const Camp = ({ language, camp }) => {
                         <input type='checkbox' name='dinner' id='dinner' disabled />
                         {
                             language === "English" && <label htmlFor='dinner'>
-                                {camp && camp.extraFacilities[0].description} ${camp && camp.extraFacilities[0].price} / Person
+                                {camp && camp.extraFacilities[0].description} EGP{camp && camp.extraFacilities[0].price} / Person
                             </label>
                         }
                     </div>

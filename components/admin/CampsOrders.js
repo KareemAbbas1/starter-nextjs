@@ -301,9 +301,6 @@ const Orders = ({ campOrders, currentCampId, language }) => {
     Array.from(document.getElementsByClassName("order-modal")).map(el => {
       el.style.display = "none"
     })
-    Array.from(document.getElementsByClassName("order-modal")).map(el => {
-      console.log(el.style.display)
-    })
     document.querySelector("body").style.overflowY = "auto";
   };
 
@@ -604,9 +601,9 @@ const Orders = ({ campOrders, currentCampId, language }) => {
                                 )
 
                                 && `${singleCampOrder.orderDetails.rooms.doubleRooms}
-                                    x $${singleCampOrder.orderDetails.roomsPrices.roomPrice} per night 
+                                    x EGP ${singleCampOrder.orderDetails.roomsPrices.roomPrice} per night 
                                     x ${singleCampOrder.orderDetails.dates.length} nights
-                                    = $${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.doubleRooms.split(" ")[0])
+                                    = EGP ${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.doubleRooms.split(" ")[0])
                                 * singleCampOrder.orderDetails.roomsPrices.roomPrice
                                 * singleCampOrder.orderDetails.dates.length
                                 }
@@ -622,9 +619,9 @@ const Orders = ({ campOrders, currentCampId, language }) => {
                                 )
 
                                 && `${singleCampOrder.orderDetails.rooms.bungalows}
-                                    x $${singleCampOrder.orderDetails.roomsPrices.bungalowPrice} per night 
+                                    x EGP ${singleCampOrder.orderDetails.roomsPrices.bungalowPrice} per night 
                                     x ${singleCampOrder.orderDetails.dates.length} nights
-                                    = $${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.bungalows.split(" ")[0])
+                                    = EGP ${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.bungalows.split(" ")[0])
                                 * singleCampOrder.orderDetails.roomsPrices.bungalowPrice
                                 * singleCampOrder.orderDetails.dates.length
                                 }
@@ -640,9 +637,9 @@ const Orders = ({ campOrders, currentCampId, language }) => {
                                 )
 
                                 && `${singleCampOrder.orderDetails.rooms.huts}
-                                    x $${singleCampOrder.orderDetails.roomsPrices.hutPrice} per night 
+                                    x EGP ${singleCampOrder.orderDetails.roomsPrices.hutPrice} per night 
                                     x ${singleCampOrder.orderDetails.dates.length} nights
-                                    = $${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.huts.split(" ")[0])
+                                    = EGP ${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.huts.split(" ")[0])
                                 * singleCampOrder.orderDetails.roomsPrices.hutPrice
                                 * singleCampOrder.orderDetails.dates.length
                                 }
@@ -676,12 +673,12 @@ const Orders = ({ campOrders, currentCampId, language }) => {
                               <h4>
                                 {
                                   singleCampOrder && singleCampOrder.orderDetails.guestsCount.adults
-                                } people x ${singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinnerPrice} per person = ${
+                                } people x EGP {singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinnerPrice} per person = EGP {
                                   singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinnerPrice * singleCampOrder.orderDetails.guestsCount.adults
                                 } per night<br /><br />
-                                ${
+                                EGP {
                                   singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinnerPrice * singleCampOrder.orderDetails.guestsCount.adults
-                                } x {singleCampOrder && singleCampOrder.orderDetails.dates.length} nights = ${
+                                } x {singleCampOrder && singleCampOrder.orderDetails.dates.length} nights = EGP {
                                   singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinnerPrice * singleCampOrder.orderDetails.guestsCount.adults * singleCampOrder.orderDetails.dates.length
                                 }
                               </h4>
@@ -705,7 +702,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
 
                               &&
                               <h4>
-                                {singleCampOrder && singleCampOrder.orderDetails.rooms.doubleRooms.split(" ")[0]} Double Room = ${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.doubleRooms.split(" ")[0])
+                                {singleCampOrder && singleCampOrder.orderDetails.rooms.doubleRooms.split(" ")[0]} Double Room = EGP {singleCampOrder && Number(singleCampOrder.orderDetails.rooms.doubleRooms.split(" ")[0])
                                   * singleCampOrder.orderDetails.roomsPrices.roomPrice
                                   * singleCampOrder.orderDetails.dates.length
                                 }
@@ -720,7 +717,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
 
                               &&
                               <h4>
-                                {singleCampOrder && singleCampOrder.orderDetails.rooms.bungalows.split(" ")[0]} Bungalows = ${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.bungalows.split(" ")[0])
+                                {singleCampOrder && singleCampOrder.orderDetails.rooms.bungalows.split(" ")[0]} Bungalows = EGP {singleCampOrder && Number(singleCampOrder.orderDetails.rooms.bungalows.split(" ")[0])
                                   * singleCampOrder.orderDetails.roomsPrices.bungalowPrice
                                   * singleCampOrder.orderDetails.dates.length
                                 }
@@ -735,7 +732,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
 
                               &&
                               <h4>
-                                {singleCampOrder && singleCampOrder.orderDetails.rooms.huts.split(" ")[0]} Hut = ${singleCampOrder && Number(singleCampOrder.orderDetails.rooms.huts.split(" ")[0])
+                                {singleCampOrder && singleCampOrder.orderDetails.rooms.huts.split(" ")[0]} Hut = EGP {singleCampOrder && Number(singleCampOrder.orderDetails.rooms.huts.split(" ")[0])
                                   * singleCampOrder.orderDetails.roomsPrices.hutPrice
                                   * singleCampOrder.orderDetails.dates.length
                                 }
@@ -745,7 +742,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
                             {
                               singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinner === "on" &&
                               <h4>
-                                Dinner = ${
+                                Dinner = EGP {
                                   singleCampOrder && singleCampOrder.orderDetails.dinnerData.dinnerPrice * singleCampOrder.orderDetails.guestsCount.adults * singleCampOrder.orderDetails.dates.length
                                 }
                               </h4>

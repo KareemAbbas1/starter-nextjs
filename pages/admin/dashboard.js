@@ -1,14 +1,25 @@
 import axios from "axios";
 import { Container } from "../../components/admin/Dashboard";
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Main from "../../components/admin/Main";
-import Trips from "../../components/admin/Trips";
-import Camps from "../../components/admin/Camps";
-import Rooms from "../../components/admin/Rooms";
-import Users from "../../components/admin/Users";
-import Profile from "../../components/admin/Profile";
+const Trips = dynamic(() => import('../../components/admin/Trips'), {
+    loading: () => 'Loading...'
+});
+const Camps = dynamic(() => import('../../components/admin/Camps'), {
+    loading: () => 'Loading...'
+});
+const Rooms = dynamic(() => import('../../components/admin/Rooms'), {
+    loading: () => 'Loading...'
+});
+const Users = dynamic(() => import('../../components/admin/Users'), {
+    loading: () => 'Loading...'
+});
+const Profile = dynamic(() => import('../../components/admin/Profile'), {
+    loading: () => 'Loading...'
+});
 import { useRouter } from "next/router";
-import verify from "jsonwebtoken/verify";
+import { verify } from "jsonwebtoken";
 
 
 
@@ -102,8 +113,8 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                 campsOrders.length > 0 &&
                 (
                     campsOrders[0].new === true
-                    || campsOrders[1].new === true
-                    || campsOrders[2].new === true
+                    || campsOrders[1] && campsOrders[1].new === true
+                    || campsOrders[2] && campsOrders[2].new === true
                 )
             ) {
                 setNewCampsOrders(true);
@@ -121,8 +132,8 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                 tripsOrders.length > 0 &&
                 (
                     tripsOrders[0].new === true
-                    || tripsOrders[1].new === true
-                    || tripsOrders[2].new === true
+                    || tripsOrders[1] && tripsOrders[1].new === true
+                    || tripsOrders[2] && tripsOrders[2].new === true
                 )
             ) {
                 setNewTripsOrders(true)
@@ -154,6 +165,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             localStorage.removeItem("user");
             setUser(null);
             router.push("/admin/login");
+            location.reload();
         }
         catch (error) {
             console.error("Error", error && error.response.data.message)

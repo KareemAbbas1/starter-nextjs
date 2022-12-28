@@ -4,6 +4,7 @@ import { WhatsApp, ScrollToTop } from '../components/navbar/styles';
 import { CaretUp, Whatsapp } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import LoadingBar from '../components/LoadingBar';
 
 
 
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
 
   const [language, setLanguage] = useState("English");
   const [notifications, setNotifications] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   // Handle Show Side Buttons
@@ -44,7 +46,8 @@ function MyApp({ Component, pageProps }) {
   /* Hnadle Scroll To section */
   const [open, setOpen] = useState(false)
   const scrollTo = (id) => {
-    window.scrollTo({ top: document.getElementById(id).offsetTop });
+    if (document.getElementById(id))
+      window.scrollTo({ top: document.getElementById(id).offsetTop });
   };
 
   // Handle path name
@@ -71,14 +74,23 @@ function MyApp({ Component, pageProps }) {
       open={open}
       setOpen={setOpen}
       onLinkClick={onLinkClick}
+      loadign={loading}
+      setLoading={setLoading}
     >
-      <Component 
-      {...pageProps} 
-      language={language} 
-      onLinkClick={onLinkClick} 
-      notifications={notifications}
-      setNotifications={setNotifications} 
+      <Component
+        {...pageProps}
+        language={language}
+        onLinkClick={onLinkClick}
+        notifications={notifications}
+        setNotifications={setNotifications}
+        showSideButtons={showSideButtons}
+        setLoading={setLoading}
+        loading={loading}
       />
+      {
+        loading &&
+        <LoadingBar position="fixed" align="top" />
+      }
       {
         showSideButtons &&
         <>

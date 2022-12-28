@@ -463,7 +463,6 @@ const Gallery = ({ language }) => {
         }
     };
 
-    console.log(files)
 
     // Change exsiting image
     const [newImgLoading, setNewImgLoading] = useState(false);
@@ -525,9 +524,10 @@ const Gallery = ({ language }) => {
             if (slides) { slides[slideIndex - 1].style.display = "block" };
         }
     }
+
     useEffect(() => {
         showSlides(slideIndex);
-    })
+    }, [])
 
 
     const plusSlides = (n) => {

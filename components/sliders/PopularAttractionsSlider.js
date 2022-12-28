@@ -269,9 +269,13 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                     onClick={() => {
                         handleClick("left");
                         setEditModalMarginLeft(
-                            width >= 1400
-                                ? editModalMarginLeft - 17
-                                : editModalMarginLeft - 23
+                            width > 1680
+                                ? editModalMarginLeft - 18
+                                : width === 1440
+                                    ? editModalMarginLeft - 20.4
+                                    : width <= 1366
+                                        ? editModalMarginLeft - 23.4
+                                        : editModalMarginLeft - 19.4 // for 1680 device width
                         )
                     }}
                 >
@@ -289,56 +293,58 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                     <Slide id='slide'>
                         {
                             activities && activities.map(activity => (
-                                <>
-                                    <ActivityCard key={activity._id} activity={activity} language={language}>
-                                        <div className="activity-image">
-                                            <Image
-                                                width={320}
-                                                height={255}
-                                                src={activity.image} alt=''
-                                            />
-                                        </div>
-                                        <div className="info">
-                                            <p>
-                                                {
-                                                    language === "English"
-                                                        ? activity.description[0]
-                                                        : activity.description[1]
-                                                }
-                                            </p>
-                                            <div className="contact-data">
-                                                <div className="phone-number">
-                                                    <TelephoneFill />
-                                                    <p>+20-100-009-0335</p>
-                                                </div>
-                                                <button>or <Whatsapp color="#fff" size={25} /></button>
-                                            </div>
-                                            <div></div>
-                                        </div>
-                                        <h3>
+                                // <>
+                                <ActivityCard key={activity._id} activity={activity} language={language}>
+                                    <div className="activity-image">
+                                        <Image
+                                            width={320}
+                                            height={255}
+                                            src={activity.image} alt=''
+                                        />
+                                    </div>
+                                    <div className="info">
+                                        <p>
                                             {
                                                 language === "English"
-                                                    ? activity.name[0]
-                                                    : activity.name[1]
+                                                    ? activity.description[0]
+                                                    : activity.description[1]
                                             }
-                                        </h3>
-                                        <p>
-                                            {language === "العربية" && "$"}
-                                            {language === "English" ? "Starts from " : "يبدأ من "}
-                                            {language === "English" && "$"}{activity.price}
-
                                         </p>
-
+                                        <div className="contact-data">
+                                            <div className="phone-number">
+                                                <TelephoneFill />
+                                                <p>+20-100-009-0335</p>
+                                            </div>
+                                            <button>or <Whatsapp color="#fff" size={25} /></button>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <h3>
                                         {
-                                            user &&
-                                            <>
-                                                <button
-                                                    onClick={() => fetchActivity(activity._id, `${activity._id}edit-modal`)}
-                                                    className="edit">تعديل</button>
-
-                                            </>
+                                            language === "English"
+                                                ? activity.name[0]
+                                                : activity.name[1]
                                         }
-                                    </ActivityCard>
+                                    </h3>
+                                    <p>
+                                        {language === "العربية" && "EGP"}
+                                        {language === "English" ? "Starts from, " : "يبدأ من "}
+                                        {language === "English" && "EGP"}{activity.price}
+
+                                    </p>
+
+                                    {
+                                        user &&
+                                        <>
+                                            <button
+                                                onClick={() => fetchActivity(activity._id, `${activity._id}edit-modal`)}
+                                                className="edit">تعديل</button>
+
+                                        </>
+                                    }
+
+
+                                    {/* Edit activity Modal */}
                                     <div
                                         id={`${activity._id}edit-modal`}
                                         className='add-activity-modal edit-activity-modal'
@@ -398,7 +404,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
 
                                                     <textarea
                                                         rows="3"
-                                                        cols="75"
+                                                        cols="73"
                                                         dir='ltr'
                                                         defaultValue={singleActivity && singleActivity.description[0]}
                                                         onChange={(e) => setDescription(e.target.value)}
@@ -446,8 +452,8 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
 
                                                         <div>
                                                             <button
-                                                            onClick={(e) => removeActivity(e, singleActivity && singleActivity._id)} 
-                                                            className="delete"
+                                                                onClick={(e) => removeActivity(e, singleActivity && singleActivity._id)}
+                                                                className="delete"
                                                             >
                                                                 نعم
                                                             </button>
@@ -475,7 +481,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                                             </form>
                                         </div>
                                     </div>
-                                </>
+                                </ActivityCard>
                             ))
                         }
                     </Slide>
@@ -498,9 +504,13 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                     onClick={() => {
                         handleClick("right");
                         setEditModalMarginLeft(
-                            width >= 1400
-                                ? editModalMarginLeft + 17
-                                : editModalMarginLeft + 23
+                            width > 1680
+                                ? editModalMarginLeft + 18
+                                : width === 1440
+                                    ? editModalMarginLeft + 20.4
+                                    : width <= 1366
+                                        ? editModalMarginLeft + 23.4
+                                        : editModalMarginLeft + 19.4 // for 1680 device width
                         )
                     }}
                 >

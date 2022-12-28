@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
-const Index = ({ language }) => {
+const Index = ({ language, setLoading }) => {
 
     const [submitionData, setSubmitionData] = useState();
     const [orderIsSent, setOrderIsSent] = useState(false);
@@ -68,6 +68,7 @@ const Index = ({ language }) => {
     /* Submit order */
     const submitOrder = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const total = submitionData && childrenTicketsCount > 0 && extraOptions.length > 0
                 ?
@@ -125,6 +126,7 @@ const Index = ({ language }) => {
             setOrderIsSent(true);
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
+            setLoading(false);
         }
         catch (error) {
             console.error(error);
