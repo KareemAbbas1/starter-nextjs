@@ -1,7 +1,7 @@
 import Footer from "./Footer"
 import NavBar from "./navbar/NavBar"
 
-const Layout = ({ children, language, setLanguage, onLinkClick, open, setOpen, setLoading }) => {
+const Layout = ({ children, language, setLanguage, onLinkClick, open, setOpen, setLoading, showSideButtons }) => {
     return (
         <>
             <NavBar
@@ -11,6 +11,7 @@ const Layout = ({ children, language, setLanguage, onLinkClick, open, setOpen, s
                 setOpen={setOpen}
                 onLinkClick={onLinkClick}
                 setLoading={setLoading}
+                showSideButtons={showSideButtons}
             />
             {children}
             <Footer />

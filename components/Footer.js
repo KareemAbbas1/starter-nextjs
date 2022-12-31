@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Logo2 from '../public/largeLogo2.png';
@@ -16,7 +16,14 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fxied;
+  bottom: 0;
+  left: 0;
 
+  // 15 inch 
+  @media(max-width: 1366px) {
+    height: 50vh;
+  }
   // 19 inch
   @media(min-width: 1440px) {
       padding-inline: 5rem;
@@ -29,14 +36,17 @@ const Container = styled.div`
   
   @media(max-width: 990px) {
       height: 30vh;
-  }
+      padding-inline: 2rem;
+    }
+
   @media(max-width: 600px) {
-      flex-direction: column;
-      padding-inline: 1rem;
-      padding-bottom: 1rem;
-      position: relative;
-      bottom: 0;
-      left: 0;
+    height: 42vh;
+    flex-direction: column;
+    padding-inline: 1rem;
+    padding-bottom: 1rem;
+      /* position: relative; */
+      /* bottom: 0; */
+      /* left: 0; */
   }
 
 
@@ -47,17 +57,22 @@ const Container = styled.div`
         color: #fff;
         display: flex;
         flex-direction: column;
+
+        @media(min-width: 601px) and (max-width: 992px) {
+          font-size: 0.8rem;
+        }
         @media(max-width: 600px) {
             width: 100%;
             margin-top: 0;
             font-size: 0.8rem;
+            text-align: center;
             h4 {
                 margin-bottom: 0.5rem;
             }
         }
         
 
-        div.newsletter {
+        form.newsletter {
             width: 100%;
             display: flex;
             align-items: center;
@@ -119,21 +134,45 @@ const Container = styled.div`
         height: 9rem;
         width: 9rem;
         display: block;
-        /* box-sizing: border-box; */
         object-fit: contain;
+
+        div.links-container {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          gap: 1vh;
+          padding-top: 2rem;
+
+          a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 300ms ease-in-out;
+
+            :hover {
+              transform: scale(1.05)
+            }
+          }
+
+          @media(min-width: 992px) and (max-width: 1366px) {
+            left: 2rem;
+          } 
+        }
+
         @media(max-width: 990px) {
             width: 5rem;
             margin-top: 4rem;
         }
+
         @media(max-width: 600px) {
-            width: 3rem;
-            display: inline;
-            margin: 0;
-            position: absolute;
-            /* float: bottom; */
-            /* margin-top: 8.3rem; */
-            right: 1rem;
-            bottom: -4.5rem;
+            width: 4rem;
+            height: auto;
+            margin-bottom: 0;
+            margin-top: 1rem;
         }
     }
 
@@ -143,20 +182,27 @@ const Container = styled.div`
       margin-top: -3.5rem;
       @media(max-width: 990px) {
         margin-top: -2.7rem;
+        font-size: 0.8rem;
       }
       @media(max-width: 600px) {
-          width: 100%;
-          margin-top: 0rem;
+        width: 100%;
+        margin-top: 0rem;
+        text-align: center;
           h4 {
             font-size: 0.8rem;
             margin-bottom: 0.5rem;
           }
-      }
+        }
+        
+        div.icons {
+          width: 100%;
+          display: flex;
+          height: auto;
 
-      div.icons {
-        width: 100%;
-        display: flex;
-        height: auto;
+          @media(max-width: 600px) {
+            align-items: center;
+            justify-content: center;
+          }
       }
 
       div.icon {
@@ -216,35 +262,57 @@ const Container = styled.div`
 `
 
 const Footer = () => {
+
+  // Handle news letter
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const submit = (e) => {
+    e.preventDefault();
+    e.target.reset();
+    setIsSubscribed(true);
+    setTimeout(() => {
+      setIsSubscribed(false);
+    }, 1500)
+  };
+
+
   return (
     <Container>
       <div className='newsletter-container'>
         <h4>Subscribe to get our latest Offers</h4>
-        <div className='newsletter'>
-          <input type='email' />
-          <button><h4>Subscribe</h4></button>
-        </div>
+        <form onSubmit={(e) => submit(e)} className='newsletter'>
+          <input type='email' required />
+          <button type='submit'><h4>Subscribe</h4></button>
+        </form>
+        {
+          isSubscribed &&
+          <span style={{ paddingTop: "1rem" }}>Thank you for subscribing</span>
+        }
       </div>
 
       <div className='image-container'>
         <Image src={Logo2} alt='logo' layout='responsive' />
+
+        <div className='links-container'>
+          <Link href="/terms-and-conditions">Terms & Conditions</Link>
+          <Link href="/refund-policy">Refund Policy</Link>
+        </div>
       </div>
 
       <div className='icons-container'>
         <h4>Follow Us</h4>
         <div className='icons'>
           <div className='icon'>
-            <Link href='https://facebook.com'>
+            <Link href='https://www.facebook.com/BreakTribs?mibextid=LQQJ4d'>
               <a target="_blank"><Facebook size={25} color='#ffff' /></a>
             </Link>
           </div>
           <div className='icon'>
-            <Link href='https://instagram.com'>
+            <Link href='https://www.instagram.com/break.trips/'>
               <a target="_blank"><Instagram size={25} color='#ffff' /></a>
             </Link>
           </div>
           <div className='icon'>
-            <Link href="https://youtube.com">
+            <Link href="https://www.youtube.com/@breaktripscompany1967">
               <a target="_blank"><Youtube size={25} color='#ffff' /></a>
             </Link>
           </div>

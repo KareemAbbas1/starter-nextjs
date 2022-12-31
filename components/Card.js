@@ -37,7 +37,7 @@ const Container = styled.div`
     }
 
     @media(max-width: 600px) {
-        min-width: 100%;
+        min-width: calc(100vw - 3rem);
         height: 395px;
     }
 `

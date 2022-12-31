@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce';
 
 
 const Container = styled.div`
-    min-width: 100%;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@ const Container = styled.div`
         overflow-x: scroll;
     }
     @media(max-width: 600px) {
-        width: 100%;
+        /* width: 100%; */
     }
 `
 

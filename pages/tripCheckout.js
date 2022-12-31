@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Paypal from '../public/paypal.jpg';
+import vodaLogoEng from '../public/vodaLogoEng.jpg';
+import vodaLogoAra from '../public/vodaLogoAra.jpg';
+import Image from 'next/image';
 
 
 const TripCheckout = ({ language, setLoading }) => {
@@ -669,20 +673,22 @@ const TripCheckout = ({ language, setLoading }) => {
                                 <h3>
                                     {
                                         language === "English"
-                                            ? "Payment Method"
+                                            ? "Payment Methods"
                                             : "طريقة الدفع"
                                     }
                                 </h3>
 
-                                <p style={{
-                                    marginLeft: `${language === "العربية" ? "87%" : "0%"}`
-                                }}>
+                                <span className='payment-logos'>
+
+                                    <Image src={Paypal} alt="PayPal Logo" />
                                     {
                                         language === "English"
-                                            ? "Pay later"
-                                            : "الدفع لاحقا"
+                                            ?
+                                            <Image src={vodaLogoEng} alt="vodafon cash logo" />
+                                            :
+                                            <Image src={vodaLogoAra} alt="vodafon cash logo" />
                                     }
-                                </p>
+                                </span>
 
                                 <div>
                                     <input type="checkbox" id="trip-terms"

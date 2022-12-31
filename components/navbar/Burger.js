@@ -11,8 +11,10 @@ const BurgerMenu = styled.div`
     margin-top: ${({ open }) => !open ? "2%" : "0px"};
     right: ${({ language, open }) => language === "العربية" && open ? "21.5%" : "0%"};
     z-index: 10;
-    display: none;
+    display: ${({ showSideButtons, width }) => width > 992 && showSideButtons ? "flex" : "none"};
+    flex-flow: column;
     align-items: center;
+    justify-content: space-around;
     background-color: ${({ open }) => !open && "#000"};
     border-radius: 3px;
     padding: 5px 8px;
@@ -96,7 +98,7 @@ const BurgerMenu = styled.div`
     }
 `
 
-const Burger = ({ language, onLinkClick, open, setOpen, setLoading }) => {
+const Burger = ({ language, onLinkClick, open, setOpen, setLoading, showSideButtons }) => {
 
     const router = useRouter();
 
@@ -121,33 +123,33 @@ const Burger = ({ language, onLinkClick, open, setOpen, setLoading }) => {
 
 
     // Handle navbar background visibility onScroll and route change
-    useEffect(() => {
-        window.addEventListener("scroll", navbarVisibility);
-        const navbarVisibility = () => {
-            if (scroll > 70 && width > 990 && router.pathname !== "/admin/dashboard") {
-                document.getElementById("menu").style.display = "flex";
-                document.getElementById("menu").style.justifyContent = "space-around";
-                document.getElementById("menu").style.flexFlow = "column";
-            }
-            else if (width <= 990) {
-                document.getElementById("menu").style.display = "flex";
-            }
-            else {
-                document.getElementById("menu").style.display = "none";
-            }
-        }
+    // useEffect(() => {
+    //     window.addEventListener("scroll", navbarVisibility);
+    //     const navbarVisibility = () => {
+    //         if (scroll > 70 && width > 990 && router.pathname !== "/admin/dashboard") {
+    //             document.getElementById("menu").style.display = "flex";
+    //             document.getElementById("menu").style.justifyContent = "space-around";
+    //             document.getElementById("menu").style.flexFlow = "column";
+    //         }
+    //         else if (width <= 990) {
+    //             document.getElementById("menu").style.display = "flex";
+    //         }
+    //         else {
+    //             document.getElementById("menu").style.display = "none";
+    //         }
+    //     }
 
-        window.addEventListener("scroll", navbarVisibility);
+    //     window.addEventListener("scroll", navbarVisibility);
 
-        return () => {
-            window.removeEventListener("scroll", navbarVisibility);
-        };
-    }, [width, scroll, router]);
+    //     return () => {
+    //         window.removeEventListener("scroll", navbarVisibility);
+    //     };
+    // }, [width, scroll, router]);
 
 
     return (
         <>
-            <BurgerMenu id="menu" open={open} language={language} onClick={() => setOpen(!open)}>
+            <BurgerMenu showSideButtons={showSideButtons} width={width} id="menu" open={open} language={language} onClick={() => setOpen(!open)}>
                 <div />
                 <div />
                 <div />

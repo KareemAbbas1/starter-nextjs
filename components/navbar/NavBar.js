@@ -9,7 +9,7 @@ import Logo from '../../public/logo2.png';
 import Burger from './Burger.js';
 
 
-const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading }) => {
+const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading, showSideButtons }) => {
 
     const [reRender, setReRender] = useState(false)
     const [admin, setAdmin] = useState(null);
@@ -58,10 +58,10 @@ const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading 
             position={router.pathname !== "/admin/dashboard" ? "absolute" : "fixed"}
         >
             <Link href="/">
-                <a><Image src={Logo} alt='logo' width={140} height={50} /></a>
+                <a><Image onClick={() => router.pathname !== "/" && setLoading(true)} src={Logo} alt='logo' width={140} height={50} /></a>
             </Link>
 
-            <Burger open={open} setOpen={setOpen} onLinkClick={onLinkClick} language={language} setLoading={setLoading} />
+            <Burger showSideButtons={showSideButtons} open={open} setOpen={setOpen} onLinkClick={onLinkClick} language={language} setLoading={setLoading} />
 
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <button className="language-icon" onClick={toggleLanguage}>

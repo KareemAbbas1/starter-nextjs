@@ -76,6 +76,7 @@ function MyApp({ Component, pageProps }) {
       onLinkClick={onLinkClick}
       loadign={loading}
       setLoading={setLoading}
+      showSideButtons={showSideButtons}
     >
       <Component
         {...pageProps}

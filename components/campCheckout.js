@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 
+
 export const Container = styled.div`
     max-width: 100vw;
     min-height: 100vh;
@@ -14,7 +15,7 @@ export const Container = styled.div`
     justify-content: ${({ orderIsSent }) => orderIsSent === false ? "space-between" : "center"};
     gap: 1.5rem;
 
-    @media(min-width: 1400px) {
+    @media(min-width: 1442px) {
         padding-inline: 15rem;
     }
     @media(max-width: 600px) {
@@ -180,26 +181,36 @@ export const Container = styled.div`
             h3 {
                 font-size: 1.5rem;
                 font-weight: 300;
-            }
-
-            p {
-                width: fit-content;
-                color: #F26630;
-                font-weight: bold;
                 margin-bottom: 0;
-                padding-bottom: 8px;
-                border-bottom: 2px solid;
-                @media(min-width: 990px) {
-                    margin-left: ${({ language }) => language === "العربية" && '77.5%'};
-                }
-                
             }
+            
+            span.payment-logos {
+                width: 100%;
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                flex-flow: ${({ language }) => language === "English" ? "row" : "row-reverse"};
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+                padding-block: 1rem;
+                border-bottom: 1px solid #ccc;
+
+
+                img {
+                    width: 6rem;
+                    height: 1rem;
+                    object-fit: contain;
+                    border: 1px solid #ccc !important;
+                    border-radius: 5px;
+                }
+            }
+            
 
             div{
                 max-width: 100%;
-                padding-top: 1rem;
-                margin-bottom: 3rem;
-                border-top: 1px solid #ccc;
+                /* padding-top: 1rem; */
+                margin-bottom: 2rem;
+                /* border-top: 1px solid #ccc; */
                 display: flex;
                 flex-direction: ${({ language }) => language === "العربية" && "row-reverse"};
 

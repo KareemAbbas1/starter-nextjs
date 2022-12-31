@@ -45,6 +45,8 @@ const Container = styled.div`
     }
     @media(max-width: 600px) {
         height: 80vh;
+        margin-inline: 0;
+        padding-inline: 1.5rem;
     }
 `
 

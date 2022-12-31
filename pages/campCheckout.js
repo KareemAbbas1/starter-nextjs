@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+import Paypal from '../public/paypal.jpg';
+import vodaLogoEng from '../public/vodaLogoEng.jpg';
+import vodaLogoAra from '../public/vodaLogoAra.jpg';
+import Image from 'next/image';
 
 const CampCheckout = ({ language, setLoading }) => {
 
@@ -742,13 +745,18 @@ const CampCheckout = ({ language, setLoading }) => {
                   }
                 </h3>
 
-                <p>
+                <span className='payment-logos'>
+
+                  <Image src={Paypal} alt="PayPal Logo" />
                   {
                     language === "English"
-                      ? "Pay on site"
-                      : "الدفع عند الوصول"
+                      ?
+                      <Image src={vodaLogoEng} alt="vodafon cash logo" />
+                      :
+                      <Image src={vodaLogoAra} alt="vodafon cash logo" />
                   }
-                </p>
+                </span>
+
                 <div>
                   <input type="checkbox" id="terms"
                     onChange={() => enableButton()}
