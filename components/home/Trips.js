@@ -59,7 +59,7 @@ const Line = styled.div`
 
 
 
-const Trips = ({ language, trips, setLoading }) => {
+const Trips = ({ language, trips, setLoading, width }) => {
     return (
         <Container id='trips-section' language={language}>
             {
@@ -68,8 +68,11 @@ const Trips = ({ language, trips, setLoading }) => {
                     : <h1>الرحلات الاعلى تقييم</h1>
             }
             <Line />
-            
-            <TripsSlider trips={trips} language={language} setLoading={setLoading}/>
+
+            {
+                typeof window !== "undefined" && window.scrollY > 0 &&
+                <TripsSlider trips={trips} language={language} setLoading={setLoading} width={width} />
+            }
         </Container>
     )
 }

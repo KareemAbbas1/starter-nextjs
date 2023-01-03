@@ -260,7 +260,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
         setAllOrders(res.data.reverse());
       }
       catch (error) {
-        console.error(error);
+        alert(error);
       }
     };
     if (currentCampId) {
@@ -285,7 +285,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
       document.getElementById(notificaitonsSpan).style.display = "none";
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -320,7 +320,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
       }, 2000);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -357,7 +357,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
 
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 

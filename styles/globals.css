@@ -3,6 +3,53 @@ html {
   width: 100%;
   scroll-behavior: smooth;
 }
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2);
+}
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: 100;
+    src: local("Helvetica Neue Thin"),
+    local("HelveticaNeue-Thin");
+    font-display: swap;
+  }
+
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: 300;
+    src: local("Helvetica Neue Light"),
+    local("HelveticaNeue-Light");
+    font-display: swap;
+  }
+
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: normal;
+    src: local("Helvetica Neue"),
+    local("HelveticaNeue");
+    font-display: swap;
+  }
+
+@font-face {
+    font-family: "HelveticaNeue";
+    font-weight: bold;
+    src: local("Helvetica Neue Bold"),
+    local("HelveticaNeue-Bold");
+    font-display: swap;
+  }
+
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -18,32 +65,3 @@ body {
 body button {
   border-radius: 3px;
 }
-/* 
-@font-face {
-    font-family: "HelveticaNeue";
-    font-weight: 100;
-    src: local("Helvetica Neue Thin"),
-    local("HelveticaNeue-Thin");
-}
-
-@font-face {
-    font-family: "HelveticaNeue";
-    font-weight: 300;
-    src: local("Helvetica Neue Light"),
-    local("HelveticaNeue-Light");
-}
-
-@font-face {
-    font-family: "HelveticaNeue";
-    font-weight: normal;
-    src: local("Helvetica Neue"),
-    local("HelveticaNeue");
-}
-
-@font-face {
-    font-family: "HelveticaNeue";
-    font-weight: bold;
-    src: local("Helvetica Neue Bold"),
-    local("HelveticaNeue-Bold");
-}
-*/

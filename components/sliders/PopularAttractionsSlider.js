@@ -2,7 +2,7 @@ import { useState, useEffect, useTransition } from "react";
 import styled from 'styled-components';
 import { ActivityCard } from "../home/PopularAttractions";
 import { CaretLeft, CaretRight, TelephoneFill, Whatsapp } from "react-bootstrap-icons";
-import debounce from 'lodash/debounce';
+// import debounce from 'lodash/debounce';
 import Image from "next/image";
 import axios from "axios";
 
@@ -82,7 +82,7 @@ const Slide = styled.div`
     
 `
 
-const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreated }) => {
+const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreated, width }) => {
 
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
@@ -96,17 +96,17 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
     }, []);
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    const [width, setWidth] = useState(0);
-    useEffect(() => {
-        setWidth(window.innerWidth)
-        const handleResize = debounce(() => setWidth(window.innerWidth), 10)
+    // const [width, setWidth] = useState(0);
+    // useEffect(() => {
+    //     setWidth(window.innerWidth)
+    //     const handleResize = debounce(() => setWidth(window.innerWidth), 10)
 
-        window.addEventListener('resize', handleResize);
+    //     window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    }, [])
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     }
+    // }, [])
 
     const [slideIndex, setSlideIndex] = useState(0)
     const handleClick = (direction) => {
@@ -156,7 +156,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
             setActivityPrice(res.data.price);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     }
 
@@ -201,7 +201,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
             }, 500)
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 
@@ -218,7 +218,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
             closeModal(null);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 

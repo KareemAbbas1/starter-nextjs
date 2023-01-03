@@ -44,9 +44,6 @@ const Container = styled.div`
     flex-direction: column;
     padding-inline: 1rem;
     padding-bottom: 1rem;
-      /* position: relative; */
-      /* bottom: 0; */
-      /* left: 0; */
   }
 
 

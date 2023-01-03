@@ -8,21 +8,26 @@ import Customer from "../../public/customer.png";
 
 
 const BadgesSection = styled.div`
-    max-width: 100vw;
+    width: 80vw;
     height: 60vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    margin: auto;
     @media(max-width: 990px) {
         height: 25vh;
+        width: 100vw;
     }
     @media(max-width: 600px) {
         flex-flow: column nowrap;
-        height: fit-content;
+        min-height: 80vh;
     }
 
     div.badge {
-        width: 30%;
+        width: 30vw;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -33,9 +38,14 @@ const BadgesSection = styled.div`
         }
 
         div.badge-icon {
-            width: 4rem;
-            height: auto;
+            width: 5rem;
+            height: 4rem;
             transition: all 300ms ease;
+
+            img {
+                width: 4.2rem;
+                height: 4rem;
+            }
         }
         div.badge-text {
             width: 75%;
@@ -64,7 +74,6 @@ const BadgesSection = styled.div`
                 transform: scale(1.1);
             }
         }
-
     }
 
     div.v-line {
@@ -77,47 +86,43 @@ const BadgesSection = styled.div`
     }
 
     // 19 inch
-    @media(min-width: 1440px) {
+    @media(max-width: 1440px) {
         height: 40vh;
-        padding-inline: 5rem;
     }
 
     // 22 inch
-    @media(max-width: 1680px) {
+    @media(min-width: 1670px) and (max-width: 1680px) {
         margin-inline: 10%;
     }
-
-    // 23 inch
-    @media(max-width: 1920px) {
-        margin-inline: 8%;
-    }
-
 `
 
 
 
-const Badges = ({ language }) => {
+const Badges = ({ language, showSideButtons }) => {
     return (
         <BadgesSection>
             <div className="badge">
                 <div className="badge-icon">
                     <Image src={Backpack} alt="badge" />
                 </div>
-                <div className="badge-text">
-                    {
-                        language === "English"
-                            ? <h3>Memorable Experiences</h3>
-                            : <h3>تجربة لا تنسى</h3>
-                    }
+                {
+                    typeof window !== "undefined" && window.scrollY > 70 &&
+                    <div className="badge-text">
+                        {
+                            language === "English"
+                                ? <h3>Memorable Experiences</h3>
+                                : <h3>تجربة لا تنسى</h3>
+                        }
 
-                    {
-                        language === "English"
-                            ? <p>Browse and book tours and activities so incredible.</p>
-                            : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
-                    }
+                        {
+                            language === "English"
+                                ? <p>Browse and book tours and activities so incredible.</p>
+                                : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
+                        }
 
 
-                </div>
+                    </div>
+                }
             </div>
 
             <div className="v-line" />
@@ -126,19 +131,22 @@ const Badges = ({ language }) => {
                 <div className="badge-icon">
                     <Image src={Calendar} alt="badge" />
                 </div>
-                <div className="badge-text">
-                    {
-                        language === "English"
-                            ? <h3>Secure Booking</h3>
-                            : <h3>حجز آمن</h3>
-                    }
+                {
+                    typeof window !== "undefined" && window.scrollY > 70 &&
+                    <div className="badge-text">
+                        {
+                            language === "English"
+                                ? <h3>Secure Booking</h3>
+                                : <h3>حجز آمن</h3>
+                        }
 
-                    {
-                        language === "English"
-                            ? <p>Browse and book tours and activities so incredible.</p>
-                            : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
-                    }
-                </div>
+                        {
+                            language === "English"
+                                ? <p>Browse and book tours and activities so incredible.</p>
+                                : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
+                        }
+                    </div>
+                }
             </div>
 
             <div className="v-line" />
@@ -147,18 +155,21 @@ const Badges = ({ language }) => {
                 <div className="badge-icon">
                     <Image src={Customer} alt="badge" />
                 </div>
-                <div className="badge-text">
-                    {
-                        language === "English"
-                            ? <h3>Customer Satisfaction</h3>
-                            : <h3>رضاء العملاء</h3>
-                    }
-                    {
-                        language === "English"
-                            ? <p>Browse and book tours and activities so incredible.</p>
-                            : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
-                    }
-                </div>
+                {
+                    typeof window !== "undefined" && window.scrollY > 70 &&
+                    <div className="badge-text">
+                        {
+                            language === "English"
+                                ? <h3>Customer Satisfaction</h3>
+                                : <h3>رضاء العملاء</h3>
+                        }
+                        {
+                            language === "English"
+                                ? <p>Browse and book tours and activities so incredible.</p>
+                                : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
+                        }
+                    </div>
+                }
             </div>
 
         </BadgesSection>

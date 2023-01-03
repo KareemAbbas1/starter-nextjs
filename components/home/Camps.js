@@ -64,7 +64,7 @@ const Line = styled.div`
         margin-bottom: 0rem;
     }
 `
-const Camps = ({ language, camps, setLoading }) => {
+const Camps = ({ language, camps, setLoading, width }) => {
     return (
         <Container id='camps-section'>
             {

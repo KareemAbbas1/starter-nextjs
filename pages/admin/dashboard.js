@@ -33,7 +33,7 @@ export const getServerSideProps = async (req) => {
             decode = verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
         }
         catch (error) {
-            console.error(error)
+            alert(error)
         }
 
         role = decode && decode.role;
@@ -74,7 +74,7 @@ export const getServerSideProps = async (req) => {
         };
     }
     catch (error) {
-        console.log(error)
+        alert(error)
         return {
             notFound: true,
         }
@@ -168,7 +168,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             location.reload();
         }
         catch (error) {
-            console.error("Error", error && error.response.data.message)
+            alert("Error", error && error.response.data.message)
         }
     };
 

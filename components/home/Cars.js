@@ -343,7 +343,7 @@ export const CarCard = styled.div`
 
 `
 
-const Cars = ({ language }) => {
+const Cars = ({ language, width }) => {
 
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
@@ -367,7 +367,7 @@ const Cars = ({ language }) => {
                 setCars(res.data)
             }
             catch (error) {
-                console.error(error);
+                alert(error);
             }
         }
         fetchCars();
@@ -417,7 +417,7 @@ const Cars = ({ language }) => {
 
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     }
 
@@ -512,15 +512,19 @@ const Cars = ({ language }) => {
                     </div>
                 </>
             }
-            <h1>
-                {
-                    language === "English"
-                        ? "Recommended Car Rentals"
-                        : "سيارات للايجار"
-                }
-            </h1>
+            {
+                typeof window !== "undefined" && window.scrollY > 10 &&
+                <h1>
+                    {
+                        language === "English"
+                            ? "Recommended Car Rentals"
+                            : "سيارات للايجار"
+                    }
+                </h1>
+            }
             <div className='h-line' />
-            <CarsSlider cars={cars} language={language} isCreated={isCreated} setIsCreated={setIsCreated} />
+            
+            <CarsSlider cars={cars} language={language} isCreated={isCreated} setIsCreated={setIsCreated} width={width} />
         </Container>
     )
 }

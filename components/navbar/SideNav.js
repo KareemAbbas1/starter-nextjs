@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import debounce from "lodash/debounce";
+// import debounce from "lodash/debounce";
 import { useEffect, useState } from "react";
 import Link from 'next/link'
 import { useRouter } from "next/router";
@@ -112,19 +112,19 @@ const NavLinks = styled.ul`
     }
 `
 
-const SideNav = ({ open, setOpen, language, onLinkClick, setLoading }) => {
+const SideNav = ({ open, setOpen, language, onLinkClick, setLoading, width }) => {
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    const [width, setWidth] = useState(0);
-    useEffect(() => {
-        const handleResize = debounce(() => setWidth(window.innerWidth), 100)
+    // const [width, setWidth] = useState(0);
+    // useEffect(() => {
+    //     const handleResize = debounce(() => setWidth(window.innerWidth), 100)
 
-        window.addEventListener('resize', handleResize);
+    //     window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    }, [])
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     }
+    // }, [])
 
     // Handle navigate to section out of the home page
     const router = useRouter();

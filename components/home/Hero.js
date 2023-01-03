@@ -1,35 +1,42 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-const Section = styled.section`
+const Section = styled.div`
     position: relative;
-    max-width: 100%;
-    min-height: 100vh;
-    display: flex;
+    width: 100vw;
+    height: 100vh;
+    display: block;
     justify-content: center;
-    /* justify-content: ${({ language }) => language === "العربية" ? "right" : "left"}; */
     align-items: center;
     text-align: center;
-    /* text-align: ${({ language }) => language === "العربية" ? "right" : "left"}; */
     overflow: hidden;
+    /* background-color: blue; */
 
-    // 10 inch 
-    /* @media(min-width: 1024px) {
-        justify-content: center;
-    } */
+    img {
+        object-fit: fill;
+    }
+
 
 
     @media(max-width: 990px) {
-        min-height: 80vh;
-        /* justify-content: center; */
+        height: 80vh;
         text-align: center;
+
+        img {
+            height: 80vh;
+            object-fit: cover;
+        }
     }
 
     @media(max-width: 600px) {
-        min-height: 75vh;
+        height: 75vh;
+
+        img {
+            height: 75vh;
+        }
     }
 
-    video {
+    /* video {
         position: absolute;
         top: 0;
         left: 0;
@@ -37,28 +44,33 @@ const Section = styled.section`
         height: 100%;
         object-fit: cover;
         pointer-events: none;    
-    }
+    } */
 `
 
-const Video = styled.video`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-`
+// const Video = styled.video`
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     pointer-events: none;
+// `
 
-const Container = styled.span`
-    padding-inline: 4rem;
+const Container = styled.div`
+    position: relative;
+    padding-inline: 33vw;
+    height: 31vh;
+    bottom: calc(50vh + 25vh);
     z-index: 1;
 
-    h1 {
+    span.head-line {
+        display: block;
         color: #fff;
-        font-size: ${({ language }) => language === "English" ? "2.5rem" : "2.7rem"};
-        line-height: 3.5rem;
-        margin-bottom: 0.3rem;
+        font-size: 3.3rem;
+        font-weight: 700;
+        line-height: 4.3rem;
+        margin-bottom: 0.7rem;
     }
 
     div {
@@ -66,10 +78,12 @@ const Container = styled.span`
         background-color: #F26630;
     }
 
-    h3 {
+    span.text-white {
+        display: block;
         color: #fff;
-        font-size: ${({ language }) => language === "English" ? "1.1rem" : "1.5rem"};
-        margin: ${({ language }) => language === "العربية" ? "0.7rem 0rem" : ""};
+        font-size: ${({ language }) => language === "English" ? "1.4rem" : "1.5rem"};
+        margin-block: 1.3rem;
+        line-height: 1.6rem;
         font-weight: normal;
     }
 
@@ -89,83 +103,112 @@ const Container = styled.span`
     }
 
 
-    // 10 inch
-    @media(min-width: 1024px) {
-        text-align: center;
-        h1 {
-            font-size: ${({ language }) => language === "English" ? "2rem" : "2.2rem"};
-        }
-
-        h3 {
-            font-size: ${({ language }) => language === "English" ? "0.9rem" : "1.3rem"};
-        }
-
-        button {
-            font-size: ${({ language }) => language === "English" ? "0.9rem" : "1.2rem"};
-            padding: ${({ language }) => language === "English" ? "0.4rem" : "0.3rem 0.8rem"};
-        }
-    }
-
-    // 19 inch
-    @media(min-width: 1440px) {
-        padding-inline: 6rem;
-
-        h1 {
-            font-size: 2.6rem;
-            line-height: 3.5rem;
-        }
-
-        h3 {
-            font-size: 1.1rem;
-        }
-
-        button {
-            font-size: 1rem;
-        }
-    }
-
     // 22 inch
-    @media(min-width: 1680px) {
+    @media(min-width: 1680px) and (max-width: 1690px) {
+        padding-inline: 31vw;
+        bottom: calc(50vh + 11vh);
 
-        h1 {
-            font-size: 3.2rem;
-            line-height: 4.8rem;
+        span.head-line {
+            font-size: 3rem;
+        }
+    }
+
+    // 19 inch to 12 inch
+    @media(min-width: 1280px) and (max-width: 1450px) {
+        bottom: calc(50vh + 13vh);
+        padding-inline: 32vw;
+
+        span.head-line {
+            font-size: 2.5rem;
+            line-height: 4rem;
         }
 
-        h3 {
-            font-size: 1.3rem;
+        span.text-white {
+            font-size: ${({ language }) => language === "English" ? "1.1rem" : "1.4rem"};
+            margin-block: 1rem;
         }
 
         button {
-            font-size: 1.3rem;
+            font-size: ${({ language }) => language === "English" ? "1.1rem" : "1.5rem"};
+            padding: ${({ language }) => language === "English" ? "0.4rem" : "0.4rem 1rem"};
         }
     }
+
+    // 15 inch to 12 inch
+    @media(min-width: 1280px) and (max-width: 1380px) {
+        bottom: calc(50vh + 24vh);
+        padding-inline: 31vw;
+    }
+
+    // 12 inch 
+    @media(min-width: 1280px) and (max-width: 1290px) {
+        bottom: calc(50vh + 13vh);
+        padding-inline: 30vw;
+    }
+
+
+
+    // 10 inch
+    @media(min-width: 1024px) and (max-width: 1030px) {
+        bottom: calc(50vh + 21vh);
+        padding-inline: 31.5vw;
+
+        span.head-line {
+            font-size: ${({ language }) => language === "English" ? "1.8rem" : "1.7rem"};
+            line-height: 2.3rem;
+        }
+
+        span.text-white {
+            font-size: ${({ language }) => language === "English" ? "0.8rem" : "1rem"};
+            margin-block: 0.7rem;
+            line-height: 1.3rem;
+        }
+
+        button {
+            font-size: ${({ language }) => language === "English" ? "0.75rem" : "1rem"};
+            padding: ${({ language }) => language === "English" ? "0.3rem" : "0.3rem 0.6rem"};
+        }
+    }
+
+    
 
     @media(max-width: 990px) {
-        padding-top: 4rem;
+        bottom: calc(40vh + 13vw);
+        padding-inline: 22vw;
 
-        h1 {
+        span.head-line {
             font-size: 2.1rem;
             line-height: 3rem;
         }
 
-        h3 {
+        span.text-white {
             font-size: 1rem;
+            margin-block: 0.9rem;
         }
 
         button {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            padding: ${({ language }) => language === "English" ? "0.5rem" : "0.4rem 1rem"};
         }
     }
 
+    @media(min-width: 768px) and (max-width: 780px) {
+        padding-inline: 20vw;
+    }
+
     @media(max-width: 600px) {
-        h1 {
+        bottom: calc(40vh + 4vw);
+        padding-inline: 17vw;
+
+        span.head-line {
             font-size: 1.2rem;
-            line-height: 1.8rem;
+            line-height: 1.5rem;
         }
 
-        h3 {
+        span.text-white {
             font-size: 0.5rem;
+            line-height: 0.7rem;
+            margin-block: 0.5rem;
         }
 
         button {
@@ -175,31 +218,38 @@ const Container = styled.span`
     }
 `
 
-const Hero = ({ language, onLinkClick }) => {
+const Hero = ({ language }) => {
     return (
         <Section language={language} id="hero-section">
-            <Image layout="fill" src="https://res.cloudinary.com/dqmqc0uaa/image/upload/c_scale,h_1057,w_1280/v1672178208/uploads/bg-masthead_1_1_yvvplw.png" alt="Image for mount Sinai" />
-            {/* <video autoPlay={true} muted loop src="https://res.cloudinary.com/dqmqc0uaa/video/upload/v1666049102/video_mqp2vl.mp4" /> */}
+            <Image
+                priority
+                width={1920}
+                height={1200}
+                layout="intrinsic"
+                src="https://res.cloudinary.com/dqmqc0uaa/image/upload/c_scale,h_1200,w_1920/v1672458034/uploads/nqavh7hcobbwb9sserer.png" alt="Image for mount Sinai"
+            />
             <Container language={language}>
-                <h1> {language === "English" ? "Your Favorite Agency for" : "الاختيار الافضل للسياحة داخل مصر"}
+                <span className="head-line"> {language === "English" ? "Your Favorite Agency for" : "الاختيار الافضل للسياحة داخل مصر"}
                     <br></br>
                     {language === "English" ? "Traveling Around Egypt" : "وقضاء عطلة مميزة بافضل سعر"}
-                </h1>
+                </span>
 
                 <div />
 
-                <h3 className="text-white">
-                    {language === "English"
-                        ? "It is a long established fact that a reader will be distracted by the"
-                        : "اذا كنت من محبي السفر والاستكشاف وترغب في الاستمتاع بعطلة "
+                <span className="text-white">
+                    {
+                        language === "English"
+                            ? "It is a long established fact that a reader will be distracted by the"
+                            : "اذا كنت من محبي السفر والاستكشاف وترغب في الاستمتاع بعطلة "
                     }
                     <br></br>
-                    {language === "English"
-                        ? "reader will be distracted by the."
-                        : "نهاية الاسبوع ، فانت في المكان الصحيح"}
+                    {
+                        language === "English"
+                            ? "reader will be distracted by the."
+                            : "نهاية الاسبوع ، فانت في المكان الصحيح"
+                    }
 
-                </h3>
-                {/* <button goto='trips-section' onClick={(e) => onLinkClick(e)}> */}
+                </span>
                 <button onClick={() => {
                     window.scrollTo({ top: document.getElementById('hero-section').offsetHeight - 10 });
                 }}>

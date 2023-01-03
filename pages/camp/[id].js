@@ -225,7 +225,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                     )
                 }
                 catch (err) {
-                    console.log(err.response ? err.response.data.message : err);
+                    alert(err.response ? err.response.data.message : err);
                 }
 
 

@@ -316,7 +316,6 @@ const CampCheckout = ({ language, setLoading }) => {
           state: "Not Paid"
         }));
         if (response.status === 200) {
-          console.log("Success");
           reset();
           localStorage.removeItem("Submition Data");
           document.body.scrollTop = 0;
@@ -326,7 +325,7 @@ const CampCheckout = ({ language, setLoading }) => {
         }
       }
       catch (error) {
-        console.error(error)
+        alert(error)
       }
     }
   }
@@ -341,7 +340,7 @@ const CampCheckout = ({ language, setLoading }) => {
       });
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
 
     setTimeout(() => {
@@ -767,7 +766,7 @@ const CampCheckout = ({ language, setLoading }) => {
                         ? "I red and agree to the"
                         : "اوافق على "
                     }
-                    <Link href='/'>
+                    <Link href='terms-and-conditions'>
                       <a id="terms-cond" target="_blank">
                         {
                           language === "English"

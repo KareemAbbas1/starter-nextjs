@@ -73,7 +73,7 @@ const Slide = styled.div`
     }
 `
 
-const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
+const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
 
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
@@ -88,17 +88,17 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
 
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    const [width, setWidth] = useState(0);
-    useEffect(() => {
-        setWidth(window.innerWidth)
-        const handleResize = debounce(() => setWidth(window.innerWidth), 10)
+    // const [width, setWidth] = useState(0);
+    // useEffect(() => {
+    //     setWidth(window.innerWidth)
+    //     const handleResize = debounce(() => setWidth(window.innerWidth), 10)
 
-        window.addEventListener('resize', handleResize);
+    //     window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    }, [])
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     }
+    // }, [])
 
     const [slideIndex, setSlideIndex] = useState(0)
     const handleClick = (direction) => {
@@ -142,7 +142,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
             setCarPrice(res.data.price);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 
@@ -186,7 +186,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
             }, 500)
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 
@@ -203,7 +203,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
             closeModal(null);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 
@@ -269,16 +269,19 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated }) => {
                             cars && cars.map(car => (
                                 <CarCard key={car._id} car={car} language={language}>
                                     <div className="car-image">
-                                        <Image
-                                            layout="responsive"
-                                            width={
-                                                300
-                                            }
-                                            height={
-                                                190
-                                            }
-                                            src={car.image} alt=''
-                                        />
+                                        {
+                                            typeof window !== "undefined" && window.scrollY > 10 &&
+                                            <Image
+                                                layout="responsive"
+                                                width={
+                                                    300
+                                                }
+                                                height={
+                                                    190
+                                                }
+                                                src={car.image} alt='rental car image'
+                                            />
+                                        }
                                     </div>
                                     <h3>
                                         {

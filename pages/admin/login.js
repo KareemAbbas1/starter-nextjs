@@ -39,7 +39,7 @@ const Login = ({ setLoading }) => {
             location.reload();
         }
         catch (error) {
-            console.error("Error", error && error.response.data.message);
+            alert("Error", error && error.response.data.message);
             setError(true);
             setErrorMessage(error && error.response.data.message)
         }

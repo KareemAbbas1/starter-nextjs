@@ -129,7 +129,7 @@ const Index = ({ language, setLoading }) => {
             setLoading(false);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
     /* End Submit order */

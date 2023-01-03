@@ -212,7 +212,13 @@ const Card = ({ trip, camp, language, setLoading }) => {
                                                 : null
                             }
                         </span>
-                        <Link href='/#'>
+                        <Link
+                            href={
+                                trip
+                                    ? `/trip/${trip._id}`
+                                    : `/camp/${camp._id}`
+                            }
+                        >
                             <h2>
                                 {
                                     language === "English" && trip

@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import LoadingBar from '../components/LoadingBar';
+
+// Start dynamic imports
 const AboutUs = dynamic(() => import('../components/home/AboutUs'), {
   loading: () => 'Loading...'
 });
@@ -8,7 +11,7 @@ const Badges = dynamic(() => import('../components/home/Badges'), {
   loading: () => 'Loading...'
 });
 const Camps = dynamic(() => import('../components/home/Camps'), {
-  loading: () => 'Loading...'
+  loading: () => <LoadingBar />
 });
 const Cars = dynamic(() => import('../components/home/Cars'), {
   loading: () => 'Loading...'
@@ -24,7 +27,7 @@ const PopularAttractions = dynamic(() => import('../components/home/PopularAttra
   loading: () => 'Loading...'
 });
 const Trips = dynamic(() => import('../components/home/Trips'), {
-  loading: () => 'Loading...'
+  loading: () => <LoadingBar />
 });
 import axios from "axios";
 
@@ -55,9 +58,18 @@ export default function Home({
   onLinkClick,
   showSideButtons, /* This is used to dynamically render each section based on the Y axis scroll */
   loading,
-  setLoading
+  setLoading,
+  width
 }) {
 
+
+  // hanldle dynamically rendered section
+  const [showDynamicallyRenderedSections, setShowDynamicallyRenderedSections] = useState(false);
+  useEffect(() => {
+    if (window.scrollY > 10) {
+      setShowDynamicallyRenderedSections(true);
+    }
+  })
   // Handle route change loading
   useEffect(() => {
     setLoading(false);
@@ -76,20 +88,30 @@ export default function Home({
         trips={trips}
         language={language}
         setLoading={setLoading}
+        width={width}
       />
 
-      <Badges language={language} />
+      {
+        showDynamicallyRenderedSections === true &&
+        <Badges language={language} showSideButtons={showSideButtons} />
+      }
 
       <Camps
         camps={camps}
         language={language}
         setLoading={setLoading}
       />
-      <Cars language={language} />
-      <PopularAttractions language={language} />
+
+      <Cars language={language} width={width} />
+
+      <PopularAttractions language={language} width={width} />
+
       <Gallery language={language} />
+
       <AboutUs language={language} />
-      <ContactUs id='contact-us' language={language} />
+
+      <ContactUs id='contact-us' language={language} showSideButtons={showSideButtons} />
+
     </>
   )
 }

@@ -349,7 +349,7 @@ const Users = ({ role, loggedInUser }) => {
           setUsers(res.data);
         }
         catch (error) {
-          console.error(error);
+          alert(error);
         }
       }
     }
@@ -404,7 +404,7 @@ const Users = ({ role, loggedInUser }) => {
         setIsCreated(!isCreated);
       }
       catch (error) {
-        console.error(error);
+        alert(error);
       }
     }
   };
@@ -430,7 +430,7 @@ const Users = ({ role, loggedInUser }) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   }
   /* End Handle Delete user */
@@ -472,7 +472,7 @@ const Users = ({ role, loggedInUser }) => {
       }, 500)
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   }
 
@@ -520,7 +520,7 @@ const Users = ({ role, loggedInUser }) => {
         alert("تم تغيير كلمة المرور بنجاح");
       }
       catch (error) {
-        console.error(error);
+        alert(error);
       }
     }
 

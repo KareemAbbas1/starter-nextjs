@@ -537,7 +537,7 @@ export const ActivityCard = styled.div`
 
 `
 
-const PopularAttractions = ({ language }) => {
+const PopularAttractions = ({ language, width }) => {
 
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
@@ -562,7 +562,7 @@ const PopularAttractions = ({ language }) => {
                 setActivities(res.data)
             }
             catch (error) {
-                console.error(error);
+                alert(error);
             }
         }
         fetchActivities();
@@ -615,7 +615,7 @@ const PopularAttractions = ({ language }) => {
             }, 1500)
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 
@@ -731,13 +731,16 @@ const PopularAttractions = ({ language }) => {
                     </div>
                 </>
             }
-            <h1>
-                {
-                    language === "English"
-                        ? "Popular Attractions"
-                        : "افضل الوجهات"
-                }
-            </h1>
+            {
+                typeof window !== "undefined" && window.scrollY > 10 &&
+                <h1>
+                    {
+                        language === "English"
+                            ? "Popular Attractions"
+                            : "افضل الوجهات"
+                    }
+                </h1>
+            }
             <div className='h-line' />
             <div id='hide-top' />
             <div id='hide-left-side' />
@@ -747,6 +750,7 @@ const PopularAttractions = ({ language }) => {
                 language={language}
                 isCreated={isCreated}
                 setIsCreated={setIsCreated}
+                width={width}
             />
         </Container>
     )

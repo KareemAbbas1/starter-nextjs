@@ -296,7 +296,7 @@ const Container = styled.div`
         height: 1rem;
         position: absolute;
         left: 77.5%;
-        bottom: 85.5%;
+        bottom: 88%;
         background-color: #000;
         color: #fff;
         display: flex;
@@ -311,6 +311,10 @@ const Container = styled.div`
           background-color: transparent;
           color: #000;
           border: 1px solid #000;
+        }
+
+        @media(min-width: 1680px) {
+          bottom: 90%;
         }
       }
 
@@ -670,7 +674,7 @@ const Camps = ({ language, newCampsordersList}) => {
         setCamps(allCamps.data);
       }
       catch (error) {
-        console.error(error);
+        alert(error);
       }
     }
     fetchCamps();
@@ -826,7 +830,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   };
   /* End Create new camp */
@@ -853,7 +857,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setIsDeleted(!isDeleted);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
   /* End Delete Camp */
@@ -900,7 +904,7 @@ const Camps = ({ language, newCampsordersList}) => {
   //     }, 300)
   //   }
   //   catch (error) {
-  //     console.error(error);
+  //     alert(error);
   //   }
   // };
 
@@ -948,7 +952,7 @@ const Camps = ({ language, newCampsordersList}) => {
       }, 500)
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -992,7 +996,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -1070,7 +1074,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setCampRooms(res.data);
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   };
 
@@ -1088,7 +1092,7 @@ const Camps = ({ language, newCampsordersList}) => {
       reFetchRooms(reFetchRoomsCampId);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   }
 
@@ -1104,7 +1108,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setUnavailableDates([]);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -1157,7 +1161,7 @@ const Camps = ({ language, newCampsordersList}) => {
       }, 500)
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   };
 
@@ -1271,7 +1275,7 @@ const Camps = ({ language, newCampsordersList}) => {
       document.getElementById(imageInputId).value = "New image uploaded";
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   }
 
@@ -1325,7 +1329,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   };
 

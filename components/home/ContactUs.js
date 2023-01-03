@@ -178,7 +178,7 @@ const Container = styled.div`
     }
 `
 
-const ContactUs = ({ language }) => {
+const ContactUs = ({ language, showSideButtons }) => {
 
     const [loading, setLoading] = useState(false);
 
@@ -199,7 +199,7 @@ const ContactUs = ({ language }) => {
             setLoading(false);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     };
 
@@ -240,51 +240,54 @@ const ContactUs = ({ language }) => {
                     :
                     <>
 
-                        <div className='contact-info'>
-                            <h2>
-                                {
-                                    language === "English"
-                                        ? "Send us a message"
-                                        : "ارسل إلينا"
-                                }
-                            </h2>
+                        {
+                            showSideButtons &&
+                            <div className='contact-info'>
+                                <h2>
+                                    {
+                                        language === "English"
+                                            ? "Send us a message"
+                                            : "ارسل إلينا"
+                                    }
+                                </h2>
 
-                            <p>
-                                {
-                                    language === "English"
-                                        ? "Nunc sed id semper risus in hendrerit. Amet mattis vulputate enim nulla aliquet porttitor. Nunc id cursus metus aliquam eleifend. Elit eget gravida cum sociis natoque penatibus et magnis."
-                                        : "و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟ "
-                                }
-                            </p>
-
-                            <h4>
-                                {
-                                    language === "English"
-                                        ? "Book Your Trip"
-                                        : "احجز رحلتك معنا"
-                                }
-                            </h4>
-
-                            <div>
-                                <GeoAltFill />
                                 <p>
                                     {
                                         language === "English"
-                                            ? "Arish, North Sinai..."
-                                            : "...العريش, شمال سيناء"
+                                            ? "Nunc sed id semper risus in hendrerit. Amet mattis vulputate enim nulla aliquet porttitor. Nunc id cursus metus aliquam eleifend. Elit eget gravida cum sociis natoque penatibus et magnis."
+                                            : "و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟ "
                                     }
-
                                 </p>
+
+                                <h4>
+                                    {
+                                        language === "English"
+                                            ? "Book Your Trip"
+                                            : "احجز رحلتك معنا"
+                                    }
+                                </h4>
+
+                                <div>
+                                    <GeoAltFill />
+                                    <p>
+                                        {
+                                            language === "English"
+                                                ? "Arish, North Sinai..."
+                                                : "...العريش, شمال سيناء"
+                                        }
+
+                                    </p>
+                                </div>
+                                <div>
+                                    <TelephoneFill size={15} />
+                                    <p>+20-100-009-0335</p>
+                                </div>
+                                <div>
+                                    <Envelope size={17} />
+                                    <p>breaktrips2022@gmail.com</p>
+                                </div>
                             </div>
-                            <div>
-                                <TelephoneFill size={15} />
-                                <p>+20-100-009-0335</p>
-                            </div>
-                            <div>
-                                <Envelope size={17} />
-                                <p>breaktrips2022@gmail.com</p>
-                            </div>
-                        </div>
+                        }
 
                         <div className='form-container'>
                             <form onSubmit={handleSubmit(onFormSubmit)}>

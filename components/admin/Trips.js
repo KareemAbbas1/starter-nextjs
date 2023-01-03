@@ -242,7 +242,7 @@ const Container = styled.div`
       height: 1rem;
       position: absolute;
       left: 77.5%;
-      bottom: 85.5%;
+      bottom: 88%;
       background-color: #000;
       color: #fff;
       display: flex;
@@ -257,6 +257,10 @@ const Container = styled.div`
         background-color: transparent;
         color: #000;
         border: 1px solid #000;
+      }
+
+      @media(min-width: 1680px) {
+        bottom: 90%;
       }
     }
 
@@ -478,7 +482,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         setTrips(allTrips.data);
       }
       catch (error) {
-        console.error(error);
+        alert(error);
       }
     }
     fetchTrips();
@@ -509,7 +513,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
   const [rate, setRate] = useState(0);
   // trip overview
   const [overview, setOverview] = useState("");
-  const [araOverview, setAraOverview] = useState("");  
+  const [araOverview, setAraOverview] = useState("");
   // Images 
   const [files, setFiles] = useState();
   // Extra Options
@@ -658,7 +662,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       setOptionThreePrice(0);
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   }
 
@@ -686,7 +690,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       setIsDeleted(!isDeleted);
     }
     catch (error) {
-      console.error(error);
+      alert(error);
     }
   }
   /* End Delete Trip */
@@ -785,10 +789,9 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       }, 500);
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   };
-  // console.log(trip)
 
   // handle add new days to exsiting trip
   const [araDaysArray, setAraDaysArray] = useState([]);
@@ -878,7 +881,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       document.getElementById(imageInputId).value = "New image uploaded";
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   }
 
@@ -961,7 +964,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       alert("تم تعديل الرحلة بنجاح")
     }
     catch (error) {
-      console.error(error)
+      alert(error)
     }
   }
 
@@ -996,7 +999,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         }, 3000);
       }
       catch (error) {
-        console.error(error)
+        alert(error)
       }
 
     }
@@ -1016,7 +1019,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         }, 3000);
       }
       catch (error) {
-        console.error(error)
+        alert(error)
       }
     }
     else if (endDate !== "") {
@@ -1035,7 +1038,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         }, 3000);
       }
       catch (error) {
-        console.error(error)
+        alert(error)
       }
     }
 

@@ -5,7 +5,7 @@ import { CaretUp, Whatsapp } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LoadingBar from '../components/LoadingBar';
-
+import debounce from 'lodash/debounce';
 
 
 
@@ -15,6 +15,17 @@ function MyApp({ Component, pageProps }) {
   const [notifications, setNotifications] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+      const handleResize = debounce(() => setWidth(window.innerWidth), 100)
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      }
+  }, []);
 
   // Handle Show Side Buttons
   const [showSideButtons, setShowSideButtons] = useState(false)
@@ -77,6 +88,7 @@ function MyApp({ Component, pageProps }) {
       loadign={loading}
       setLoading={setLoading}
       showSideButtons={showSideButtons}
+      width={width}
     >
       <Component
         {...pageProps}
@@ -87,6 +99,7 @@ function MyApp({ Component, pageProps }) {
         showSideButtons={showSideButtons}
         setLoading={setLoading}
         loading={loading}
+        width={width}
       />
       {
         loading &&

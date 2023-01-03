@@ -1,6 +1,6 @@
 import { Nav } from './styles.js';
 import { useState, useEffect } from 'react';
-import debounce from 'lodash/debounce';
+// import debounce from 'lodash/debounce';
 import EarthIcon from '../../public/earthIcon.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import Logo from '../../public/logo2.png';
 import Burger from './Burger.js';
 
 
-const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading, showSideButtons }) => {
+const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading, showSideButtons, width }) => {
 
     const [reRender, setReRender] = useState(false)
     const [admin, setAdmin] = useState(null);
@@ -27,16 +27,16 @@ const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading,
     const router = useRouter();
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    const [width, setWidth] = useState(0);
-    useEffect(() => {
-        const handleResize = debounce(() => setWidth(window.innerWidth), 100)
+    // const [width, setWidth] = useState(0);
+    // useEffect(() => {
+    //     const handleResize = debounce(() => setWidth(window.innerWidth), 100)
 
-        window.addEventListener('resize', handleResize);
+    //     window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    }, [])
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     }
+    // }, [])
 
     // Handle Language
     const toggleLanguage = () => {
@@ -61,7 +61,7 @@ const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading,
                 <a><Image onClick={() => router.pathname !== "/" && setLoading(true)} src={Logo} alt='logo' width={140} height={50} /></a>
             </Link>
 
-            <Burger showSideButtons={showSideButtons} open={open} setOpen={setOpen} onLinkClick={onLinkClick} language={language} setLoading={setLoading} />
+            <Burger showSideButtons={showSideButtons} open={open} setOpen={setOpen} onLinkClick={onLinkClick} language={language} setLoading={setLoading} width={width} />
 
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <button className="language-icon" onClick={toggleLanguage}>

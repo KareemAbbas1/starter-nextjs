@@ -99,7 +99,7 @@ const OrderComplete = ({ language, setLoading }) => {
                     localStorage.removeItem("campId");
                 }
                 catch (error) {
-                    console.error(error.response ? error.response.data.message : error);
+                    alert(error.response ? error.response.data.message : error);
                 }
             }
         }
@@ -154,7 +154,7 @@ const OrderComplete = ({ language, setLoading }) => {
             router.push("/");
         }
         catch (error) {
-            console.error(error.response ? error.response.data.message : error);
+            alert(error.response ? error.response.data.message : error);
         }
     }
 
@@ -180,7 +180,7 @@ const OrderComplete = ({ language, setLoading }) => {
             setLoading(false);
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
     }
     return (

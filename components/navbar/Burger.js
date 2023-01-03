@@ -11,7 +11,7 @@ const BurgerMenu = styled.div`
     margin-top: ${({ open }) => !open ? "2%" : "0px"};
     right: ${({ language, open }) => language === "العربية" && open ? "21.5%" : "0%"};
     z-index: 10;
-    display: ${({ showSideButtons, width }) => width > 992 && showSideButtons ? "flex" : "none"};
+    display: ${({ showSideButtons, width }) => showSideButtons ? "flex" : "none"};
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
@@ -98,25 +98,25 @@ const BurgerMenu = styled.div`
     }
 `
 
-const Burger = ({ language, onLinkClick, open, setOpen, setLoading, showSideButtons }) => {
+const Burger = ({ language, onLinkClick, open, setOpen, setLoading, showSideButtons, width }) => {
 
-    const router = useRouter();
+    // const router = useRouter();
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    const [width, setWidth] = useState(null);
+    // const [width, setWidth] = useState(null);
     const [scroll, setScroll] = useState(null);
     useEffect(() => {
-        setWidth(window.innerWidth);
+        // setWidth(window.innerWidth);
         setScroll(window.scrollY);
 
-        const handleResize = debounce(() => setWidth(window.innerWidth), 10);
+        // const handleResize = debounce(() => setWidth(window.innerWidth), 10);
         const handleScroll = debounce(() => setScroll(window.scrollY), 10);
 
-        window.addEventListener('resize', handleResize);
+        // window.addEventListener('resize', handleResize);
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
+            // window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
         }
     }, [])
@@ -155,7 +155,7 @@ const Burger = ({ language, onLinkClick, open, setOpen, setLoading, showSideButt
                 <div />
             </BurgerMenu>
 
-            <SideNav onLinkClick={onLinkClick} open={open} setOpen={setOpen} language={language} setLoading={setLoading}/>
+            <SideNav onLinkClick={onLinkClick} open={open} setOpen={setOpen} language={language} setLoading={setLoading} width={width}/>
         </>
     )
 }

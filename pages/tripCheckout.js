@@ -73,7 +73,7 @@ const TripCheckout = ({ language, setLoading }) => {
             });
         }
         catch (error) {
-            console.error(error);
+            alert(error);
         }
 
         setTimeout(() => {
@@ -187,7 +187,6 @@ const TripCheckout = ({ language, setLoading }) => {
                     state: "Not Paid"
                 }));
                 if (response.status === 200) {
-                    console.log("Success");
                     reset();
                     localStorage.removeItem("Trip submition data");
                     document.body.scrollTop = 0;
@@ -197,7 +196,7 @@ const TripCheckout = ({ language, setLoading }) => {
                 }
             }
             catch (error) {
-                console.error(error);
+                alert(error);
             }
         }
     };
@@ -700,7 +699,7 @@ const TripCheckout = ({ language, setLoading }) => {
                                                 ? "I red and agree to the"
                                                 : "اوافق على "
                                         }
-                                        <Link href='/'>
+                                        <Link href='terms-and-conditions'>
                                             <a id="trip-terms-cond" target="_blank">
                                                 {
                                                     language === "English"

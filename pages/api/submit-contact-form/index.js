@@ -55,7 +55,7 @@ async function handler(req, res) {
             res.status(200).json(res.body);
         }
         catch (error) {
-            console.log(error)
+            alert(error)
             res.status(400).json(res.body);
         }
     }
