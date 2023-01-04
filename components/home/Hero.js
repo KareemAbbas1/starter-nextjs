@@ -239,7 +239,7 @@ const Hero = ({ language }) => {
                 <span className="text-white">
                     {
                         language === "English"
-                            ? "It is a long established fact that a reader will be distracted by the."
+                            ? "It is a long established fact that a reader will be distracted by the"
                             : "اذا كنت من محبي السفر والاستكشاف وترغب في الاستمتاع بعطلة "
                     }
                     <br></br>
