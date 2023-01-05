@@ -1,6 +1,5 @@
 import { Nav } from './styles.js';
 import { useState, useEffect } from 'react';
-// import debounce from 'lodash/debounce';
 import EarthIcon from '../../public/earthIcon.png';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -25,18 +24,6 @@ const NavBar = ({ language, setLanguage, onLinkClick, open, setOpen, setLoading,
 
     // Handle path name
     const router = useRouter();
-
-    // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    // const [width, setWidth] = useState(0);
-    // useEffect(() => {
-    //     const handleResize = debounce(() => setWidth(window.innerWidth), 100)
-
-    //     window.addEventListener('resize', handleResize);
-
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     }
-    // }, [])
 
     // Handle Language
     const toggleLanguage = () => {

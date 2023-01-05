@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { CaretLeft, CaretRight, Whatsapp, TelephoneFill } from "react-bootstrap-icons";
 import Card from '../Card';
-// import debounce from 'lodash/debounce';
 
 
 
@@ -73,19 +72,6 @@ const Slide = styled.div`
 `
 
 const Slider = ({ trips, cars, language, setLoading, width }) => {
-
-    // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    // const [width, setWidth] = useState(0);
-    // useEffect(() => {
-    //     setWidth(window.innerWidth)
-    //     const handleResize = debounce(() => setWidth(window.innerWidth), 10)
-
-    //     window.addEventListener('resize', handleResize);
-
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     }
-    // }, [])
 
     const [slideIndex, setSlideIndex] = useState(0)
     const handleClick = (direction) => {
