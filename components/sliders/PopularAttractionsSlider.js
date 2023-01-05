@@ -142,7 +142,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
             setActivityPrice(res.data.price);
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
     }
 
@@ -187,7 +187,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
             }, 500)
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
     };
 
@@ -204,7 +204,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
             closeModal(null);
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
     };
 

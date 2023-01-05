@@ -260,7 +260,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
         setAllOrders(res.data.reverse());
       }
       catch (error) {
-        typeof window !=="undefined" && alert(error);
+        typeof window !=="undefined" && console.log(error);
       }
     };
     if (currentCampId) {
@@ -285,7 +285,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
       document.getElementById(notificaitonsSpan).style.display = "none";
     }
     catch (error) {
-      typeof window !=="undefined" && alert(error);
+      typeof window !=="undefined" && console.log(error);
     }
   };
 
@@ -320,7 +320,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
       }, 2000);
     }
     catch (error) {
-      typeof window !=="undefined" && alert(error);
+      typeof window !=="undefined" && console.log(error);
     }
   };
 
@@ -357,7 +357,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
 
     }
     catch (error) {
-      typeof window !=="undefined" && alert(error);
+      typeof window !=="undefined" && console.log(error);
     }
   };
 

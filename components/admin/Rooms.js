@@ -466,7 +466,7 @@ const Rooms = ({ camps }) => {
         setRooms(res.data)
       }
       catch (error) {
-        typeof window !== "undefined" && alert(error);
+        typeof window !== "undefined" && console.log(error);
       }
     }
     fetchRooms();
@@ -542,7 +542,7 @@ const Rooms = ({ camps }) => {
       document.getElementById("create-room-form").reset();
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
   }
   /* End Create New Room */
@@ -576,7 +576,7 @@ const Rooms = ({ camps }) => {
       }, 1000)
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
   }
 
@@ -626,7 +626,7 @@ const Rooms = ({ camps }) => {
       document.getElementById(fromId).reset();
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
   };
 
@@ -674,7 +674,7 @@ const Rooms = ({ camps }) => {
   //     setSingleRoom(res.data);
   //   }
   //   catch (error) {
-  //     typeof window !== "undefined" && alert(error)
+  //     typeof window !== "undefined" console.log(error)
   //   }
   // };
 
@@ -692,7 +692,7 @@ const Rooms = ({ camps }) => {
   //     reFetchSingleRoom(reFetchSingleRoomCampId);
   //   }
   //   catch (error) {
-  //     typeof window !== "undefined" && alert(error);
+  //     typeof window !== "undefined" && console.log(error);
   //   }
   // }
 
@@ -708,7 +708,7 @@ const Rooms = ({ camps }) => {
   //     setUnavailableDates([]);
   //   }
   //   catch (error) {
-  //     typeof window !== "undefined" && alert(error);
+  //     typeof window !== "undefined" && console.log(error);
   //   }
   // };
 
@@ -739,7 +739,7 @@ const Rooms = ({ camps }) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
   }
   /* End Delete Room */

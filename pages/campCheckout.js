@@ -325,7 +325,7 @@ const CampCheckout = ({ language, setLoading }) => {
         }
       }
       catch (error) {
-        typeof window !== "undefined" && alert(error);
+        typeof window !== "undefined" && console.log(error);
       }
     }
   }
@@ -340,7 +340,7 @@ const CampCheckout = ({ language, setLoading }) => {
       });
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
 
     setTimeout(() => {

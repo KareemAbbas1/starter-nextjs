@@ -180,7 +180,7 @@ typeof window !== "undefined" &&             alert(error.response ? error.respon
             setLoading(false);
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
     }
     return (

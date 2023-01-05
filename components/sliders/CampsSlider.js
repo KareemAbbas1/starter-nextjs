@@ -97,7 +97,7 @@ const Slider = ({ camps, language, setLoading }) => {
             setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 0);
         }
         else if (direction === 'right') {
-            setSlideIndex(slideIndex + 2 <= camps.length ? slideIndex + 1 : 0);
+            setSlideIndex(camps && slideIndex + 2 <= camps.length ? slideIndex + 1 : 0);
         }
     }
 
@@ -133,12 +133,12 @@ const Slider = ({ camps, language, setLoading }) => {
                 >
                     <Slide>
                         {
-                            width > 600 
+                            camps && width > 600 
                             ? camps.map(camp => (
                                 <CampCard key={camp._id} camp={camp} language={language} setLoading={setLoading}/>
                             ))
 
-                                : width <= 600 
+                                : camps && width <= 600 
                                 ? camps.map(camp => (
                                     <Card key={camp._id} camp={camp} language={language} setLoading={setLoading}/>
                                 ))
@@ -152,7 +152,7 @@ const Slider = ({ camps, language, setLoading }) => {
 
             {
 
-                slideIndex + 1 < camps.length
+                camps && slideIndex + 1 < camps.length
                 &&
                 <Arrow
                     id='right-arrow'

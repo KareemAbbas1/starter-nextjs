@@ -361,16 +361,19 @@ const Cars = ({ language, width }) => {
     // Fetch all cars
     const [cars, setCars] = useState();
     useEffect(() => {
-        const fetchCars = async () => {
-            try {
-                const res = await axios.get(`/api/cars`);
-                setCars(res.data)
+        setTimeout(() => {
+
+            const fetchCars = async () => {
+                try {
+                    const res = await axios.get(`/api/cars`);
+                    setCars(res.data)
+                }
+                catch (error) {
+                    typeof window !== "undefined" && console.log(error);
+                }
             }
-            catch (error) {
-                typeof window !== "undefined" && alert(error);
-            }
-        }
-        fetchCars();
+            fetchCars();
+        }, 2000);
     }, [isCreated])
 
 
@@ -417,7 +420,7 @@ const Cars = ({ language, width }) => {
 
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
     }
 
@@ -523,7 +526,7 @@ const Cars = ({ language, width }) => {
                 </h1>
             }
             <div className='h-line' />
-            
+
             <CarsSlider cars={cars} language={language} isCreated={isCreated} setIsCreated={setIsCreated} width={width} />
         </Container>
     )

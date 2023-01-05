@@ -349,7 +349,7 @@ const Users = ({ role, loggedInUser }) => {
           setUsers(res.data);
         }
         catch (error) {
-          typeof window !== "undefined" && alert(error);
+          typeof window !== "undefined" && console.log(error);
         }
       }
     }
@@ -404,7 +404,7 @@ const Users = ({ role, loggedInUser }) => {
         setIsCreated(!isCreated);
       }
       catch (error) {
-        typeof window !== "undefined" && alert(error);
+        typeof window !== "undefined" && console.log(error);
       }
     }
   };
@@ -430,7 +430,7 @@ const Users = ({ role, loggedInUser }) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
   }
   /* End Handle Delete user */
@@ -472,7 +472,7 @@ const Users = ({ role, loggedInUser }) => {
       }, 500)
     }
     catch (error) {
-      typeof window !== "undefined" && alert(error);
+      typeof window !== "undefined" && console.log(error);
     }
   }
 
@@ -520,7 +520,7 @@ const Users = ({ role, loggedInUser }) => {
         typeof window !== "undefined" && alert("تم تغيير كلمة المرور بنجاح");
       }
       catch (error) {
-        typeof window !== "undefined" && alert(error);
+        typeof window !== "undefined" && console.log(error);
       }
     }
 

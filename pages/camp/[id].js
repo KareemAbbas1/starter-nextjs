@@ -282,7 +282,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
 
     // Handle Errors
     if (error) {
-        typeof window !== "undefined" && alert(error);
+        typeof window !== "undefined" && console.log(error);
     }
 
 

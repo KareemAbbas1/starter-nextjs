@@ -103,7 +103,7 @@ const Profile = ({ user }) => {
         alert("تم تغيير كلمة المرور بنجاح");
       }
       catch (error) {
-        typeof window !== "undefined" && alert(error);
+        typeof window !== "undefined" && console.log(error);
       }
     }
 

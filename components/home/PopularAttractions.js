@@ -556,16 +556,19 @@ const PopularAttractions = ({ language, width }) => {
     const [activities, setActivities] = useState();
 
     useEffect(() => {
-        const fetchActivities = async () => {
-            try {
-                const res = await axios.get(`/api/activities`);
-                setActivities(res.data)
+        setTimeout(() => {
+
+            const fetchActivities = async () => {
+                try {
+                    const res = await axios.get(`/api/activities`);
+                    setActivities(res.data)
+                }
+                catch (error) {
+                    typeof window !== "undefined" && console.log(error);
+                }
             }
-            catch (error) {
-                typeof window !== "undefined" && alert(error);
-            }
-        }
-        fetchActivities();
+            fetchActivities();
+        }, 2000);
     }, [isCreated])
 
     // Handle add activity
@@ -615,7 +618,7 @@ const PopularAttractions = ({ language, width }) => {
             }, 1500)
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
     };
 

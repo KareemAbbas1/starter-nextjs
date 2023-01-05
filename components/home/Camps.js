@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import CampsSlider from "../sliders/CampsSlider";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 
@@ -64,7 +66,31 @@ const Line = styled.div`
         margin-bottom: 0rem;
     }
 `
-const Camps = ({ language, camps, setLoading, width }) => {
+const Camps = ({
+    language,
+    // camps,
+    setLoading,
+    width
+}) => {
+
+    // Fetch all Camps
+    const [camps, setCamps] = useState();
+    useEffect(() => {
+        setTimeout(() => {
+
+            const fetchCamps = async () => {
+                try {
+                    const allCamps = await axios.get(`/api/camps`);
+                    setCamps(allCamps.data);
+                }
+                catch (error) {
+                    typeof window !== "undefined" && console.log(error);
+                }
+            }
+            fetchCamps();
+        }, 2000);
+    }, []);
+
     return (
         <Container id='camps-section'>
             {
@@ -76,7 +102,7 @@ const Camps = ({ language, camps, setLoading, width }) => {
 
             {
                 typeof window !== "undefined" && window.scrollY > 70 &&
-                <CampsSlider camps={camps} language={language} setLoading={setLoading}/>
+                <CampsSlider camps={camps} language={language} setLoading={setLoading} />
             }
         </Container>
     )

@@ -35,11 +35,11 @@ import axios from "axios";
 export const getServerSideProps = async () => {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/trips`);
-    const res2 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
+    // const res2 = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/camps`);
     return {
       props: {
         trips: res.data,
-        camps: res2.data
+        // camps: res2.data
       }
     };
   }
@@ -53,7 +53,7 @@ export const getServerSideProps = async () => {
 
 export default function Home({
   trips,
-  camps,
+  // camps,
   language,
   onLinkClick,
   showSideButtons, /* This is used to dynamically render each section based on the Y axis scroll */
@@ -97,7 +97,7 @@ export default function Home({
       }
 
       <Camps
-        camps={camps}
+        // camps={camps}
         language={language}
         setLoading={setLoading}
       />

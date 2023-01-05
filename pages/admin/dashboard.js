@@ -33,7 +33,7 @@ export const getServerSideProps = async (req) => {
             decode = verify(token, process.env.NEXT_PUBLIC_JWT_SECRET)
         }
         catch (error) {
-            typeof window !== "undefined" && alert(error);
+            typeof window !== "undefined" && console.log(error);
         }
 
         role = decode && decode.role;
@@ -74,7 +74,7 @@ export const getServerSideProps = async (req) => {
         };
     }
     catch (error) {
-        typeof window !== "undefined" && alert(error)
+        typeof window !== "undefined" && console.log(error)
         return {
             notFound: true,
         }
