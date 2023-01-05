@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import dynamic from 'next/dynamic';
-const PopularAttractionsSlider = dynamic(() => import('../sliders/PopularAttractionsSlider'), {
-    loading: () => 'Loading...'
-});
+import PopularAttractionsSlider from '../sliders/PopularAttractionsSlider';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -559,19 +556,16 @@ const PopularAttractions = ({ language, width }) => {
     const [activities, setActivities] = useState();
 
     useEffect(() => {
-        setTimeout(() => {
-
-            const fetchActivities = async () => {
-                try {
-                    const res = await axios.get(`/api/activities`);
-                    setActivities(res.data)
-                }
-                catch (error) {
-                    typeof window !== "undefined" && console.log(error);
-                }
+        const fetchActivities = async () => {
+            try {
+                const res = await axios.get(`/api/activities`);
+                setActivities(res.data)
             }
-            fetchActivities();
-        }, 2000);
+            catch (error) {
+                typeof window !== "undefined" && console.log(error);
+            }
+        }
+        fetchActivities();
     }, [isCreated])
 
     // Handle add activity

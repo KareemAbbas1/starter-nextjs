@@ -394,18 +394,17 @@ const Gallery = ({ language }) => {
     const [addNew, setAddNew] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            const fetchImages = async () => {
-                try {
-                    const res = await axios.get(`/api/images`)
-                    setAllImages(res.data)
-                }
-                catch (error) {
-                    typeof window !== "undefined" && alert(error);
-                }
+        const fetchImages = async () => {
+            try {
+                const res = await axios.get(`/api/images`)
+                setAllImages(res.data)
             }
-            fetchImages();
-        }, 2000);
+            catch (error) {
+                typeof window !== "undefined" && alert(error);
+            }
+        }
+        fetchImages();
+
     }, [addNew]);
 
 
@@ -414,9 +413,9 @@ const Gallery = ({ language }) => {
     const [user, setUser] = useState();
     const [files, setFiles] = useState();
     const [loading, setLoading] = useState(false);
-
-
-
+    
+    
+    
     useEffect(() => {
         if (typeof window !== "undefined") {
             const loggedInUser = JSON.parse(localStorage.getItem("user"));

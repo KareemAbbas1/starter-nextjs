@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import dynamic from 'next/dynamic';
-const CarsSlider = dynamic(() => import('../sliders/CarsSlider'), {
-    loading: () => 'Loading...'
-});
+import CarsSlider from '../sliders/CarsSlider';
 import axios from 'axios';
 
 
@@ -364,19 +361,16 @@ const Cars = ({ language, width }) => {
     // Fetch all cars
     const [cars, setCars] = useState();
     useEffect(() => {
-        setTimeout(() => {
-
-            const fetchCars = async () => {
-                try {
-                    const res = await axios.get(`/api/cars`);
-                    setCars(res.data)
-                }
-                catch (error) {
-                    typeof window !== "undefined" && console.log(error);
-                }
+        const fetchCars = async () => {
+            try {
+                const res = await axios.get(`/api/cars`);
+                setCars(res.data)
             }
-            fetchCars();
-        }, 2000);
+            catch (error) {
+                typeof window !== "undefined" && console.log(error);
+            }
+        }
+        fetchCars();
     }, [isCreated])
 
 
@@ -529,7 +523,7 @@ const Cars = ({ language, width }) => {
                 </h1>
             }
             <div className='h-line' />
-
+            
             <CarsSlider cars={cars} language={language} isCreated={isCreated} setIsCreated={setIsCreated} width={width} />
         </Container>
     )

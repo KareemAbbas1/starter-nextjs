@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import dynamic from "next/dynamic";
-const CampsSlider = dynamic(() => import('../sliders/CampsSlider'), {
-    loading: () => 'Loading...'
-});
-import { useState, useEffect } from "react";
-import axios from "axios";
+import CampsSlider from "../sliders/CampsSlider";
 
 
 
@@ -69,30 +64,7 @@ const Line = styled.div`
         margin-bottom: 0rem;
     }
 `
-const Camps = ({
-    language,
-    setLoading,
-    width
-}) => {
-
-    // Fetch all Camps
-    const [camps, setCamps] = useState();
-    useEffect(() => {
-        setTimeout(() => {
-
-            const fetchCamps = async () => {
-                try {
-                    const allCamps = await axios.get(`/api/camps`);
-                    setCamps(allCamps.data);
-                }
-                catch (error) {
-                    typeof window !== "undefined" && console.log(error);
-                }
-            }
-            fetchCamps();
-        }, 2000);
-    }, []);
-
+const Camps = ({ language, camps, setLoading, width }) => {
     return (
         <Container id='camps-section'>
             {
@@ -104,7 +76,7 @@ const Camps = ({
 
             {
                 typeof window !== "undefined" && window.scrollY > 70 &&
-                <CampsSlider camps={camps} language={language} setLoading={setLoading} />
+                <CampsSlider camps={camps} language={language} setLoading={setLoading}/>
             }
         </Container>
     )
