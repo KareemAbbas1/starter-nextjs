@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Check2 } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
-import debounce from "lodash/lodash";
+import debounce from "lodash/debounce";
 import Link from 'next/link';
 import Image from 'next/image';
 

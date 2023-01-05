@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { CaretLeft, CaretRight, TelephoneFill } from "react-bootstrap-icons";
 import { CarCard } from "../home/Cars";
-import debounce from 'lodash/debounce';
+// import debounce from 'lodash/debounce';
 import Image from "next/image";
 import axios from "axios";
 
