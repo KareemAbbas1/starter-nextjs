@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import PopularAttractionsSlider from '../sliders/PopularAttractionsSlider';
+import dynamic from 'next/dynamic';
+const PopularAttractionsSlider = dynamic(() => import('../sliders/PopularAttractionsSlider'), {
+    loading: () => 'Loading...'
+});
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 

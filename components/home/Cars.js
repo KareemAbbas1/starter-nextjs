@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import CarsSlider from '../sliders/CarsSlider';
+import dynamic from 'next/dynamic';
+const CarsSlider = dynamic(() => import('../sliders/CarsSlider'), {
+    loading: () => 'Loading...'
+});
 import axios from 'axios';
 
 
@@ -523,7 +526,7 @@ const Cars = ({ language, width }) => {
                 </h1>
             }
             <div className='h-line' />
-            
+
             <CarsSlider cars={cars} language={language} isCreated={isCreated} setIsCreated={setIsCreated} width={width} />
         </Container>
     )

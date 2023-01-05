@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import CampsSlider from "../sliders/CampsSlider";
+import dynamic from 'next/dynamic';
+const CampsSlider = dynamic(() => import('../sliders/CampsSlider'), {
+    loading: () => 'Loading...'
+});
 
 
 
@@ -76,7 +79,7 @@ const Camps = ({ language, camps, setLoading }) => {
 
             {
                 typeof window !== "undefined" && window.scrollY > 70 &&
-                <CampsSlider camps={camps} language={language} setLoading={setLoading}/>
+                <CampsSlider camps={camps} language={language} setLoading={setLoading} />
             }
         </Container>
     )

@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import TripsSlider from "../sliders/TripsSlider";
-
-
+import dynamic from 'next/dynamic';
+const TripsSlider = dynamic(() => import('../sliders/TripsSlider'), {
+    loading: () => 'Loading...'
+  });
 
 
 const Container = styled.div`
