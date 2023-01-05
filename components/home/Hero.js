@@ -226,7 +226,7 @@ const Hero = ({ language }) => {
                 width={1920}
                 height={1200}
                 layout="intrinsic"
-                src="https://res.cloudinary.com/dqmqc0uaa/image/upload/c_scale,h_1200,w_1920/v1672458034/uploads/nqavh7hcobbwb9sserer.png" alt="Image for mount Sinai"
+                src="https://res.cloudinary.com/dqmqc0uaa/image/upload/c_scale,h_1200,q_100,w_1920/v1665735903/uploads/s92wr8vvucapeggy5ipb.webp" alt="Image for mount Sinai"
             />
             <Container language={language}>
                 <span className="head-line"> {language === "English" ? "Your Favorite Agency for" : "الاختيار الافضل للسياحة داخل مصر"}
