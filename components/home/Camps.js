@@ -68,7 +68,6 @@ const Line = styled.div`
 `
 const Camps = ({
     language,
-    // camps,
     setLoading,
     width
 }) => {
