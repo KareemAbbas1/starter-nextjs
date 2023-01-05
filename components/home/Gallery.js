@@ -400,7 +400,7 @@ const Gallery = ({ language }) => {
                 setAllImages(res.data)
             }
             catch (error) {
-                alert(error);
+                typeof window !== "undefined" && alert(error);
             }
         }
         fetchImages();
@@ -459,7 +459,7 @@ const Gallery = ({ language }) => {
             setAddNew(!addNew);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 
@@ -492,7 +492,7 @@ const Gallery = ({ language }) => {
             setAddNew(!addNew);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 

@@ -129,7 +129,7 @@ const Index = ({ language, setLoading }) => {
             setLoading(false);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
     /* End Submit order */

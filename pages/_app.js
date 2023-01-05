@@ -18,13 +18,14 @@ function MyApp({ Component, pageProps }) {
   // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
   const [width, setWidth] = useState(0);
   useEffect(() => {
-      const handleResize = debounce(() => setWidth(window.innerWidth), 100)
+    setWidth(window.innerWidth)
+    const handleResize = debounce(() => setWidth(window.innerWidth), 10)
 
-      window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
-      return () => {
-          window.removeEventListener('resize', handleResize);
-      }
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   // Handle Show Side Buttons

@@ -34,7 +34,7 @@ async function handler(req, res) {
             res.status(200).json(res.body);
         }
         catch (error) {
-            alert(error)
+            typeof window !== "undefined" && alert(error);
             res.status(400).json(res.body);
         }
     }

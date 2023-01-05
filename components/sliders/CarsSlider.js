@@ -142,7 +142,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
             setCarPrice(res.data.price);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 
@@ -186,7 +186,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
             }, 500)
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 
@@ -203,7 +203,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
             closeModal(null);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 

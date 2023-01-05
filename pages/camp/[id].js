@@ -6,8 +6,8 @@ import BreakfastIcon from "../../public/breakfast.png";
 import ParkingIcon from "../../public/parking-sign.png";
 import Image from 'next/image';
 import axios from "axios";
-import moment from "moment";
-import twix from "twix";
+// import moment from "moment";
+// import twix from "twix";
 import { useRouter } from 'next/router';
 import LoadingBar from "../../components/LoadingBar";
 
@@ -126,15 +126,26 @@ const Camp = ({ language, camp, loading, setLoading }) => {
             const dinner = document.getElementById("dinner");
 
             // Handle date range array
-            var itr = moment.twix(new Date(checkInDate), new Date(checkOut)).iterate("days");
-            var range = [];
+            // var itr = moment.twix(new Date(checkInDate), new Date(checkOut)).iterate("days");
+            // var range = [];
 
-            while (itr.hasNext()) {
-                range.push(itr.next().format("DD/MM/YYYY"))
-            }
-            // setcheckoutDate(range.shift());
-            setcheckoutDate(range.pop());
-            setDateRange(range)
+            // while (itr.hasNext()) {
+            //     range.push(itr.next().format("DD/MM/YYYY"))
+            // }
+            // setcheckoutDate(range.pop());
+            // setDateRange(range);
+            // console.log(range)
+
+            var getDaysArray = function (start, end) {
+                for (var arr = [], dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
+                    arr.push(new Date(dt).toISOString().split("T")[0]);
+                }
+                return arr;
+            };
+            var daylist = getDaysArray(new Date(checkInDate), new Date(checkOut)).map((date) => `${date.split("-")[2]}/${date.split("-")[1]}/${date.split("-")[0]}`);
+            setcheckoutDate(daylist.pop());
+            setDateRange(daylist);
+            // console.log(daylist);
 
 
             // Fetch Camp rooms
@@ -271,7 +282,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
 
     // Handle Errors
     if (error) {
-        alert(error)
+        typeof window !== "undefined" && alert(error);
     }
 
 

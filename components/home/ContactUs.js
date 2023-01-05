@@ -199,7 +199,7 @@ const ContactUs = ({ language, showSideButtons }) => {
             setLoading(false);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 

@@ -239,7 +239,7 @@ const TripsOrders = ({ currentTripId, language }) => {
         setTripOrders(res.data.reverse());
       }
       catch (error) {
-        alert(error);
+        typeof window !== "undefined" && alert(error);
       }
     }
     if (currentTripId) {
@@ -261,7 +261,7 @@ const TripsOrders = ({ currentTripId, language }) => {
       document.getElementById(notificaitonsSpan).style.display = "none";
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
 
@@ -292,7 +292,7 @@ const TripsOrders = ({ currentTripId, language }) => {
       }, 2000);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
 
@@ -306,7 +306,7 @@ const TripsOrders = ({ currentTripId, language }) => {
       setIsUpdated(!isUpdated);
     }
     catch(error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
 

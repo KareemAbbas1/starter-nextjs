@@ -674,7 +674,7 @@ const Camps = ({ language, newCampsordersList}) => {
         setCamps(allCamps.data);
       }
       catch (error) {
-        alert(error);
+        typeof window !== "undefined" && alert(error);
       }
     }
     fetchCamps();
@@ -830,7 +830,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   };
   /* End Create new camp */
@@ -857,7 +857,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setIsDeleted(!isDeleted);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
   /* End Delete Camp */
@@ -904,7 +904,7 @@ const Camps = ({ language, newCampsordersList}) => {
   //     }, 300)
   //   }
   //   catch (error) {
-  //     alert(error);
+  //     typeof window !== "undefined" && alert(error);
   //   }
   // };
 
@@ -952,7 +952,7 @@ const Camps = ({ language, newCampsordersList}) => {
       }, 500)
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
 
@@ -996,7 +996,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
 
@@ -1074,7 +1074,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setCampRooms(res.data);
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   };
 
@@ -1092,7 +1092,7 @@ const Camps = ({ language, newCampsordersList}) => {
       reFetchRooms(reFetchRoomsCampId);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   }
 
@@ -1108,7 +1108,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setUnavailableDates([]);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   };
 
@@ -1161,7 +1161,7 @@ const Camps = ({ language, newCampsordersList}) => {
       }, 500)
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   };
 
@@ -1275,7 +1275,7 @@ const Camps = ({ language, newCampsordersList}) => {
       document.getElementById(imageInputId).value = "New image uploaded";
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   }
 
@@ -1329,7 +1329,7 @@ const Camps = ({ language, newCampsordersList}) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   };
 

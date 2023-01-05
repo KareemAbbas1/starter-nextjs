@@ -482,7 +482,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         setTrips(allTrips.data);
       }
       catch (error) {
-        alert(error);
+        typeof window !== "undefined" && alert(error);
       }
     }
     fetchTrips();
@@ -662,7 +662,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       setOptionThreePrice(0);
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   }
 
@@ -690,7 +690,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       setIsDeleted(!isDeleted);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   }
   /* End Delete Trip */
@@ -789,7 +789,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       }, 500);
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   };
 
@@ -881,7 +881,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       document.getElementById(imageInputId).value = "New image uploaded";
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   }
 
@@ -964,7 +964,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
       alert("تم تعديل الرحلة بنجاح")
     }
     catch (error) {
-      alert(error)
+      typeof window !== "undefined" && alert(error)
     }
   }
 
@@ -999,7 +999,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         }, 3000);
       }
       catch (error) {
-        alert(error)
+        typeof window !== "undefined" && alert(error)
       }
 
     }
@@ -1019,7 +1019,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         }, 3000);
       }
       catch (error) {
-        alert(error)
+        typeof window !== "undefined" && alert(error)
       }
     }
     else if (endDate !== "") {
@@ -1038,7 +1038,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
         }, 3000);
       }
       catch (error) {
-        alert(error)
+        typeof window !== "undefined" && alert(error)
       }
     }
 

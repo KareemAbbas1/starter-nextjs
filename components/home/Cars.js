@@ -367,7 +367,7 @@ const Cars = ({ language, width }) => {
                 setCars(res.data)
             }
             catch (error) {
-                alert(error);
+                typeof window !== "undefined" && alert(error);
             }
         }
         fetchCars();
@@ -417,7 +417,7 @@ const Cars = ({ language, width }) => {
 
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     }
 

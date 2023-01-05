@@ -349,7 +349,7 @@ const Users = ({ role, loggedInUser }) => {
           setUsers(res.data);
         }
         catch (error) {
-          alert(error);
+          typeof window !== "undefined" && alert(error);
         }
       }
     }
@@ -404,7 +404,7 @@ const Users = ({ role, loggedInUser }) => {
         setIsCreated(!isCreated);
       }
       catch (error) {
-        alert(error);
+        typeof window !== "undefined" && alert(error);
       }
     }
   };
@@ -430,7 +430,7 @@ const Users = ({ role, loggedInUser }) => {
       setIsCreated(!isCreated);
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   }
   /* End Handle Delete user */
@@ -472,7 +472,7 @@ const Users = ({ role, loggedInUser }) => {
       }, 500)
     }
     catch (error) {
-      alert(error);
+      typeof window !== "undefined" && alert(error);
     }
   }
 
@@ -517,10 +517,10 @@ const Users = ({ role, loggedInUser }) => {
         await axios.patch(`/api/users/${userId}`, {
           password: confirmNewPassword
         });
-        alert("تم تغيير كلمة المرور بنجاح");
+        typeof window !== "undefined" && alert("تم تغيير كلمة المرور بنجاح");
       }
       catch (error) {
-        alert(error);
+        typeof window !== "undefined" && alert(error);
       }
     }
 

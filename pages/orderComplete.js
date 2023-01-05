@@ -99,7 +99,7 @@ const OrderComplete = ({ language, setLoading }) => {
                     localStorage.removeItem("campId");
                 }
                 catch (error) {
-                    alert(error.response ? error.response.data.message : error);
+typeof window !== "undefined" &&                     alert(error.response ? error.response.data.message : error);
                 }
             }
         }
@@ -154,7 +154,7 @@ const OrderComplete = ({ language, setLoading }) => {
             router.push("/");
         }
         catch (error) {
-            alert(error.response ? error.response.data.message : error);
+typeof window !== "undefined" &&             alert(error.response ? error.response.data.message : error);
         }
     }
 
@@ -180,7 +180,7 @@ const OrderComplete = ({ language, setLoading }) => {
             setLoading(false);
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     }
     return (

@@ -73,7 +73,7 @@ const TripCheckout = ({ language, setLoading }) => {
             });
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
 
         setTimeout(() => {
@@ -196,7 +196,7 @@ const TripCheckout = ({ language, setLoading }) => {
                 }
             }
             catch (error) {
-                alert(error);
+                typeof window !== "undefined" && alert(error);
             }
         }
     };

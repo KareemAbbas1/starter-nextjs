@@ -562,7 +562,7 @@ const PopularAttractions = ({ language, width }) => {
                 setActivities(res.data)
             }
             catch (error) {
-                alert(error);
+                typeof window !== "undefined" && alert(error);
             }
         }
         fetchActivities();
@@ -615,7 +615,7 @@ const PopularAttractions = ({ language, width }) => {
             }, 1500)
         }
         catch (error) {
-            alert(error);
+            typeof window !== "undefined" && alert(error);
         }
     };
 
