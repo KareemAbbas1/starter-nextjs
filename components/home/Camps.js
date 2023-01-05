@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import CampsSlider from "../sliders/CampsSlider";
+import dynamic from "next/dynamic";
+const CampsSlider = dynamic(() => import('../sliders/CampsSlider'), {
+    loading: () => 'Loading...'
+});
 import { useState, useEffect } from "react";
 import axios from "axios";
 

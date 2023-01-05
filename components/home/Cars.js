@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import CarsSlider from '../sliders/CarsSlider';
+import dynamic from 'next/dynamic';
+const CarsSlider = dynamic(() => import('../sliders/CarsSlider'), {
+    loading: () => 'Loading...'
+});
 import axios from 'axios';
 
 
