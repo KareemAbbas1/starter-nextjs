@@ -404,7 +404,6 @@ const Gallery = ({ language }) => {
             }
         }
         fetchImages();
-
     }, [addNew]);
 
 
@@ -413,9 +412,9 @@ const Gallery = ({ language }) => {
     const [user, setUser] = useState();
     const [files, setFiles] = useState();
     const [loading, setLoading] = useState(false);
-    
-    
-    
+
+
+
     useEffect(() => {
         if (typeof window !== "undefined") {
             const loggedInUser = JSON.parse(localStorage.getItem("user"));
