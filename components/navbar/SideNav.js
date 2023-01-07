@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import Link from 'next/link'
+import Link from 'next/link';
 import { useRouter } from "next/router";
 
 const NavLinks = styled.ul`

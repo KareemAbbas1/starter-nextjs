@@ -1,6 +1,16 @@
-import React from 'react';
-import { Container } from '../../components/Terms&Conditions';
+// import React from 'react';
+import styled from "styled-components"
 
+
+const Container = styled.div`
+      max-width: 100vw;
+      min-height: 100vh;
+      padding-block: 6rem;
+      padding-inline: 12vw;
+      direction: ${({ language }) => language === "English" ? "ltr" : "rtl"};
+      font-size: ${({ language }) => language === "English" ? "1.1rem" : "1.3rem"};
+      line-height: 2.5rem;
+`
 
 
 const index = ({ language }) => {
@@ -37,9 +47,6 @@ const index = ({ language }) => {
                                     : "في حالة عدم رضاك عن أي جانب أ, خدمة من خدمات موقع بريك للسفر والرحلات أو لتسجيل الإستفسارات أو الإقتراحات يرجى التواصل على حساب breaktrips2022@gmail.com لإرسال أي شكوى أو استفسار يختص بمركز خدمة العملاء يرجى التواصل على الحساب breaktrips2022@gmail.com للإستفسار المباشر مع أحد ممثلي خدمة العملاء يمكنك التواصل على الأرقام 01068641033 ، 01062281881."
                         }
                   </p>
-
-
-
             </Container>
       )
 }
