@@ -183,7 +183,7 @@ const Container = styled.div`
       }
       @media(max-width: 600px) {
         width: 100%;
-        margin-top: 0rem;
+        margin-top: 3rem;
         text-align: center;
           h4 {
             font-size: 0.8rem;

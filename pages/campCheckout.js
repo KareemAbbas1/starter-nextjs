@@ -767,7 +767,7 @@ const CampCheckout = ({ language, setLoading }) => {
                         : "اوافق على "
                     }
                     <Link href='terms-and-conditions'>
-                      <a id="terms-cond" target="_blank">
+                      <a href="" id="terms-cond" target="_blank">
                         {
                           language === "English"
                             ? "Terms&Conditions"

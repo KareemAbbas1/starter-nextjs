@@ -374,7 +374,7 @@ const TripCheckout = ({ language, setLoading }) => {
                                         }
                                     </h1>
 
-                                    <p dir={language === "العربية" && 'rtl'}>
+                                    <p dir={language === "العربية" ? 'rtl' : "ltr"}>
                                         {
                                             language === "English"
                                                 ? `${adultsTicketsCount} ${adultsTicketsCount > 1 ? "adults" : "adults"} = `
@@ -385,7 +385,7 @@ const TripCheckout = ({ language, setLoading }) => {
                                     </p>
 
                                     {childrenTicketsCount > 0 &&
-                                        <p dir={language === "العربية" && "rtl"}>
+                                        <p dir={language === "العربية" ? "rtl" : "ltr"}>
                                             {
                                                 language === "English"
                                                     ? `${childrenTicketsCount} ${childrenTicketsCount > 1 ? "children" : "child"} = `
@@ -397,7 +397,7 @@ const TripCheckout = ({ language, setLoading }) => {
                                     }
 
                                     {submitionData && extraOptions.length > 0 &&
-                                        <p dir={language === "العربية" && "rtl"}>
+                                        <p dir={language === "العربية" ? "rtl" : "ltr"}>
                                             {
                                                 language === "English"
                                                     ? "Extra options = "
@@ -418,7 +418,7 @@ const TripCheckout = ({ language, setLoading }) => {
                                 </div>
 
                                 <div>
-                                    <h2 className="total-price" dir={language === "العربية" && "rtl"}>
+                                    <h2 className="total-price" dir={language === "العربية" ? "rtl" : "ltr"}>
                                         {
                                             language === "English" ? "EGP " : ""
                                         }

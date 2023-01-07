@@ -297,6 +297,14 @@ export const Container = styled.div`
             border: 1px solid #000;
             border-radius: 5px;
 
+            @media(max-width: 600px) {
+                width: 90%;
+                padding-inline: 1rem;
+            }
+            @media(min-width: 610px) and (max-width: 992px) {
+                width: 70%;
+            }
+
             span {
                 width: 1rem;
                 height: 1rem;

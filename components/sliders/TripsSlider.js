@@ -12,13 +12,6 @@ const Container = styled.div`
     justify-content: center;
     position: relative;
     overflow: hidden;
-
-    @media(max-width: 990px) {
-        overflow-x: scroll;
-    }
-    @media(max-width: 600px) {
-        /* width: 100%; */
-    }
 `
 
 const Arrow = styled.div`
