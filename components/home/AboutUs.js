@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import Logo from '../../public/circleLogo.png';
 
 const Container = styled.div`
     max-width: 100vw;
@@ -58,19 +57,25 @@ const AboutUs = ({ language }) => {
             <h1>
                 {
                     language === "English"
-                    ? "About us"
-                    : "عن الشركة"
+                        ? "About us"
+                        : "عن الشركة"
                 }
             </h1>
             <div className='image'>
-                <Image layout='responsive' src={Logo} alt="Company Logo" />
+                <Image
+                    layout='responsive'
+                    src="https://res.cloudinary.com/dqmqc0uaa/image/upload/v1673364533/uploads/circleLogo_db5ffc.png"
+                    width={100}
+                    height={100}
+                    alt="Company Logo"
+            />
             </div>
             <p>
-            {
-                language === "English"
-                ? "A travel and tourism company, its first goal is to create a new concept of travel, trips, and access to any place in the world with the easiest steps and the most comfortable and easy way. Break Travel and Tours seeks to provide the best services and offers using the latest technological methods. Break Travel and Tours seeks to develop its services, and creating a better quality of communication with its customers through its website, or by contacting the customer service center that operates around the clock (24/7), dedicated to facilitating the booking process with Break for travel and trips in addition to after-sales service."
-                : "شركة سياحة و سفر، هدفها الأول خلق مفهوم جديد للسفر و الرحلات و الوصول لأي مكان في العالم ، بأسهل الخطوات و أكثر الطرق راحة وسهولة ، كما تسعى شركة بريك للسفر والرحلات لتقديم أفضل الخدمات و العروض بإستخدام أحدث الأساليب التكنولوجية .تسعى شركة بريك للسفر والرحلات لتطوير خدماتها ، و خلق جودة أفضل للتواصل مع عملائها و ذلك من خلال موقعها الإلكتروني ، أو من خلال الإتصال بمركز خدمة العملاء الذي يعمل على مدار الساعة (24/7) ، المخصص لتسهيل عملية الحجز مع بريك للسفر والرحلات بالإضافة إلى خدمة ما بعد البيع ."
-            }
+                {
+                    language === "English"
+                        ? "A travel and tourism company, its first goal is to create a new concept of travel, trips, and access to any place in the world with the easiest steps and the most comfortable and easy way. Break Travel and Tours seeks to provide the best services and offers using the latest technological methods. Break Travel and Tours seeks to develop its services, and creating a better quality of communication with its customers through its website, or by contacting the customer service center that operates around the clock (24/7), dedicated to facilitating the booking process with Break for travel and trips in addition to after-sales service."
+                        : "شركة سياحة و سفر، هدفها الأول خلق مفهوم جديد للسفر و الرحلات و الوصول لأي مكان في العالم ، بأسهل الخطوات و أكثر الطرق راحة وسهولة ، كما تسعى شركة بريك للسفر والرحلات لتقديم أفضل الخدمات و العروض بإستخدام أحدث الأساليب التكنولوجية .تسعى شركة بريك للسفر والرحلات لتطوير خدماتها ، و خلق جودة أفضل للتواصل مع عملائها و ذلك من خلال موقعها الإلكتروني ، أو من خلال الإتصال بمركز خدمة العملاء الذي يعمل على مدار الساعة (24/7) ، المخصص لتسهيل عملية الحجز مع بريك للسفر والرحلات بالإضافة إلى خدمة ما بعد البيع ."
+                }
             </p>
         </Container>
     )
