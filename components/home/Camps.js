@@ -73,7 +73,7 @@ const Camps = ({ language, camps, setLoading }) => {
             {
                 language === "English"
                     ? <h1>Recommended Camps</h1>
-                    : <h1>افضل المخيمات للحجز</h1>
+                    : <h1>أفضل المخيمات للحجز</h1>
             }
             <Line />
 

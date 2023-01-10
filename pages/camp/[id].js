@@ -6,8 +6,6 @@ import BreakfastIcon from "../../public/breakfast.png";
 import ParkingIcon from "../../public/parking-sign.png";
 import Image from 'next/image';
 import axios from "axios";
-// import moment from "moment";
-// import twix from "twix";
 import { useRouter } from 'next/router';
 import LoadingBar from "../../components/LoadingBar";
 
@@ -30,7 +28,7 @@ export const getServerSideProps = async ({ params }) => {
     }
 };
 
-const Camp = ({ language, camp, loading, setLoading }) => {
+const Camp = ({ language, camp, loading, setLoading, width }) => {
 
     // Handel change route loading
     useEffect(() => {
@@ -125,16 +123,6 @@ const Camp = ({ language, camp, loading, setLoading }) => {
             const children = document.getElementById("children");
             const dinner = document.getElementById("dinner");
 
-            // Handle date range array
-            // var itr = moment.twix(new Date(checkInDate), new Date(checkOut)).iterate("days");
-            // var range = [];
-
-            // while (itr.hasNext()) {
-            //     range.push(itr.next().format("DD/MM/YYYY"))
-            // }
-            // setcheckoutDate(range.pop());
-            // setDateRange(range);
-            // console.log(range)
 
             var getDaysArray = function (start, end) {
                 for (var arr = [], dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
@@ -145,7 +133,6 @@ const Camp = ({ language, camp, loading, setLoading }) => {
             var daylist = getDaysArray(new Date(checkInDate), new Date(checkOut)).map((date) => `${date.split("-")[2]}/${date.split("-")[1]}/${date.split("-")[0]}`);
             setcheckoutDate(daylist.pop());
             setDateRange(daylist);
-            // console.log(daylist);
 
 
             // Fetch Camp rooms
@@ -202,8 +189,6 @@ const Camp = ({ language, camp, loading, setLoading }) => {
         )
         setChooseRoom(false);
     }
-    // console.log("selectedRooms", selectedRooms)
-    // console.log("dateRange:", dateRange)
 
 
     // Handle submit booking
@@ -229,7 +214,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                     // Update the DB with the new booked dates
                     await Promise.all(
                         roomsIds.map(roomId => {
-                            const res = axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
+                            const res = axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}&updateLocation=off`, {
                                 dates: dateRange
                             })
                         })
@@ -288,7 +273,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
 
 
     return (
-        <Container language={language}>
+        <Container language={language} width={width}>
             <div className='info-container'>
                 <div className='title'>
                     <h1>
@@ -396,6 +381,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                                     }
                                 </p>
                             </div>
+                            
                             {
                                 /* Map the Rist of Facilites after asigning the first 3 */
                                 language === "English"
@@ -406,7 +392,8 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                                             </p>
                                         </div>
                                     ))
-                                    : arabicFacilities.slice(3, arabicFacilities.length).map(facility => (
+                                    :
+                                    arabicFacilities.slice(3, arabicFacilities.length).map(facility => (
                                         <div key={facility}>
                                             <p>
                                                 {facility}
@@ -568,7 +555,6 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                                                     <div
                                                         key={roomNumber._id}
                                                         style={{
-                                                            // borderColor: `${!isAvailable(roomNumber) ? 'red' : '#ccc'}`,
                                                             opacity: `${!isAvailable(roomNumber) ? '0.5' : '1'}`,
                                                             cursor: `${!isAvailable(roomNumber) ? 'default' : 'pointer'}`
                                                         }}
@@ -580,6 +566,21 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                                                             }}
                                                         >
                                                             {roomNumber.roomNumber}
+                                                            <span
+                                                                className="toolpit"
+                                                                style={{
+                                                                    visibility: `${!isAvailable(roomNumber) ? 'hidden' : 'visible'}`
+                                                                }}
+
+                                                                dir={language === "English" ? "ltr" : "rtl"}
+                                                            >
+                                                                {
+                                                                    language === "English" && roomNumber.roomLocation
+                                                                        ? roomNumber.roomLocation[0]
+                                                                        : language === "العربية" && roomNumber.roomLocation
+                                                                        && roomNumber.roomLocation[1]
+                                                                }
+                                                            </span>
                                                         </label>
                                                         <input
                                                             className="room-checkbox"
@@ -661,7 +662,7 @@ const Camp = ({ language, camp, loading, setLoading }) => {
                     </div>
                     <div className="extra-facilities">
                         {
-                            language === "العربية" && <label htmlFor='dinner'>${camp && camp.extraFacilities[0].price} الغداء للفرد</label>
+                            language === "العربية" && <label htmlFor='dinner'>EGP {camp && camp.extraFacilities[0].price} الغداء للفرد</label>
                         }
                         <input type='checkbox' name='dinner' id='dinner' disabled />
                         {

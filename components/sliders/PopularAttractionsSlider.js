@@ -273,7 +273,6 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                     <Slide id='slide'>
                         {
                             activities && activities.map(activity => (
-                                // <>
                                 <ActivityCard key={activity._id} activity={activity} language={language}>
                                     <div className="activity-image">
                                         <Image
@@ -293,7 +292,7 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                                         <div className="contact-data">
                                             <div className="phone-number">
                                                 <TelephoneFill />
-                                                <p>+20-100-009-0335</p>
+                                                <p>+20-106-228-1881</p>
                                             </div>
                                             <button>or <Whatsapp color="#fff" size={25} /></button>
                                         </div>
@@ -307,9 +306,9 @@ const PopularAttractionsSlider = ({ activities, language, isCreated, setIsCreate
                                         }
                                     </h3>
                                     <p>
-                                        {language === "العربية" && "EGP"}
+                                        {language === "العربية" && " EGP "}
                                         {language === "English" ? "Starts from, " : "يبدأ من "}
-                                        {language === "English" && "EGP"}{activity.price}
+                                        {language === "English" && "EGP "}{activity.price}
 
                                     </p>
 

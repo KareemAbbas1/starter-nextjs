@@ -269,7 +269,9 @@ export const Container = styled.div`
                             flex-flow: row wrap;
                             gap: 0.5rem;
                             font-size: 0.8rem;
+
                             div{
+                                position: relative;
                                 width: 1.5rem;
                                 padding: 3px;
                                 display: flex;
@@ -278,11 +280,48 @@ export const Container = styled.div`
                                 border: 1px solid #ccc;
                                 border-radius: 5px;
                                 cursor: pointer;
+
+                                
                                 input {
                                     cursor: pointer;
+                                }
+                                
+                                span.toolpit {
+                                    display: none;
+                                    position: absolute;
+                                    background: rgba(0, 0, 0, 0.8);
+                                    color: #fff;
+                                    z-index: 100;
+                                    border: 1px solid #ccc;
+                                    min-width: 10rem;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
+                                    left: ${({ width, language }) => 
+                                    width > 1370 && language === "English" 
+                                    ? '100%'
+                                    : width > 1370 && language === "العربية" && '-10.7rem'
+                                    };
+                                    right: ${({ width, language }) =>
+                                        width <= 1370 && language === "English"
+                                            ? '100%'
+                                            : width <= 1370 && language === "العربية" && "-11rem"
+                                    };
+                                    padding: 0.2rem 0.3rem;
+                                    border-radius: 5px;
+                                    align-items: center;
+                                }
 
-                                    &:disabled {
-                                        /* opacity: 0.2; */
+                                &:hover,
+                                &:focus {
+                                    span.toolpit {
+                                        display: inline-flex;
+                                    }
+                                }
+
+                                &:disabled {
+                                    span.toolpit {
+                                        display: none;
                                     }
                                 }
                             }

@@ -89,7 +89,7 @@ const OrderComplete = ({ language, setLoading }) => {
                 try {
                     Promise.all(
                         roomsIds.map(roomId => {
-                            const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+                            const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=off`, {
                                 dates: dateRange
                             })
                         })
@@ -143,7 +143,7 @@ typeof window !== "undefined" &&                     alert(error.response ? erro
         try {
             await Promise.all(
                 roomsIds.map(roomId => {
-                    const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+                    const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=off`, {
                         dates: dateRange
                     })
                 })

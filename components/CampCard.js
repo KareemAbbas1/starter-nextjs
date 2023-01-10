@@ -206,7 +206,6 @@ const Card = styled.div`
                             justify-content: center;
                             align-items: center;
                             transition: all 300ms ease;
-                            
                         }
     
                         p.option-text {
@@ -378,29 +377,29 @@ const Card = styled.div`
         @media(min-width: 1366px) {
             bottom: 15px;
             left: ${({ language, width }) =>
-                language === "English" && width > 990 ? "27%"
-                    : language === "العربية" && width > 990 ? "44%"
-                        : ''
-            };
+        language === "English" && width > 990 ? "27%"
+            : language === "العربية" && width > 990 ? "44%"
+                : ''
+    };
         }
 
         // 19 inch
         @media(min-width: 1440px) {
             left: ${({ language, width }) =>
-                language === "English" && width > 990 ? "30.5%"
-                    : language === "العربية" && width > 990 ? "40%"
-                        : ''
-            };
+        language === "English" && width > 990 ? "30.5%"
+            : language === "العربية" && width > 990 ? "40%"
+                : ''
+    };
         }
 
         // 22 inch
         @media(min-width: 1680px) {
             bottom: 17px;
             left: ${({ language, width }) =>
-                language === "English" && width > 990 ? "30.5%"
-                    : language === "العربية" && width > 990 ? "40%"
-                        : ''
-            };
+        language === "English" && width > 990 ? "30.5%"
+            : language === "العربية" && width > 990 ? "40%"
+                : ''
+    };
         }
 
         // 23 inch
@@ -408,10 +407,10 @@ const Card = styled.div`
             width: 26%;
             bottom: 16px;
             left: ${({ language, width }) =>
-                language === "English" && width > 990 ? "30.5%"
-                    : language === "العربية" && width > 990 ? "43%"
-                        : ''
-            };
+        language === "English" && width > 990 ? "30.5%"
+            : language === "العربية" && width > 990 ? "43%"
+                : ''
+    };
         }
 
 
@@ -536,8 +535,8 @@ const CampCard = ({ camp, language, setLoading }) => {
 
                             : language === "العربية" && width > 990
                                 ? <h1>
-                                    المخيمات لدينا توفرعلى<br />
-                                    جودة للإقامة باسعار مناسبة<br />
+                                    المخيمات لدينا توفر أعلى<br />
+                                    جودة للإقامة بأسعار مناسبة<br />
                                     .وخدمة رائعة
                                 </h1>
                                 : null
@@ -563,46 +562,32 @@ const CampCard = ({ camp, language, setLoading }) => {
 
 
                             <div className='options'>
-                                <div className='option'>
-                                    <div className='circle'><Check2 size={30} color="#a9a9a9" /></div>
-                                    <p className='option-text'>
-                                        {
-                                            language === "English"
-                                                ? `${camp.facilities.english[0]}`
-                                                : `${camp.facilities.arabic[0]}`
-                                        }
-                                    </p>
-                                </div>
-                                <div className='option'>
-                                    <div className='circle'><Check2 size={30} color="#a9a9a9" /></div>
-                                    <p className='option-text'>
-                                        {
-                                            language === "English"
-                                                ? `${camp.facilities.english[1]}`
-                                                : `${camp.facilities.arabic[1]}`
-                                        }
-                                    </p>
-                                </div>
-                                <div className='option'>
-                                    <div className='circle'><Check2 size={30} color="#a9a9a9" /></div>
-                                    <p className='option-text'>
-                                        {
-                                            language === "English"
-                                                ? `${camp.facilities.english[2]}`
-                                                : `${camp.facilities.arabic[2]}`
-                                        }
-                                    </p>
-                                </div>
-                                <div className='option'>
-                                    <div className='circle'><Check2 size={30} color="#a9a9a9" /></div>
-                                    <p className='option-text'>
-                                        {
-                                            language === "English"
-                                                ? `${camp.facilities.english[3]}`
-                                                : `${camp.facilities.arabic[3]}`
-                                        }
-                                    </p>
-                                </div>
+                                {camp && camp.facilities.english.map(option => (
+                                    <div className='option' key={`${camp.name[0]}${option}`}>
+                                        <div className='circle'><Check2 size={30} /></div>
+                                        <p className='option-text'>
+                                            {
+                                                language === "English"
+                                                    ? `${option}`
+                                                    : `${camp.facilities.arabic[camp.facilities.english.indexOf(option)]}`
+                                            }
+                                        </p>
+                                    </div>
+                                ))
+                                }
+                                {
+                                    camp && camp.facilities.english.length < 4 &&
+                                    <div className='option'>
+                                        <div className='circle'><Check2 size={30} /></div>
+                                        <p className='option-text'>
+                                            {
+                                                language === "English"
+                                                    ? "Snorkeling and Fishing"
+                                                    : "سنوركلينج و صيد الاسماك"
+                                            }
+                                        </p>
+                                    </div>
+                                }
                             </div>
 
 

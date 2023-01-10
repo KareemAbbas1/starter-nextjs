@@ -254,8 +254,8 @@ const ContactUs = ({ language, showSideButtons }) => {
                                 <p>
                                     {
                                         language === "English"
-                                            ? "Nunc sed id semper risus in hendrerit. Amet mattis vulputate enim nulla aliquet porttitor. Nunc id cursus metus aliquam eleifend. Elit eget gravida cum sociis natoque penatibus et magnis."
-                                            : "و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟ "
+                                            ? "The customer service department is available to you throughout the day at any time to answer all inquiries. If you are within an organization or an entity, a trip will be carried out entirely for you."
+                                            : "قسم خدمه العملاء متاح لك علي مدار اليوم في أي وقت للاجابه علي جميع الاستفسارات واذا كنت ضمن هيئه أو جهه سيتم تنفيذ رحلة بالكامل خاصه بك"
                                     }
                                 </p>
 

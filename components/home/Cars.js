@@ -317,6 +317,19 @@ export const CarCard = styled.div`
         font-size: 1.4rem;
     }
 
+    h3.closed {
+        font-size: 1rem;
+        background: red;
+        opacity: 0.5;
+        border-radius: 5px;
+        padding: 0.2rem;
+
+        &:after {
+            content: " (currently unavailable)";
+        }
+
+    }
+
     p {
         margin: 0.5rem;
     }
@@ -521,7 +534,7 @@ const Cars = ({ language, width }) => {
                     {
                         language === "English"
                             ? "Recommended Car Rentals"
-                            : "سيارات للايجار"
+                            : "سيارات للإيجار"
                     }
                 </h1>
             }

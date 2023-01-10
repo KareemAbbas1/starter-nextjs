@@ -10,13 +10,14 @@ import errorHandler from "../../../middlewares/errorsMiddleware";
 async function handler(req, res) {
     const {
         method,
-        query: { id, remove }
+        query: { id, remove, updateLocation }
     } = req;
 
     await dbConnect()
 
 
-    if (method === "PATCH" && remove === "off") {
+    // add dates
+    if (method === "PATCH" && remove === "off" && updateLocation === "off") {
         await Room.updateOne(
             { "roomNumbers._id": id },
             {
@@ -29,12 +30,26 @@ async function handler(req, res) {
     }
 
 
+    // remove dates
     if (method === "PATCH" && remove === "on") {
         const updatedRoom = await Room.updateOne(
             { "roomNumbers._id": id },
             {
                 $pullAll: {
                     "roomNumbers.$.unavailableDates": req.body.dates
+                }
+            }
+        );
+        res.status(201).json(updatedRoom)
+    }
+
+    // update room location
+    if(method === "PATCH" && updateLocation === "on") {
+        const updatedRoom = await Room.updateOne(
+            { "roomNumbers._id": id },
+            {
+                $set: {
+                    "roomNumbers.$.roomLocation": req.body.roomLocation
                 }
             }
         );

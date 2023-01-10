@@ -33,7 +33,13 @@ const RoomSchema = new mongoose.Schema({
             required: true
         },
     ],
-    roomNumbers: [{ roomNumber: Number, unavailableDates: [{ type: String }] }]
+    roomNumbers: [
+        {
+            roomNumber: Number,
+            unavailableDates: [{ type: String }],
+            roomLocation: [String]
+        }
+    ]
 }, { timestamps: true });
 
 

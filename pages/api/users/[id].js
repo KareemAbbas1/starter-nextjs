@@ -26,15 +26,16 @@ async function handler(req, res) {
 
     // Fetch by ID and Update
     if (method === "PATCH") {
-        if (user.role !== "admin1") throw createError(403, "You are not authorized");
-        
+        if (user.role !== "admin1" && user.role !== "admin2")
+            throw createError(403, "You are not authorized");
+
         // Hash new password
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const updatedUser = await User.findByIdAndUpdate(
             id,
-            { $set: {password: hash} },
+            { $set: { password: hash } },
             { new: true }
         );
         res.status(201).json(updatedUser)

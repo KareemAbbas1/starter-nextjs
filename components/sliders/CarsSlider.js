@@ -265,7 +265,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
                                             />
                                         }
                                     </div>
-                                    <h3>
+                                    <h3 className={car.name[1].split(" ")[car.name[1].split(" ").length - 1] == "x" ? "closed" : null}>
                                         {
                                             language === "English"
                                                 ? car.name[0]
@@ -273,7 +273,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
                                         }
                                     </h3>
                                     <p>
-                                        {language === "العربية" && "$"}
+                                        {language === "العربية" && "EGP "}
                                         {
                                             language === "English"
                                                 ? "Starts from, "
@@ -281,7 +281,7 @@ const CarsSlider = ({ cars, language, setIsCreated, isCreated, width }) => {
                                         }
                                         {language === "English" && "EGP "}{car.price}
                                     </p>
-                                    <p><TelephoneFill /> +20-100-009-0335</p>
+                                    <p><TelephoneFill /> +20-106-228-1881</p>
                                     {
                                         user &&
                                         <>

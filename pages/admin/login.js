@@ -73,9 +73,10 @@ const Login = ({ setLoading }) => {
             location.reload();
         }
         catch (error) {
-            alert("Error", error && error.response.data.message);
+            console.log("Error", error && error.response.data.message);
             setError(true);
-            setErrorMessage(error && error.response.data.message)
+            setErrorMessage(error && error.response.data.message);
+            setLoading(false);
         }
     }
 

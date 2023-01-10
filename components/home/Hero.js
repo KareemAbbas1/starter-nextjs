@@ -134,7 +134,7 @@ const Container = styled.div`
     }
 
     // 15 inch to 12 inch
-    @media(min-width: 1280px) and (max-width: 1380px) {
+    @media(min-width: 1280px) and (max-width: 1400px) {
         bottom: calc(50vh + 24vh);
         padding-inline: 31vw;
     }
@@ -229,9 +229,9 @@ const Hero = ({ language }) => {
                 alt="Image for mount Sinai"
             />
             <Container language={language}>
-                <span className="head-line"> {language === "English" ? "Your Favorite Agency for" : "الاختيار الافضل للسياحة داخل مصر"}
+                <span className="head-line"> {language === "English" ? "Your Favorite Agency for" : "الاختيار الأفضل للسياحة داخل مصر"}
                     <br></br>
-                    {language === "English" ? "Traveling Around Egypt" : "وقضاء عطلة مميزة بافضل سعر"}
+                    {language === "English" ? "Traveling Around Egypt" : "وقضاء عطلة مميزة بأفضل سعر"}
                 </span>
 
                 <div />
@@ -239,14 +239,14 @@ const Hero = ({ language }) => {
                 <span className="text-white">
                     {
                         language === "English"
-                            ? "It is a long established fact that a reader will be distracted by the"
-                            : "اذا كنت من محبي السفر والاستكشاف وترغب في الاستمتاع بعطلة "
+                            ? "If you love to travel and explore and want to enjoy the"
+                            : "إذا كنت من محبي السفر والاستكشاف وترغب في الاستمتاع بعطلة "
                     }
                     <br></br>
                     {
                         language === "English"
-                            ? "reader will be distracted by the."
-                            : "نهاية الاسبوع ، فانت في المكان الصحيح"
+                            ? "weekend vacation, you are in the right place."
+                            : "نهاية الأسبوع ، فانت في المكان الصحيح"
                     }
 
                 </span>

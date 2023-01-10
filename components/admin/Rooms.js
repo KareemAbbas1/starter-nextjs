@@ -552,9 +552,7 @@ const Rooms = ({ camps }) => {
   /* Update Existing room */
   // Fetch single room by id
   const [singleRoom, setSingleRoom] = useState();
-  const [toggleActiveDatesTab, setToggleActiveDatesTab] = useState(1);
-  // const [unavailableDates, setUnavailableDates] = useState([]);
-  // const [reFetchSingleRoomCampId, setReFetchSingleRoomCampId] = useState();
+
 
   const fetchSingleRoom = async (roomId, btnId) => {
     try {
@@ -629,88 +627,6 @@ const Rooms = ({ camps }) => {
       typeof window !== "undefined" && console.log(error);
     }
   };
-
-
-
-
-  //--- Handle update room's availability
-  // Mark all unavailable dates
-  // const markAll = (roomId, dates) => {
-  //   dates.map(date => {
-  //     let checker = document.getElementById(`${roomId}${date}`);
-  //     if (!checker.checked) {
-  //       checker.checked = true;
-  //       setUnavailableDates(dates)
-  //     } else {
-  //       checker.checked = false;
-  //       setUnavailableDates([]);
-  //     }
-  //   })
-  // }
-
-
-  // // Mark some unavailable dates
-  // const markSome = (e, labelId) => {
-  //   const date = document.getElementById(labelId).innerHTML;
-  //   let newEl, newArr, elIndex
-
-  //   if (e.target.checked) {
-  //     newEl = date;
-  //     newArr = [...unavailableDates, newEl];
-  //     setUnavailableDates(newArr)
-  //   } else {
-  //     elIndex = unavailableDates.indexOf(date)
-  //     if (elIndex > -1) {
-  //       unavailableDates.splice(elIndex, 1);
-  //       newArr = [...unavailableDates];
-  //       setUnavailableDates(newArr);
-  //     }
-  //   }
-  // }
-
-  // const reFetchSingleRoom = async (campId) => {
-  //   try {
-  //     const res = await axios.get(`/api/rooms?campId=${campId}`);
-  //     setSingleRoom(res.data);
-  //   }
-  //   catch (error) {
-  //     typeof window !== "undefined" console.log(error)
-  //   }
-  // };
-
-
-
-  // //--- Add new unavailable date
-  // const addNewDate = async (e, inputId, roomId) => {
-  //   e.preventDefault();
-  //   try {
-  //     const date = document.getElementById(inputId).value;
-  //     const newDate = `${date.split("-")[2]}/${date.split("-")[1]}/${date.split("-")[0]}`
-  //     await axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
-  //       dates: newDate
-  //     });
-  //     reFetchSingleRoom(reFetchSingleRoomCampId);
-  //   }
-  //   catch (error) {
-  //     typeof window !== "undefined" && console.log(error);
-  //   }
-  // }
-
-
-  // //--- Remove unavailable date/dates
-  // const removeOldDate = async (e, roomId) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
-  //       dates: unavailableDates
-  //     })
-  //     reFetchSingleRoom(reFetchSingleRoomCampId);
-  //     setUnavailableDates([]);
-  //   }
-  //   catch (error) {
-  //     typeof window !== "undefined" && console.log(error);
-  //   }
-  // };
 
 
   /* End Update Existing room */

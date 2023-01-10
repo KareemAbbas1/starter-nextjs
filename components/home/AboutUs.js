@@ -1,213 +1,77 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-
-
+import Logo from '../../public/circleLogo.png';
 
 const Container = styled.div`
     max-width: 100vw;
-    height: 100vh;
-    padding-block: 5rem;
-    padding-inline-start: ${({ language }) => language === "English" && "4rem"};
-    padding-inline-end: ${({ language }) => language === "العربية" && "4rem"};
+    max-height: fit-content;
     background-color: #16171F;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+    color: #fff;
+    padding-block: 5rem;
+    text-align: center;
     display: flex;
-    flex-direction: ${({ language }) => language === "English" ? "row" : "row-reverse"};
-    justify-content: space-between;
+    flex-flow: column nowrap;
     align-items: center;
-    overflow: hidden;
+    gap: 3rem;
 
-    @media(max-width: 990px) {
-        height: 50vh;
-        padding-block: 2rem;
-    }
-
-    @media(max-width: 600px) {
-        height: 100vh;
-        padding-block: 1.5rem;
-        padding-inline-start: 2.3rem;
-        padding-inline-end: 0;
-    }
-
-
-    div.text {
-        width: 45%;
-        height: 90%;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: ${({ language }) => language === "English" ? "flex-start" : "flex-end"};
-        text-align: ${({ language }) => language === "العربية" && "right"};
-        @media(max-width: 990px) {
-            width: 100%;
-            padding-inline-end: ${({ language }) => language === "English" && '3rem'};
-            padding-inline-start: ${({ language }) => language === "العربية" && '3rem'};
-        }
-        @media(max-width: 600px) {
-            width: 100%;
-            height: 100%;
-            padding-inline-end: 3rem;
-            padding-inline-start: unset;
-        }
-
-        h1 {
-            width: 9rem;
-        }
-
-        p {
-            font-size: 1.15rem;
-            line-height: 1.6rem;
-            position: relative;
-
-            span.h-line {
-                width: 11rem;
-                height: 15rem;
-                position: absolute;
-                top: -1rem;
-                left: ${({ language }) => language === "English" && "-1.5rem"};
-                right: ${({ language }) => language === "العربية" && "-1.5rem"};
-                border-top: 2px solid #F26630;
-                border-left: ${({ language }) => language === "English" && "2px solid #F26630"};
-                border-right: ${({ language }) => language === "العربية" && "2px solid #F26630"};
-            }
-
-            // 10 inch
-            @media(min-width: 1024px) {
-                font-size: 0.8rem;
-            }
-
-            // 12 inch
-            @media(min-width: 1280px) {
-                font-size: 1.2rem;
-            }
-            
-            // 22 inch
-            @media(min-width: 1680px) {
-                font-size: 1.3rem;
-                line-height: 2.2rem;
-            }
-        }
-
-        @media(max-width: 600px) {
-
-            h1 {
-                width: fit-content;
-                font-size: 1.2rem;
-            }
-
-            p {
-                font-size: 0.7rem;
-                margin-top: 1rem;
-            }
-        }
+    h1 {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #F26630;
     }
 
     div.image {
-        width: 42%;
-        height: 90%;
-        position: relative;
+        display: block;
+        width: 15rem;
+        height: 15re;
+    }
 
+    p {
+        font-size: 1.15rem;
+        line-height: 1.6rem;
+        padding-inline: 1rem;
 
-        // 10 inch
-        @media(min-width: 1024px) {
-            width: 45%;
+        @media(min-width: 1680px){
+            padding-inline: 25vw;
         }
 
-        @media(max-width: 990px) {
-            display: none;
+        @media(min-width: 1366px) and (max-width: 1460px) {
+            padding-inline: 15vw;
         }
 
-        img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            display: block;
-            z-index: 10;
-            object-fit: cover;
-        }
-
-        div {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            bottom: -0.5%;
-            right: ${({ language }) => language === "English" && "-25%"};
-            left: ${({ language }) => language === "العربية" && "-25%"};
-            background-color: #F26630;
+        @media(min-width: 540px) and (max-width: 992px) {
+            padding-inline: 2rem;
         }
     }
 
-    // 19 inch
-    @media(min-width: 1440px) {
-        padding-inline-start: ${({ language }) => language === "English" && "5rem"};
-        padding-inline-end: ${({ language }) => language === "العربية" && "5rem"};
-
-        div.text {
-            width: 40%;
-        }
-
+    @media(min-width: 200px) and (max-width: 1280px) {
         div.image {
-            width: 50%;
-        }
-    }
-
-    // 22 inch
-    @media(min-width: 1680px) {
-        padding-inline-start: ${({ language }) => language === "English" && "10%"};
-        padding-inline-end: ${({ language }) => language === "العربية" && "10%"};
-
-        div.text {
-            width: 43%;
-        }
-
-        div.image {
-            width: 50%;
-        }
-    }
-
-    // 23 inch
-    @media(min-width: 1920px) {
-        
-        padding-inline-start: ${({ language }) => language === "English" && "12%"};
-        padding-inline-end: ${({ language }) => language === "العربية" && "12%"};
-
-        div.text {
-            width: 40%
-        }
-
-        div.image {
-            width: 48%;
+            width: 12rem;
+            height: 12rem;
         }
     }
 `
 
+
 const AboutUs = ({ language }) => {
     return (
         <Container id='aboutus-section' language={language}>
-            <div className='text'>
-                <h1>
-                    {
-                        language === "English"
-                        ? "About Us"
-                        : "عن الشركة"
-                    }
-                </h1>
-                <p>
-                    <span className='h-line' />
-                    {
-                        language === "English"
-                        ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Vitae elementum curabitur vitae nunc sed velit. Mattis enim ut tellus elementum. Interdum varius sit amet mattis vulputate enim nulla aliquet. Adipiscing tristique risus nec feugiat. Dolor magna eget est lorem ipsum dolor sit. Sit amet nisl purus in mollis nunc sed id. At risus viverra adipiscing at in tellus integer feugiat. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Vitae elementum curabitur vitae nunc sed velit. Mattis enim ut tellus elementum. Interdum varius sit amet mattis vulputate enim nulla aliquet. Adipiscing tristique risus nec feugiat. Dolor magna eget est lorem ipsum dolor sit. Sit amet nisl purus in mollis nunc sed id. At risus viverra adipiscing at in tellus integer feugiat. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit."
-                        : "كن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي. و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة علي الجانب الآخر نشجب ونستنكر هؤلاء الرجال المفتونون بنشوة اللحظة الهائمون في رغباتهم فلا يدركون ما يعقبها من الألم والأسي المحتم، واللوم كذلك يشمل هؤلاء الذين أخفقوا في واجباتهم نتيجة لضعف إرادتهم فيتساوي مع هؤلاء الذين يتجنبون وينأون عن تحمل الكدح والألم ."
-                    }
-                    
-                </p>
-            </div>
+            <h1>
+                {
+                    language === "English"
+                    ? "About us"
+                    : "عن الشركة"
+                }
+            </h1>
             <div className='image'>
-                <div />
-                <Image layout='fill' src='https://i.postimg.cc/15CSr0nc/image-3.jpg' alt='' />
+                <Image layout='responsive' src={Logo} alt="Company Logo" />
             </div>
+            <p>
+            {
+                language === "English"
+                ? "A travel and tourism company, its first goal is to create a new concept of travel, trips, and access to any place in the world with the easiest steps and the most comfortable and easy way. Break Travel and Tours seeks to provide the best services and offers using the latest technological methods. Break Travel and Tours seeks to develop its services, and creating a better quality of communication with its customers through its website, or by contacting the customer service center that operates around the clock (24/7), dedicated to facilitating the booking process with Break for travel and trips in addition to after-sales service."
+                : "شركة سياحة و سفر، هدفها الأول خلق مفهوم جديد للسفر و الرحلات و الوصول لأي مكان في العالم ، بأسهل الخطوات و أكثر الطرق راحة وسهولة ، كما تسعى شركة بريك للسفر والرحلات لتقديم أفضل الخدمات و العروض بإستخدام أحدث الأساليب التكنولوجية .تسعى شركة بريك للسفر والرحلات لتطوير خدماتها ، و خلق جودة أفضل للتواصل مع عملائها و ذلك من خلال موقعها الإلكتروني ، أو من خلال الإتصال بمركز خدمة العملاء الذي يعمل على مدار الساعة (24/7) ، المخصص لتسهيل عملية الحجز مع بريك للسفر والرحلات بالإضافة إلى خدمة ما بعد البيع ."
+            }
+            </p>
         </Container>
     )
 }

@@ -1,9 +1,5 @@
 import mongoose from 'mongoose';
-// import dotenv from 'dotenv';
-// Set up dotenv to be able to access the local enviornment variables 
-// dotenv.config();
 
-// const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI
 
 if (!process.env.NEXT_PUBLIC_MONGODB_URI) {
   throw new Error(

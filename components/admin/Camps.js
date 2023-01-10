@@ -321,7 +321,7 @@ const Container = styled.div`
       div.footer {
         width: 79%;
         position: absolute;
-        bottom: 0;
+        bottom: -2vh;
         left: 0;
         background-color: #fff;
         display: flex;
@@ -489,6 +489,7 @@ const Container = styled.div`
       /* Unavailabel dates tabs */
       div.rooms-numbers-container {
         width: 100%;
+        height: 30vw;
         padding-top: 1rem;
         direction: rtl;
         display: flex;
@@ -529,14 +530,69 @@ const Container = styled.div`
             display: none;
             width: 64vw;
             height: fit-content;
-            max-height: 86%;
+            max-height: 58%;
             border: 1px solid #ccc;
             overflow-y: scroll;
           }
 
           div.active-dates-tab-content {
+            position: relative;
             display: flex;
             flex-flow: row wrap;
+
+            div.room-location {
+              width: 63.5vw;
+              position: fixed;
+              bottom: 9rem;
+              border: 1px solid #ccc;
+              background-color: #fff;
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              padding-top: 1.5rem;
+              padding-bottom: 1rem;
+
+              &:hover,
+              &:focus {
+                background-color: #fff;
+              }
+
+              input {
+                width: 38%;
+              }
+
+              button {
+                margin-bottom: 0.7vh;
+                padding: 0.5rem 0.2rem;
+                color: #fff;
+                background: #00D100;
+                border: 1px solid #00D100;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 300ms ease;
+
+                &:hover {
+                  background: #fff;
+                  color: #000;
+                }
+              }
+
+              span.update-location-success {
+                position: unset;
+                padding: 2px;
+                border-radius: 50%;
+                background-color: #00D100;
+                display: none;
+              }
+
+              @media(min-width: 1360px) and (max-width: 1600px) {
+                bottom: 3.2rem;
+
+                input {
+                  width: 33%;
+                }
+              }
+            }
             
             div{
               width: 13.2%;
@@ -560,8 +616,6 @@ const Container = styled.div`
 
             div.add-date {
               width: 26.5%;
-              /* height: 0.5rem; */
-              /* padding-bottom: 1.3rem; */
               padding-inline: 0.5rem;
               justify-content: space-around;
               align-items: baseline;
@@ -653,7 +707,7 @@ const Container = styled.div`
   }
 `
 
-const Camps = ({ language, newCampsordersList}) => {
+const Camps = ({ language, newCampsordersList }) => {
 
   const [camps, setCamps] = useState();
   const [camp, setCamp] = useState();
@@ -712,7 +766,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const [servicesArray, setServicesArray] = useState([1, 2, 3]);
   const addservice = (e) => {
     e.preventDefault();
-    
+
     const newEl = servicesArray[servicesArray.length - 1] + 1;
     const newArr = [...servicesArray, newEl]
     setServicesArray(newArr);
@@ -889,25 +943,6 @@ const Camps = ({ language, newCampsordersList}) => {
   }, [camps, newCampsordersList]);
 
 
-
-  // const fetchCampOrders = async (campId, btnId, notificaitonsSpan) => {
-  //   try {
-  //     document.getElementById(btnId).disabled = true;
-  //     const res = await axios.get(`/api/admin/campsOrders/${campId}`);
-  //     setCampOrders(res.data);
-
-  //     setTimeout(() => {
-  //       if (res.data.length > 0 && document.getElementById(notificaitonsSpan)) {
-  //         document.getElementById(notificaitonsSpan).style.display = 'none';
-  //       }
-  //       openOrdersModal();
-  //     }, 300)
-  //   }
-  //   catch (error) {
-  //     typeof window !== "undefined" && console.log(error);
-  //   }
-  // };
-
   const openOrdersModal = (notificaitonsSpan, campId) => {
     document.getElementById("camp-orders-modal").style.display = "block";
     document.querySelector("body").style.overflowY = "hidden";
@@ -940,6 +975,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
 
 
+
   const fetchCampRooms = async (campId, btnId) => {
     try {
       document.getElementById(btnId).disabled = true
@@ -958,6 +994,7 @@ const Camps = ({ language, newCampsordersList}) => {
 
 
   //--- Update room
+
   useEffect(() => {
     if (campRooms) {
       campRooms.map(room => {
@@ -1086,7 +1123,7 @@ const Camps = ({ language, newCampsordersList}) => {
     try {
       const date = document.getElementById(inputId).value;
       const newDate = `${date.split("-")[2]}/${date.split("-")[1]}/${date.split("-")[0]}`
-      await axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}`, {
+      await axios.patch(`/api/rooms/updateAvailability?remove=off&id=${roomId}&updateLocation=off`, {
         dates: newDate
       });
       reFetchRooms(reFetchRoomsCampId);
@@ -1101,7 +1138,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const removeOldDate = async (e, roomId) => {
     e.preventDefault();
     try {
-      await axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+      await axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=off`, {
         dates: unavailableDates
       })
       reFetchRooms(reFetchRoomsCampId);
@@ -1114,6 +1151,39 @@ const Camps = ({ language, newCampsordersList}) => {
 
 
 
+  // Update room location
+  const [roomLoca, setRoomLoca] = useState("");
+  const [roomAraLoca, setRoomAraLoca] = useState("");
+
+  const updateRoomLocation = async (e, roomId, currentLocation, currentAraLocation) => {
+    e.preventDefault();
+
+    if (roomLoca !== "" || roomAraLoca !== "") {
+      try {
+        await axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=on`, {
+          roomLocation: [
+            roomLoca !== "" ? roomLoca : currentLocation,
+            roomAraLoca !== "" ? roomAraLoca : currentAraLocation
+          ]
+        });
+        Array.from(document.getElementsByClassName("update-location-success")).map(span => {
+          span.style.display = "inline"
+        });
+        setTimeout(() => {
+          Array.from(document.getElementsByClassName("update-location-success")).map(span => {
+            span.style.display = "none"
+          });
+        }, 1500);
+        reFetchRooms(reFetchRoomsCampId);
+        setRoomLoca("");
+        setRoomAraLoca("");
+      }
+      catch (error) {
+        typeof window !== "undefined" && console.log(error);
+      }
+    }
+  };
+
 
 
   /* Update camp */
@@ -1122,6 +1192,7 @@ const Camps = ({ language, newCampsordersList}) => {
   const [img3, setImg3] = useState("");
   const [img4, setImg4] = useState("");
   const [img5, setImg5] = useState("");
+
 
 
   //--- Fetch single camp
@@ -1383,7 +1454,6 @@ const Camps = ({ language, newCampsordersList}) => {
                     className="camp-orders"
                     id={`${camp._id}orders`}
                     onClick={() => openOrdersModal(`${camp._id}new-orders`, camp._id)}
-                  // onClick={() => fetchCampOrders(camp._id, `${camp._id}orders`, `${camp._id}new-orders`)}
                   >
                     عرض الكل
                   </button>
@@ -1427,7 +1497,7 @@ const Camps = ({ language, newCampsordersList}) => {
                       <span onClick={() => closeDeleteCampModal(`${camp._id}rand`)}>x</span>
                       <div className="delete-modal-content">
                         <p>هل تريد إزالة هذا المخيم؟</p>
-                        <button onClick={() => deleteCamp(camp._id)}>امسح الرحلة</button>
+                        <button onClick={() => deleteCamp(camp._id)}>ازالة المخيم</button>
                       </div>
                     </div>
                   </div>
@@ -1643,7 +1713,7 @@ const Camps = ({ language, newCampsordersList}) => {
           {
             campRooms && campRooms.map(room => (
               <div
-                key={room._id}
+                key={`${room._id}tab`}
                 className={
                   toggleActiveRoom === campRooms.indexOf(room) + 1
                     ? 'tab active-tab'
@@ -1734,7 +1804,7 @@ const Camps = ({ language, newCampsordersList}) => {
                           <h3>الغرف:</h3>
                           {
                             room.roomNumbers.map(num => (
-                              <h4 key={num} className={
+                              <h4 key={num._id} className={
                                 toggleActiveDatesTab === room.roomNumbers.indexOf(num) + 1
                                   ? 'active-dates-tab dates-tab'
                                   : 'dates-tab'
@@ -1795,6 +1865,35 @@ const Camps = ({ language, newCampsordersList}) => {
                                   >أضف تاريخ</button>
                                 </div>
                                 <button className="delete-dates" onClick={(e) => removeOldDate(e, num._id)}>إزالة التواريخ</button>
+
+                                <div className="room-location">
+                                  <h3>موقع الغرفة رقم {num.roomNumber}:</h3>
+                                  <input
+                                    placeholder="عربي"
+                                    defaultValue={num.roomLocation && num.roomLocation[1]}
+                                    onChange={(e) => setRoomAraLoca(e.target.value)}
+                                  />
+
+                                  <input
+                                    dir="ltr"
+                                    placeholder="English"
+                                    defaultValue={num.roomLocation && num.roomLocation[0]}
+                                    onChange={(e) => setRoomLoca(e.target.value)}
+                                  />
+
+                                  <button onClick={
+                                    (e) => updateRoomLocation(
+                                      e,
+                                      num._id,
+                                      num.roomLocation[0],
+                                      num.roomLocation[1]
+                                    )
+                                  }
+                                  >
+                                    تعديل الموقع
+                                  </button>
+                                  <span className="update-location-success">&#10003;</span>
+                                </div>
                               </div>
                             ))
                           }

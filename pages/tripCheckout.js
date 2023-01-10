@@ -7,6 +7,7 @@ import axios from 'axios';
 import Paypal from '../public/paypal.jpg';
 import vodaLogoEng from '../public/vodaLogoEng.jpg';
 import vodaLogoAra from '../public/vodaLogoAra.jpg';
+import bankMistLogo from '../public/bankMisrLogo.png';
 import Image from 'next/image';
 
 
@@ -673,7 +674,7 @@ const TripCheckout = ({ language, setLoading }) => {
                                     {
                                         language === "English"
                                             ? "Payment Methods"
-                                            : "طريقة الدفع"
+                                            : "طرق الدفع"
                                     }
                                 </h3>
 
@@ -687,6 +688,26 @@ const TripCheckout = ({ language, setLoading }) => {
                                             :
                                             <Image src={vodaLogoAra} alt="vodafon cash logo" />
                                     }
+
+                                    <Image src={bankMistLogo} alt="Bank Mirs Logo" />
+                                    
+                                    <p style={{
+                                        fontWeight: 'bold',
+                                        border: '1px solid #ccc',
+                                        width: "auto",
+                                        height: "100%",
+                                        borderRadius: '6px',
+                                        paddingInline: '5px',
+                                        display: 'flex',
+                                        alignItems: 'center'
+                                    }}
+                                    >
+                                        {
+                                            language === "English"
+                                                ? "Bill collector"
+                                                : "مندوب تحصيل"
+                                        }
+                                    </p>
                                 </span>
 
                                 <div>

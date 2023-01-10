@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import Paypal from '../public/paypal.jpg';
 import vodaLogoEng from '../public/vodaLogoEng.jpg';
 import vodaLogoAra from '../public/vodaLogoAra.jpg';
+import bankMistLogo from '../public/bankMisrLogo.png';
 import Image from 'next/image';
 
 const CampCheckout = ({ language, setLoading }) => {
@@ -194,7 +195,7 @@ const CampCheckout = ({ language, setLoading }) => {
         try {
           Promise.all(
             roomsIds.map(roomId => {
-              const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+              const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=off`, {
                 dates: dateRange
               })
             })
@@ -260,7 +261,7 @@ const CampCheckout = ({ language, setLoading }) => {
     try {
       await Promise.all(
         roomsIds.map(roomId => {
-          const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+          const res = axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=off`, {
             dates: dateRange
           })
         })
@@ -398,10 +399,10 @@ const CampCheckout = ({ language, setLoading }) => {
               </h2>
               <ul>
                 <li>
-                  {language === "English" ? 'Checkin date:' : "تاريخ الوصول:"} {checkin}, 11:00 {language === "English" ? "am" : "صباحا"}
+                  <strong>{language === "English" ? 'Checkin date:' : "تاريخ الوصول:"} {checkin}, 11:00 {language === "English" ? "am" : "صباحا"}</strong>
                 </li>
                 <li>
-                  {language === "English" ? 'Checkout date:' : "تاريخ المغادرة:"} {checkout}, 11:00 {language === "English" ? "am" : "صباحا"}
+                  <strong>{language === "English" ? 'Checkout date:' : "تاريخ المغادرة:"} {checkout}, 11:00 {language === "English" ? "am" : "صباحا"}</strong>
                 </li>
                 <li>
                   {language === "English" ? 'Duration:' : "مدة الاقامة:"} {duration} {language === "English" ? "nights" : "ليالي"}
@@ -754,6 +755,26 @@ const CampCheckout = ({ language, setLoading }) => {
                       :
                       <Image src={vodaLogoAra} alt="vodafon cash logo" />
                   }
+
+                  <Image src={bankMistLogo} alt="Bank Mirs Logo" />
+                  
+                  <p style={{
+                    fontWeight: 'bold',
+                    border: '1px solid #ccc',
+                    width: "auto",
+                    height: "100%",
+                    borderRadius: '6px',
+                    paddingInline: '5px',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}
+                  >
+                    {
+                      language === "English"
+                        ? "Bill collector"
+                        : "مندوب تحصيل"
+                    }
+                  </p>
                 </span>
 
                 <div>

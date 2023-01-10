@@ -103,6 +103,17 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
         }
     }, []);
 
+    // handle log out on inactivity
+    // const handleInactivity = setTimeout(() => {
+    //     console.log("Logged Out")
+    // }, 10000);
+
+    // if(typeof window !== "undefined") {
+    //     window.addEventListener("blur", () => handleInactivity);
+
+    //     window.addEventListener("focus", () => handleInactivity);
+    // };
+
 
 
     /* Handle notification */
@@ -168,13 +179,13 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             location.reload();
         }
         catch (error) {
-            alert("Error", error && error.response.data.message)
+            console.log("Error", error && error.response.data.message)
         }
     };
 
     setTimeout(() => {
         logout();
-    }, 1000 * 60 * 60 * 7);
+    }, 1000 * 60 * 60 );
 
     return (
         <Container>

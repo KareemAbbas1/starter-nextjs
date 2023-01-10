@@ -740,7 +740,7 @@ const PopularAttractions = ({ language, width }) => {
                     {
                         language === "English"
                             ? "Popular Attractions"
-                            : "افضل الوجهات"
+                            : "أفضل الوجهات"
                     }
                 </h1>
             }

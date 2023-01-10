@@ -66,7 +66,7 @@ const Trips = ({ language, trips, setLoading, width }) => {
             {
                 language === "English"
                     ? <h1>Most Popular Trips</h1>
-                    : <h1>الرحلات الاعلى تقييم</h1>
+                    : <h1>الرحلات الأعلى تقييم</h1>
             }
             <Line />
 

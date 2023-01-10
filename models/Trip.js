@@ -59,10 +59,6 @@ const TripsSchema = new mongoose.Schema({
             required: true
         }
     },
-    // tripPlan: {
-    //     type: [{ type: [String], required: true }],
-    //     required: true
-    // },
     rate: {
         type: Number
     },

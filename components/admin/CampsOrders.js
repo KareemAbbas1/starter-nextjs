@@ -345,7 +345,7 @@ const Orders = ({ campOrders, currentCampId, language }) => {
       // Update room availability upon deleting order
       await Promise.all(
         roomsIds.map(roomId => {
-          axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}`, {
+          axios.patch(`/api/rooms/updateAvailability?remove=on&id=${roomId}&updateLocation=off`, {
             dates: dateRange
           })
         })

@@ -116,8 +116,8 @@ const Badges = ({ language, showSideButtons }) => {
 
                         {
                             language === "English"
-                                ? <p>Browse and book tours and activities so incredible.</p>
-                                : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
+                                ? <p>We are interested in providing new experiences and adventures to make unforgettable memories</p>
+                                : <p>نهتم بتقديم تجارب ومغامرات جديدة لعمل ذكريات لاتنسى</p>
                         }
 
 
@@ -142,8 +142,8 @@ const Badges = ({ language, showSideButtons }) => {
 
                         {
                             language === "English"
-                                ? <p>Browse and book tours and activities so incredible.</p>
-                                : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
+                                ? <p>Reservations are made through the official website or directly from the office</p>
+                                : <p>يتم الحجز عن طريق الموقع الرسمي أو من المكتب مباشرة</p>
                         }
                     </div>
                 }
@@ -165,8 +165,8 @@ const Badges = ({ language, showSideButtons }) => {
                         }
                         {
                             language === "English"
-                                ? <p>Browse and book tours and activities so incredible.</p>
-                                : <p>تصفح وحجز الجولات والأنشطة التي لا تصدق بافصل الاسعار وافضل خدمة</p>
+                                ? <p>We care about providing the best customer service, comfort, safety and enjoyment in various experiences</p>
+                                : <p>نهتم بتقديم أفضل خدمة للعميل والراحة والأمان والمتعة بمختلف التجارب</p>
                         }
                     </div>
                 }

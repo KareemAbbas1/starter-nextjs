@@ -88,6 +88,10 @@ export const Container = styled.div`
             li {
                 margin-inline: 0;
                 margin-bottom: 1rem;
+
+                strong {
+                    background-color: yellow;
+                }
             }
         }
 

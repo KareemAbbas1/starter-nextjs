@@ -99,51 +99,20 @@ const BurgerMenu = styled.div`
 
 const Burger = ({ language, onLinkClick, open, setOpen, setLoading, showSideButtons, width }) => {
 
-    // const router = useRouter();
 
     // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
-    // const [width, setWidth] = useState(null);
     const [scroll, setScroll] = useState(null);
     useEffect(() => {
-        // setWidth(window.innerWidth);
         setScroll(window.scrollY);
 
-        // const handleResize = debounce(() => setWidth(window.innerWidth), 10);
         const handleScroll = debounce(() => setScroll(window.scrollY), 10);
 
-        // window.addEventListener('resize', handleResize);
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            // window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
         }
-    }, [])
-
-
-    // Handle navbar background visibility onScroll and route change
-    // useEffect(() => {
-    //     window.addEventListener("scroll", navbarVisibility);
-    //     const navbarVisibility = () => {
-    //         if (scroll > 70 && width > 990 && router.pathname !== "/admin/dashboard") {
-    //             document.getElementById("menu").style.display = "flex";
-    //             document.getElementById("menu").style.justifyContent = "space-around";
-    //             document.getElementById("menu").style.flexFlow = "column";
-    //         }
-    //         else if (width <= 990) {
-    //             document.getElementById("menu").style.display = "flex";
-    //         }
-    //         else {
-    //             document.getElementById("menu").style.display = "none";
-    //         }
-    //     }
-
-    //     window.addEventListener("scroll", navbarVisibility);
-
-    //     return () => {
-    //         window.removeEventListener("scroll", navbarVisibility);
-    //     };
-    // }, [width, scroll, router]);
+    }, []);
 
 
     return (
