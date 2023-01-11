@@ -138,28 +138,28 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
         };
 
         
-        // const checkForNewTripsOrders = () => {
-        //     if (
-        //         tripsOrders.length > 0 &&
-        //         (
-        //             tripsOrders[0].new === true
-        //             || tripsOrders[1] && tripsOrders[1].new === true
-        //             || tripsOrders[2] && tripsOrders[2].new === true
-        //         )
-        //     ) {
-        //         setNewTripsOrders(true)
+        const checkForNewTripsOrders = () => {
+            if (
+                tripsOrders.length > 0 &&
+                (
+                    tripsOrders[0].new === true
+                    || tripsOrders[1] && tripsOrders[1].new === true
+                    || tripsOrders[2] && tripsOrders[2].new === true
+                )
+            ) {
+                setNewTripsOrders(true)
 
-        //         const newOrdersList = tripsOrders.filter(order => {
-        //             return order.new === true
-        //         });
-        //         setNewTripsOrdersList(newOrdersList);
-        //         // console.log(newTripsOrdersList)
-        //     }
-        // };
+                const newOrdersList = tripsOrders.filter(order => {
+                    return order.new === true
+                });
+                setNewTripsOrdersList(newOrdersList);
+                // console.log(newTripsOrdersList)
+            }
+        };
 
         
         checkForNewCampsOrders();
-        // checkForNewTripsOrders();
+        checkForNewTripsOrders();
 
     }, [campsOrders, tripsOrders]);
 
