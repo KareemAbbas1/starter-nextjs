@@ -93,7 +93,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
     const [newCampsordersList, setNewCampsOrdersList] = useState([]);
 
     const [newTripsOrders, setNewTripsOrders] = useState(false);
-    const [newTRipsOrdersList, setNewTripsOrdersList] = useState(false);
+    const [newTripsOrdersList, setNewTripsOrdersList] = useState(false);
 
 
     useEffect(() => {
@@ -137,28 +137,29 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             }
         };
 
+        
+        // const checkForNewTripsOrders = () => {
+        //     if (
+        //         tripsOrders.length > 0 &&
+        //         (
+        //             tripsOrders[0].new === true
+        //             || tripsOrders[1] && tripsOrders[1].new === true
+        //             || tripsOrders[2] && tripsOrders[2].new === true
+        //         )
+        //     ) {
+        //         setNewTripsOrders(true)
 
-        const checkForNewTripsOrders = () => {
-            if (
-                tripsOrders.length > 0 &&
-                (
-                    tripsOrders[0].new === true
-                    || tripsOrders[1] && tripsOrders[1].new === true
-                    || tripsOrders[2] && tripsOrders[2].new === true
-                )
-            ) {
-                setNewTripsOrders(true)
-
-                const newOrdersList = tripsOrders.filter(order => {
-                    return order.new === true
-                });
-                setNewTripsOrdersList(newOrdersList);
-            }
-        };
+        //         const newOrdersList = tripsOrders.filter(order => {
+        //             return order.new === true
+        //         });
+        //         setNewTripsOrdersList(newOrdersList);
+        //         // console.log(newTripsOrdersList)
+        //     }
+        // };
 
         
         checkForNewCampsOrders();
-        checkForNewTripsOrders();
+        // checkForNewTripsOrders();
 
     }, [campsOrders, tripsOrders]);
 
@@ -214,8 +215,8 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                                 {
                                     newTripsOrders &&
                                     <span className="notification">
-                                        {newTRipsOrdersList.length} {
-                                            newTRipsOrdersList.length > 10 || newTRipsOrdersList.length <= 2
+                                        {newTripsOrdersList.length} {
+                                            newTripsOrdersList.length > 10 || newTripsOrdersList.length <= 2
                                                 ? "حجز جديد"
                                                 : "حجوزات جديدة"
                                         }
@@ -290,7 +291,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
                         <Main />
                     </div>
                     <div className={toggleActiveTab === 2 ? 'tab-content active-tab-content' : 'tab-content'}>
-                        <Trips language={language} newTRipsOrdersList={newTRipsOrdersList} />
+                        <Trips language={language} newTripsOrdersList={newTripsOrdersList} />
                     </div>
                     <div className={toggleActiveTab === 3 ? 'tab-content active-tab-content' : 'tab-content'}>
                         <Camps camps={camps} language={language} newCampsordersList={newCampsordersList} />

@@ -462,8 +462,7 @@ const Container = styled.div`
   }
 `
 
-const Trips = ({ language, newTRipsOrdersList }) => {
-
+const Trips = ({ language, newTripsOrdersList }) => {
 
   const [trips, setTrips] = useState();
   const [trip, setTrip] = useState();
@@ -1069,28 +1068,29 @@ const Trips = ({ language, newTRipsOrdersList }) => {
 
 
   // Get new order notifications
-  const [newOrdersNotifications, setNewOrdersNotifications] = useState();
+  // const [newOrdersNotifications, setNewOrdersNotifications] = useState();
 
-  useEffect(() => {
-    const getNotifications = () => {
-      const tripsNames = trips && trips.map(trip => {
-        return trip.title[0]
-      });
+  // useEffect(() => {
+    // console.log(newTripsOrdersList)
+    //   const getNotifications = () => {
+    //     const tripsNames = trips && trips.map(trip => {
+    //       return trip.title[0]
+    //     });
 
-      if (tripsNames) {
-        let orders = [];
-        for (let i = 0; i < tripsNames.length; i++) {
-          orders = [...orders,
-          newTRipsOrdersList !== false && newTRipsOrdersList.filter(order => {
-            return order.orderDetails.title[0] === tripsNames[i]
-          })
-          ]
-        }
-        setNewOrdersNotifications(orders);
-      }
-    }
-    getNotifications();
-  }, [newTRipsOrdersList, trips]);
+    //     if (tripsNames) {
+    //       let orders = [];
+    //       for (let i = 0; i < tripsNames.length; i++) {
+    //         orders = [...orders,
+    //         newTripsOrdersList !== false && newTripsOrdersList.filter(order => {
+    //           return order.orderDetails.title[0] === tripsNames[i]
+    //         })
+    //         ]
+    //       }
+    //       setNewOrdersNotifications(orders);
+    //     }
+    //   }
+    //   getNotifications();
+  // }, [newTripsOrdersList, trips]);
 
   /* End Trip's Orders */
 
@@ -1152,10 +1152,11 @@ const Trips = ({ language, newTRipsOrdersList }) => {
                           عرض الحجوزات
                         </button>
 
+                        {/*
                         {
                           newOrdersNotifications && !newOrdersNotifications.includes(false) && newOrdersNotifications.map(item => {
-                            if (item.length !== 0 && item[0].new === true && item[0].orderDetails.title[0] === trip.title[0]) {
-                              return <span
+                            if (item.length !== 0 && item[0].new === true && item[0].tripId === trip._id) {
+                                return <span
                                 id={`${trip._id}new-orders`}
                                 className="order-notifications"
                                 key={`${trip._id}noti`}>
@@ -1163,7 +1164,7 @@ const Trips = ({ language, newTRipsOrdersList }) => {
                               </span>
                             }
                           })
-                        }
+                        } */}
                       </div>
 
                       : "لا يوجد"

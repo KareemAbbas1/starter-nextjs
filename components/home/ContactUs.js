@@ -280,7 +280,7 @@ const ContactUs = ({ language, showSideButtons }) => {
                                 </div>
                                 <div>
                                     <TelephoneFill size={15} />
-                                    <p>+20-100-009-0335</p>
+                                    <p>+20-106-228-1881</p>
                                 </div>
                                 <div>
                                     <Envelope size={17} />
