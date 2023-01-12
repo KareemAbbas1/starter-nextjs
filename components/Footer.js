@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Logo2 from '../public/largeLogo2.png';
-import { Facebook, Instagram, Youtube, Whatsapp } from 'react-bootstrap-icons';
+import { Facebook, Instagram, Youtube, Tiktok } from 'react-bootstrap-icons';
 import Link from 'next/link';
 
 
@@ -314,8 +314,8 @@ const Footer = () => {
             </Link>
           </div>
           <div className='icon'>
-            <Link href="https://web.whatsapp.com">
-              <a target="_blank"><Whatsapp size={25} color='#ffff' /></a>
+            <Link href="https://www.tiktok.com/@break_trips?_t=8YrBFMZX11R&_r=1">
+              <a target="_blank"><Tiktok size={20} color='#ffff' /></a>
             </Link>
           </div>
         </div>

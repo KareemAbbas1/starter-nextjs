@@ -576,92 +576,98 @@ const Trips = ({ language, newTripsOrdersList }) => {
   const createNewTrip = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(!loading);
-      const images = await Promise.all(
-        Object.values(files).map(async (file) => {
-          const data = new FormData();
-          data.append("file", file);
-          data.append("upload_preset", "uploads");
-          const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dqmqc0uaa/image/upload", data);
-
-          const { url } = uploadRes.data;
-          return url;
-        })
-      );
-
-
-      const newTrip = await axios.post(`/api/admin/trips`, {
-        title: [
-          tripTitle,
-          araTripTitle
-        ],
-        state: [
-          tripState,
-          tripAraState
-        ],
-        destination: [
-          destination,
-          araDestination
-        ],
-        images: images,
-        price: Number(price),
-        duration: Number(duration),
-        startDate: startDate,
-        endDate: endDate,
-        maxPeople: Number(maxPeople),
-        overview: [
-          overview,
-          araOverview
-        ],
-        tripPlan: {
-          english: addItemsToArray(daysArray, "english"),
-          arabic: addItemsToArray(daysArray, "arabic")
-        },
-        rate: Number(rate),
-        extraOptions: [
-          {
-            text: [
-              optionOneText,
-              optionOneAraText
-            ],
-            price: Number(optionOnePrice)
-          },
-          {
-            text: [
-              optionTwoText,
-              optionTwoAraText
-            ],
-            price: Number(optionTwoPrice)
-          },
-          {
-            text: [
-              optionThreeText,
-              optionThreeAraText
-            ],
-            price: Number(optionThreePrice)
-          },
-        ]
-      });
-      setLoading(loading);
-      document.getElementById("new-trip").reset();
-      closeModal();
-      setIsCreated(!isCreated);
-
-      setOptionOneText("");
-      setOptionOneAraText("");
-      setOptionOnePrice(0);
-
-      setOptionTwoText("");
-      setOptionTwoAraText("");
-      setOptionTwoPrice(0);
-
-      setOptionThreeText("");
-      setOptionThreeAraText("");
-      setOptionThreePrice(0);
+    if (files.length < 5) {
+      return document.getElementById("upload-images-error").style.display = "block";
     }
-    catch (error) {
-      typeof window !== "undefined" && console.log(error);
+    else {
+      try {
+        document.getElementById("upload-images-error").style.display = "none";
+        setLoading(!loading);
+        const images = await Promise.all(
+          Object.values(files).map(async (file) => {
+            const data = new FormData();
+            data.append("file", file);
+            data.append("upload_preset", "uploads");
+            const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dqmqc0uaa/image/upload", data);
+
+            const { url } = uploadRes.data;
+            return url;
+          })
+        );
+
+
+        const newTrip = await axios.post(`/api/admin/trips`, {
+          title: [
+            tripTitle,
+            araTripTitle
+          ],
+          state: [
+            tripState.toLowerCase(),
+            tripAraState
+          ],
+          destination: [
+            destination,
+            araDestination
+          ],
+          images: images,
+          price: Number(price),
+          duration: Number(duration),
+          startDate: startDate,
+          endDate: endDate,
+          maxPeople: Number(maxPeople),
+          overview: [
+            overview,
+            araOverview
+          ],
+          tripPlan: {
+            english: addItemsToArray(daysArray, "english"),
+            arabic: addItemsToArray(daysArray, "arabic")
+          },
+          rate: Number(rate),
+          extraOptions: [
+            {
+              text: [
+                optionOneText,
+                optionOneAraText
+              ],
+              price: Number(optionOnePrice)
+            },
+            {
+              text: [
+                optionTwoText,
+                optionTwoAraText
+              ],
+              price: Number(optionTwoPrice)
+            },
+            {
+              text: [
+                optionThreeText,
+                optionThreeAraText
+              ],
+              price: Number(optionThreePrice)
+            },
+          ]
+        });
+        setLoading(loading);
+        document.getElementById("new-trip").reset();
+        closeModal();
+        setIsCreated(!isCreated);
+
+        setOptionOneText("");
+        setOptionOneAraText("");
+        setOptionOnePrice(0);
+
+        setOptionTwoText("");
+        setOptionTwoAraText("");
+        setOptionTwoPrice(0);
+
+        setOptionThreeText("");
+        setOptionThreeAraText("");
+        setOptionThreePrice(0);
+      }
+      catch (error) {
+        typeof window !== "undefined" && console.log(error);
+      }
     }
   }
 
@@ -776,7 +782,7 @@ const Trips = ({ language, newTripsOrdersList }) => {
         setImg4(res.data.images[3] ? res.data.images[3] : "");
         setImg5(res.data.images[4] ? res.data.images[4] : "");
 
-        if (res.data.state[0] === "Open") {
+        if (res.data.state[0] === "open") {
           setTripTickets(res.data.tickets)
         } else {
           setTripTickets(0);
@@ -898,7 +904,7 @@ const Trips = ({ language, newTripsOrdersList }) => {
           araTripTitle
         ],
         state: [
-          tripState,
+          tripState.toLocaleLowerCase(),
           tripAraState
         ],
         destination: [
@@ -975,12 +981,12 @@ const Trips = ({ language, newTripsOrdersList }) => {
     if (tripAraState !== "") {
       if (tripAraState === "متاح") {
         data = [
-          "Open",
+          "open",
           "متاح"
         ]
       } else if (tripAraState === "غير متاح") {
         data = [
-          "Closed",
+          "closed",
           "غير متاح"
         ]
       }
@@ -1071,25 +1077,25 @@ const Trips = ({ language, newTripsOrdersList }) => {
   // const [newOrdersNotifications, setNewOrdersNotifications] = useState();
 
   // useEffect(() => {
-    // console.log(newTripsOrdersList)
-    //   const getNotifications = () => {
-    //     const tripsNames = trips && trips.map(trip => {
-    //       return trip.title[0]
-    //     });
+  // console.log(newTripsOrdersList)
+  //   const getNotifications = () => {
+  //     const tripsNames = trips && trips.map(trip => {
+  //       return trip.title[0]
+  //     });
 
-    //     if (tripsNames) {
-    //       let orders = [];
-    //       for (let i = 0; i < tripsNames.length; i++) {
-    //         orders = [...orders,
-    //         newTripsOrdersList !== false && newTripsOrdersList.filter(order => {
-    //           return order.orderDetails.title[0] === tripsNames[i]
-    //         })
-    //         ]
-    //       }
-    //       setNewOrdersNotifications(orders);
-    //     }
-    //   }
-    //   getNotifications();
+  //     if (tripsNames) {
+  //       let orders = [];
+  //       for (let i = 0; i < tripsNames.length; i++) {
+  //         orders = [...orders,
+  //         newTripsOrdersList !== false && newTripsOrdersList.filter(order => {
+  //           return order.orderDetails.title[0] === tripsNames[i]
+  //         })
+  //         ]
+  //       }
+  //       setNewOrdersNotifications(orders);
+  //     }
+  //   }
+  //   getNotifications();
   // }, [newTripsOrdersList, trips]);
 
   /* End Trip's Orders */
@@ -1132,7 +1138,7 @@ const Trips = ({ language, newTripsOrdersList }) => {
 
                 <td>
                   {
-                    trip.state[0] === "Open"
+                    trip.state[0] === "open"
                       ?
                       <div className="tickets-container">
                         <strong>
@@ -1204,7 +1210,7 @@ const Trips = ({ language, newTripsOrdersList }) => {
                     <div className="delete-modal-body">
                       <span onClick={() => closeDeleteTripModal(`${trip._id}rand`)}>x</span>
                       <div className="delete-modal-content">
-                        <p>هل تريد إزالة هذه الرحلة؟</p>
+                        <p>هل تريد إزالة رحلة {trip.title[1]}؟</p>
                         <button onClick={() => deleteTrip(trip._id)}>امسح الرحلة</button>
                       </div>
                     </div>
@@ -1359,7 +1365,7 @@ const Trips = ({ language, newTripsOrdersList }) => {
               </div>
 
               {
-                trip && trip.state[0] === "Open" &&
+                trip && trip.state[0] === "open" &&
                 <div>
                   <h3>التذاكر</h3>
                   <input
@@ -1771,6 +1777,12 @@ const Trips = ({ language, newTripsOrdersList }) => {
                   <div style={{
                     display: 'flex'
                   }}>
+                    <pre
+                      id="upload-images-error"
+                      style={{ color: 'red', display: "none" }}
+                    >
+                      * من فضلك اختار خمس صور
+                    </pre>
                     <label htmlFor="upload"><FileEarmarkArrowUp size={36} /></label>
                     <input
                       id="upload"

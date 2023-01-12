@@ -101,18 +101,19 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             const userData = JSON.parse(localStorage.getItem("user"));
             setUser(userData);
         }
+
+        // handle log out on inactivity
+        const handleInactivity = setTimeout(() => {
+            logout();
+        }, 1000 * 60 * 60);
+
+        window.addEventListener("blur", () => handleInactivity);
+
+        return () => {
+            window.removeEventListener("blur", () => handleInactivity);
+        }
     }, []);
 
-    // handle log out on inactivity
-    // const handleInactivity = setTimeout(() => {
-    //     console.log("Logged Out")
-    // }, 10000);
-
-    // if(typeof window !== "undefined") {
-    //     window.addEventListener("blur", () => handleInactivity);
-
-    //     window.addEventListener("focus", () => handleInactivity);
-    // };
 
 
 
@@ -137,7 +138,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             }
         };
 
-        
+
         const checkForNewTripsOrders = () => {
             if (
                 tripsOrders.length > 0 &&
@@ -157,7 +158,7 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
             }
         };
 
-        
+
         checkForNewCampsOrders();
         checkForNewTripsOrders();
 
@@ -184,9 +185,6 @@ const Dashboard = ({ language, camps, campsOrders, tripsOrders, role }) => {
         }
     };
 
-    setTimeout(() => {
-        logout();
-    }, 1000 * 60 * 60 );
 
     return (
         <Container>

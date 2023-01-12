@@ -70,7 +70,7 @@ const Trip = ({ language, trip, loading, setLoading }) => {
     // Handle disable book now button
     useEffect(() => {
         const handleDisableBtn = () => {
-            if (state == "Closed") {
+            if (state == "closed") {
                 document.getElementById('book-now').disabled = true;
             }
         }
@@ -282,13 +282,13 @@ const Trip = ({ language, trip, loading, setLoading }) => {
             {/* Booking */}
             <div className='booking'>
                 <div className="date">
-                    <h3 style={{ textDecoration: state == "Closed" && 'line-through' }}>
+                    <h3 style={{ textDecoration: state == "closed" && 'line-through' }}>
                         {
                             language === "English"
                                 ? "Book This Trip"
                                 : "احجز هذه الرحلة"
                         }
-                        {state == "Closed" &&
+                        {state == "closed" &&
                             <span> {language === "English" ? `(${state})` : `(${araState})`}</span>
                         }
                     </h3>

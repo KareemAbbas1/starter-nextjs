@@ -133,11 +133,12 @@ const Container = styled.div`
         }
     }
 
-    // 15 inch to 12 inch
-    @media(min-width: 1280px) and (max-width: 1400px) {
-        bottom: calc(50vh + 24vh);
+    // 15 inch 
+    @media(min-width: 1360px) and (max-width: 1400px) {
+        bottom: calc(50vh + 45vh);
         padding-inline: 31vw;
     }
+    
 
     // 12 inch 
     @media(min-width: 1280px) and (max-width: 1290px) {

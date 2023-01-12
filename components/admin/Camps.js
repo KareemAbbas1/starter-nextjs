@@ -1496,7 +1496,7 @@ const Camps = ({ language, newCampsordersList }) => {
                     <div className="delete-modal-body">
                       <span onClick={() => closeDeleteCampModal(`${camp._id}rand`)}>x</span>
                       <div className="delete-modal-content">
-                        <p>هل تريد إزالة هذا المخيم؟</p>
+                        <p>هل تريد إزالة مخيم {camp.name[1]}؟</p>
                         <button onClick={() => deleteCamp(camp._id)}>ازالة المخيم</button>
                       </div>
                     </div>

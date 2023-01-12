@@ -567,7 +567,7 @@ const Users = ({ role, loggedInUser }) => {
                     <div className="delete-modal-body">
                       <span onClick={() => closeDeleteUserModal(`${user._id}rand`)}>x</span>
                       <div className="delete-modal-content">
-                        <p>هل تريد إزالة هذا المستخدم؟</p>
+                        <p>هل تريد إزالة {user.username}؟</p>
                         <button onClick={() => deleteUser(user._id)}>نعم</button>
                       </div>
                     </div>

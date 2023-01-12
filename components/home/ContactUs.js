@@ -272,8 +272,8 @@ const ContactUs = ({ language, showSideButtons }) => {
                                     <p>
                                         {
                                             language === "English"
-                                                ? "Arish, North Sinai..."
-                                                : "...العريش, شمال سيناء"
+                                                ? "Sinai, Egypt"
+                                                : "سيناء, مصر"
                                         }
 
                                     </p>
