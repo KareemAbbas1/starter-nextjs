@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 
 const Section = styled.div`
     position: relative;
@@ -35,32 +34,21 @@ const Section = styled.div`
         }
     }
 
-    /* video {
-        position: absolute;
+    video {
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         pointer-events: none;    
-    } */
+    }
 `
-
-// const Video = styled.video`
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     pointer-events: none;
-// `
 
 const Container = styled.div`
     position: relative;
     padding-inline: 33vw;
     height: 31vh;
-    bottom: calc(50vh + 25vh);
+    bottom: calc(50vh + 10vh);
     z-index: 1;
 
     span.head-line {
@@ -135,7 +123,6 @@ const Container = styled.div`
 
     // 15 inch 
     @media(min-width: 1360px) and (max-width: 1400px) {
-        bottom: calc(50vh + 45vh);
         padding-inline: 31vw;
     }
     
@@ -150,7 +137,7 @@ const Container = styled.div`
 
     // 10 inch
     @media(min-width: 1024px) and (max-width: 1030px) {
-        bottom: calc(50vh + 21vh);
+        bottom: calc(50vh + 15vh);
         padding-inline: 31.5vw;
 
         span.head-line {
@@ -221,14 +208,7 @@ const Container = styled.div`
 const Hero = ({ language }) => {
     return (
         <Section language={language} id="hero-section">
-            <Image
-                priority
-                width={1920}
-                height={1167}
-                layout="intrinsic"
-                src="https://res.cloudinary.com/dqmqc0uaa/image/upload/b_rgb:0a0b12,c_fill,o_70,w_1920/v1672458034/uploads/nqavh7hcobbwb9sserer.webp"
-                alt="Image for mount Sinai"
-            />
+            <video autoPlay={true} muted loop src="https://res.cloudinary.com/dqmqc0uaa/video/upload/v1673530847/uploads/video_mqp2vl_o8gtmv.mp4" />
             <Container language={language}>
                 <span className="head-line"> {language === "English" ? "Your Favorite Agency for" : "الاختيار الأفضل للسياحة داخل مصر"}
                     <br></br>
