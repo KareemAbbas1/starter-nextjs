@@ -161,7 +161,11 @@ export const WhatsApp = styled.button`
     cursor: pointer;
     border-radius: 3px;
     transition: all 300ms ease-in-out;
-
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
     &:hover {
         transform: translateX(-8%);
     }

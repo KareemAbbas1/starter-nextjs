@@ -150,6 +150,15 @@ const Trip = ({ language, trip, loading, setLoading }) => {
 
 
     /* End Trip Checkout */
+    const [optionsArray, setOptionsArray] = useState([]);
+    useEffect(() => {
+        const availableTickets = () => {
+            const optionsCount = trip.maxPeople - trip.tickets + 1
+            let arr = Array.from({ length: optionsCount }).map((currentElement, i) => i)
+            setOptionsArray(arr);
+        }
+        availableTickets();
+    }, [])
 
     return (
         <Container language={language}>
@@ -323,35 +332,56 @@ const Trip = ({ language, trip, loading, setLoading }) => {
                                     : "التذاكر"
                             }
                         </h3>
-                        <div className="adults-count">
-                            <label htmlFor="adults">
-                                {
-                                    language === "English"
-                                        ? "Adults(18+ years):"
-                                        : ":بالغين(18+)"
-                                }
-                            </label>
-                            <select
-                                name="adults"
-                                id="adults"
-                                onChange={(e) => {
-                                    setAdultsTickets(e.target.value);
-                                    setNoTicketsSelected(false);
-                                }}
-                            >
-                                <option value="">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
+                        {
+                            trip && trip.tickets >= trip.maxPeople
+                                ? <p>This tirp is fully booked</p>
+                                :
+
+                                <div className="adults-count">
+                                    <label htmlFor="adults">
+                                        {
+                                            language === "English"
+                                                ? "Adults(18+ years):"
+                                                : ":بالغين(18+)"
+                                        }
+                                    </label>
+                                    <select
+                                        name="adults"
+                                        id="adults"
+                                        onChange={(e) => {
+                                            setAdultsTickets(e.target.value);
+                                            setNoTicketsSelected(false);
+                                        }}
+                                    >
+                                        {
+                                            trip && trip.maxPeople - trip.tickets >= 10
+                                                ?
+                                                <>
+                                                    <option value="">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </>
+                                                :
+                                                <>
+                                                    {
+                                                        optionsArray.map(option => (
+                                                            <option key={`potion${option}key`} value={option}>{option}</option>
+                                                        ))
+                                                    }
+                                                </>
+                                        }
+
+                                    </select>
+                                </div>
+                        }
                         {
                             noTicketsSelected &&
                             <span style={{ color: 'red' }}>
@@ -362,29 +392,6 @@ const Trip = ({ language, trip, loading, setLoading }) => {
                                 }
                             </span>
                         }
-
-                        {/* <div className="children-count">
-                            <label htmlFor="children">
-                                {
-                                    language === "English"
-                                        ? "Children(13+ years):"
-                                        : ":اطفال(13+)"
-                                }
-                            </label>
-                            <select name="children" id="children" onChange={(e) => setChildrenTickets(e.target.value)}>
-                                <option>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div> */}
                     </div>
                     {
                         trip && trip.extraOptions.length !== 0 && trip.extraOptions[0].text[0] !== "" &&

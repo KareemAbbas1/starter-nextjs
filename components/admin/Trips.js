@@ -311,7 +311,7 @@ const Container = styled.div`
         cursor: pointer;
         transition: all 300ms ease-in-out;
       }
-
+      
       button.add {
         background-color: #000;
         color: #fff;
@@ -332,6 +332,10 @@ const Container = styled.div`
         &:hover {
           background-color: transparent;
           color: #000;
+        }
+
+        &:disabled {
+          opacity: 0.5;
         }
       } 
       button.delete {
@@ -863,6 +867,7 @@ const Trips = ({ language, newTripsOrdersList }) => {
   // Upload Image
   const uploadImage = async (imageInputId, imageFile) => {
     try {
+      document.getElementById("edit").disabled = true;
       deleteImage(imageInputId);
       const data = new FormData();
       data.append("file", imageFile);
@@ -884,8 +889,12 @@ const Trips = ({ language, newTripsOrdersList }) => {
       }
 
       document.getElementById(imageInputId).value = "New image uploaded";
+      setTimeout(() => {
+        document.getElementById("edit").disabled = false;
+      }, 5000)
     }
     catch (error) {
+      alert("حدث خطأ, برجاء إعادة التحميل وإعادة المحاولة مرة اخرى");
       typeof window !== "undefined" && console.log(error);
     }
   }

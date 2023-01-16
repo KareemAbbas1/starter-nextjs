@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LoadingBar from '../components/LoadingBar';
 import debounce from 'lodash/debounce';
+import Link from 'next/link';
 
 
 
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
   const [language, setLanguage] = useState("English");
   const [notifications, setNotifications] = useState(false);
   const [loading, setLoading] = useState(false);
+
 
   // Handle Rerender at screen width change: Check this answer for elaboration (https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react#:~:text=As%20of%20React,Flag)
   const [width, setWidth] = useState(0);
@@ -111,7 +113,7 @@ function MyApp({ Component, pageProps }) {
         <>
           {
             router.pathname !== "/admin/dashboard" &&
-            <WhatsApp><Whatsapp size={30} /></WhatsApp>
+            <WhatsApp><Link href=""><a href='https://wa.me/201062281881' target="_blank"><Whatsapp size={30} /></a></Link></WhatsApp>
           }
           <ScrollToTop router={router} id="myBtn" onClick={topFunction}><CaretUp size={25} /></ScrollToTop>
         </>
