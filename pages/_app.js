@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import LoadingBar from '../components/LoadingBar';
 import debounce from 'lodash/debounce';
 import Link from 'next/link';
+import Script from 'next/script';
 
 
 
@@ -82,43 +83,58 @@ function MyApp({ Component, pageProps }) {
   /* End Hnadle Scroll To section */
 
   return (
-    <Layout
-      language={language}
-      setLanguage={setLanguage}
-      open={open}
-      setOpen={setOpen}
-      onLinkClick={onLinkClick}
-      loadign={loading}
-      setLoading={setLoading}
-      showSideButtons={showSideButtons}
-      width={width}
-    >
-      <Component
-        {...pageProps}
-        language={language}
-        onLinkClick={onLinkClick}
-        notifications={notifications}
-        setNotifications={setNotifications}
-        showSideButtons={showSideButtons}
-        setLoading={setLoading}
-        loading={loading}
-        width={width}
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-8VRYE15YCL"
+        strategy="afterInteractive"
       />
-      {
-        loading &&
-        <LoadingBar position="fixed" align="top" />
-      }
-      {
-        showSideButtons &&
-        <>
-          {
-            router.pathname !== "/admin/dashboard" &&
-            <WhatsApp><Link href=""><a href='https://wa.me/201062281881' target="_blank"><Whatsapp size={30} /></a></Link></WhatsApp>
-          }
-          <ScrollToTop router={router} id="myBtn" onClick={topFunction}><CaretUp size={25} /></ScrollToTop>
-        </>
-      }
-    </Layout>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-8VRYE15YCL');
+        `}
+      </Script>
+      <Layout
+        language={language}
+        setLanguage={setLanguage}
+        open={open}
+        setOpen={setOpen}
+        onLinkClick={onLinkClick}
+        loadign={loading}
+        setLoading={setLoading}
+        showSideButtons={showSideButtons}
+        width={width}
+      >
+        <Component
+          {...pageProps}
+          language={language}
+          onLinkClick={onLinkClick}
+          notifications={notifications}
+          setNotifications={setNotifications}
+          showSideButtons={showSideButtons}
+          setLoading={setLoading}
+          loading={loading}
+          width={width}
+        />
+        {
+          loading &&
+          <LoadingBar position="fixed" align="top" />
+        }
+        {
+          showSideButtons &&
+          <>
+            {
+              router.pathname !== "/admin/dashboard" &&
+              <WhatsApp><Link href=""><a href='https://wa.me/201062281881' target="_blank"><Whatsapp size={30} /></a></Link></WhatsApp>
+            }
+            <ScrollToTop router={router} id="myBtn" onClick={topFunction}><CaretUp size={25} /></ScrollToTop>
+          </>
+        }
+      </Layout>
+    </>
   );
 }
 
